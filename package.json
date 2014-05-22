@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/alexgolubev/BrazilianLight/issues"
   },
-  "homepage": "https://github.com/alexgolubev/BrazilianLight"
+  "homepage": "https://github.com/alexgolubev/BrazilianLight",
+  "dependencies": {
+    "express": "^4.3.0",
+    "logfmt": "^1.1.2"
+  }
 }
