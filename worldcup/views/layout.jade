@@ -1,0 +1,77 @@
+doctype html
+html
+  head
+    title= title
+    title= "BrazilianLight"
+    link(rel='stylesheet', href='/stylesheets/netlight.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.css')
+    script(type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js")
+    script(type='text/javascript', src='/bootstrap-select/bootstrap-select.js')
+    link(rel="stylesheet" type="text/css" href="bootstrap-select/bootstrap-select.css")
+    script(type='text/javascript', src='/bootstrap/js/bootstrap.js')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=0')
+    meta(name='robots', content='noindex, nofollow')
+    link(rel='shortcut icon', href='images/favicon.png')
+    script(type='text/javascript').
+       $(window).on('load', function () { $('.selectpicker').selectpicker({'selectedText': 'cat'});});
+
+  body
+   if loggedIn
+     div(class="container-fluid")
+      header
+         div(class="row-fluid")
+           div(class="navbar navbar-inverse")
+              div(class="navbar-inner")
+                div(class="container-fluid")
+                   a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+                      span(class="icon-bar")
+                      span(class="icon-bar")
+                      span(class="icon-bar")
+                   div(class="nav-collapse collapse")
+                      ul(class="nav" style="left:5%")
+                         li(style="color: white; width:150px")
+                            a(href="/")!= "Hello " + netlighter + "!"                      
+                         li(class="active")
+                            a(href="/")!= "Daggen Match"
+                         li(class="dropdown")
+                            a(href="#" class="dropdown-toggle" data-toggle="dropdown")!= "Competition"
+                               b(class="caret")
+                            ul(class="dropdown-menu")
+                               li
+                                  a(href="/competition")!= "Group Stage"
+                               li
+                                  a(href="#")!= "Round of 16"
+                               li
+                                  a(href="#")!= "Quarter Finals"
+                               li
+                                  a(href="#")!= "Semi Finals"
+                               li
+                                  a(href="#")!= "Final"
+                         li
+                            a(href="/bonuses")!= "Bonuses"                                        
+                         li(class="dropdown")
+                            a(href="/news" class="dropdown-toggle" data-toggle="dropdown")!= "News"
+                               b(class="caret")
+                            ul(class="dropdown-menu")
+                               li
+                                  a(href="http://metsnake.wordpress.com/" target="_blank")!= "By Netlighters"
+                               li
+                                  a(href="http://www.espnfc.com/video/espnfc/index?league=fifa.world" target="_blank")!= "Media"
+                               li
+                                  a(href="/pictures")!= "Pictures"
+                         li
+                            a(href="http://www.fifa.com/" target="_blank")!= "Official Site"
+                         li(class="dropdown")
+                            a(href="#" class="dropdown-toggle" data-toggle="dropdown")!= "Us & You"
+                               b(class="caret")
+                            ul(class="dropdown-menu")
+                               li
+                                  a(href="#")!= "The Works"
+                               li
+                                  a(href="/contactus")!= "Contact" 
+                         li
+                            a(href="/login" style="color:yellow")
+                               i!= "Logout"                                  
+    block content

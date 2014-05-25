@@ -1,0 +1,35 @@
+extends layout
+
+block content
+                           
+  div(style="padding-left: 20px")
+     h1= title
+     p Welcome to the #{title}. Please make your predictions below & get closer to your fun prize!
+  #matches
+        - each match in matches
+          div(id="ctl00_Div2" style="padding:20px" class="container").match
+            h1= match.typ + ' vs. ' + match.hemma
+            fieldset
+               p
+                  div.group= 'Grupp: ' + match.grupp
+                  div.date= 'Datum: ' + match.datum
+                  div.points= '3 poang'
+               
+               div
+                  select(id="id_select" class="selectpicker bla bla bli" multiple data-live-search="true")
+                     option(class="get-class" selected)!="Select a team"
+                        option!= match.typ
+                        option!= match.hemma
+    
+            div(class="buttons")
+               input(type="submit" class="button" value="Predict!")
+               
+               
+  div(class="footer" style="margin-top:20px; position:relative !important;")
+     div(style="padding:5px;")
+        img(src="images/armadillo.png", alt="Netlight", style="border-width:0px; width: 50px")
+        //a(href="/match/new")!= "Predict!"
+        
+        
+        
+        
