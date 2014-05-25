@@ -5,17 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
 var app = express();
 var passport = require('passport');
 var flash = require('connect-flash');
+var store  = new session.MemoryStore;
+var router = express.Router();
 
 app.use(cookieParser());
 app.use(session({
 	secret : 'keyboard cat',
 	name : 'sid',
+	store: store,
 	cookie : {
-		secure : true
+		secure : true, 
+        path: '/',
+        expires: false
 	}
 }));
 app.use(passport.initialize());
@@ -40,9 +44,9 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use('/', routes);
 
-app.use('/', routes);
-
+var routes = require('./routes/index')(app);
 // / catch 404 and forward to error handler
 app.use(function(req, res, next) {
 	var err = new Error('Not Found');
@@ -74,9 +78,10 @@ app.use(function(err, req, res, next) {
 	});
 });
 
+
 var port = Number(process.env.PORT || 3000);
 app.listen(port, function() {
 	console.log("Listening on " + port);
 });
 
-module.exports = app;
+//module.exports = app;
