@@ -1,5 +1,5 @@
 var pg = require("pg");
-var conString = "pg://postgres:@localhost:5432/vm2014";
+var conString = "pg://alexgolubev:@localhost:5432/vm2014";
 var client = new pg.Client(conString);
 
 var id = 'mkon', password = 'netlight-111';
