@@ -32,6 +32,12 @@ $(document).ready(function() {
     return false;
     });
 
+    $.preloadImages = function() {
+    	  for (var i = 0; i < arguments.length; i++) {
+    	    $("<img />").attr("src", arguments[i]);
+    	  }
+    	}
 
+    $.preloadImages("/images/neymar.png", "/images/james.png", "/images/armadillo_logo_2.png", "/images/referee.png", "/images/brazil_folder.png", "/images/map.png", "/images/brazil_help_contact.png");
 
 });
