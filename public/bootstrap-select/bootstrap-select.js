@@ -139,9 +139,10 @@
                 _liA = [],
                 _liHtml = '';
 
+
+            
             this.$element.find('option').each(function() {
                 var $this = $(this);
-
                 //Get the class and text for the option
                 var optionClass = $this.attr('class') || '';
                 var inline = $this.attr('style') || '';
@@ -222,8 +223,8 @@
             }
 
             this.tabIndex();
-
-            var selectedItems = this.$element.find('option:selected').map(function() {
+            
+            var selectedItems = this.$element.find('option:selected').map(function() {                
                 var $this = $(this);
                 var icon = $this.data('icon') && that.options.showIcon ? '<i class="' + that.options.iconBase + ' ' + $this.data('icon') + '"></i> ' : '';
                 var subtext;
@@ -244,7 +245,7 @@
             //Fixes issue in IE10 occurring when no default option is selected and at least one option is disabled
             //Convert all the values into a comma delimited string
             var title = !this.multiple ? selectedItems[0] : selectedItems.join(this.options.multipleSeparator);
-
+         
             //If this is multi select, and the selectText type is count, the show 1 of 2 selected etc..
             if (this.multiple && this.options.selectedTextFormat.indexOf('count') > -1) {
                 var max = this.options.selectedTextFormat.split('>');
@@ -521,6 +522,9 @@
                 var clickedIndex = $(this).parent().index(),
                     prevValue = that.$element.val(),
                     prevIndex = that.$element.prop('selectedIndex');
+                	
+             
+                    
 
                 //Dont close on multi choice menu
                 if (that.multiple) {
@@ -537,7 +541,11 @@
                         $optgroup = $option.parent('optgroup'),
                         maxOptions = that.options.maxOptions,
                         maxOptionsGrp = $optgroup.data('maxOptions') || false;
-
+                    
+                    if(!$option.is(':selected')){
+                    	//alert($(this).parent().html()); 	
+                    	$(this).parent().parent().parent().parent().parent().parent().find('.selection').val($(this).parent().find('span').html());
+                    }
                     //Deselect all others if not multi select box
                     if (!that.multiple) {
                         $options.prop('selected', false);
@@ -944,7 +952,7 @@
         size: 'auto',
         title: null,
         selectedTextFormat : 'values',
-        noneSelectedText : 'Nothing selected',
+        noneSelectedText : 'Make a selection',
         noneResultsText : 'No results match',
         countSelectedText: '{0} of {1} selected',
         maxOptionsText: ['Limit reached ({n} {var} max)', 'Group limit reached ({n} {var} max)', ['items','item']],

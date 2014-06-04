@@ -1,0 +1,80 @@
+extends layout
+
+block content
+                           
+  div(style="padding-left: 20px")
+     img(src="/images/armadillo_logo_2.png" alt="" style="border-width:0px; width: 350px;float: right;")
+     h1= title
+     p See below the complete calendar for the World Cup per phase. Select a date to make predictions & get closer to your fun prize!
+  #calendarGroupStage
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+          h1= 'First Round'
+          - nodups = []
+          - each phaseone in groupPhase 
+               - if(nodups.indexOf(phaseone.shortdate) == -1)
+                   - link = "/event/"+phaseone.shortdate
+                   a(href=link)
+                      div!= phaseone.shortdate
+                   - nodups.push(phaseone.shortdate)
+   #secondPhase
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+          h1= 'Second Phase'
+          - nodups = []
+          - each phase in secondPhase 
+               - if(nodups.indexOf(phase.shortdate) == -1)
+                   - link = "/event/"+phase.shortdate
+                   a(href=link)
+                      div!= phase.shortdate
+                   - nodups.push(phase.shortdate)            
+ 
+     #quarters
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+          h1= 'Quarterfinals'
+          - nodups = []
+          - each phase in quarters 
+               - if(nodups.indexOf(phase.shortdate) == -1)
+                   - link = "/event/"+phase.shortdate
+                   a(href=link)
+                      div!= phase.shortdate
+                   - nodups.push(phase.shortdate)     
+
+     #semis
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+          h1= 'Semi Finals'
+          - nodups = []
+          - each phase in semis 
+               - if(nodups.indexOf(phase.shortdate) == -1)
+                   - link = "/event/"+phase.shortdate
+                   a(href=link)
+                      div!= phase.shortdate
+                   - nodups.push(phase.shortdate)     
+
+     #third
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+          h1= 'Third Place'
+          - nodups = []
+          - each phase in third 
+               - if(nodups.indexOf(phase.shortdate) == -1)
+                   - link = "/event/"+phase.shortdate
+                   a(href=link)
+                      div!= phase.shortdate
+                   - nodups.push(phase.shortdate)  
+                   
+     #finals
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+          h1= 'Final'
+          - nodups = []
+          - each phase in finals 
+               - if(nodups.indexOf(phase.shortdate) == -1)
+                   - link = "/event/"+phase.shortdate
+                   a(href=link)
+                      div!= phase.shortdate
+                   - nodups.push(phase.shortdate)       
+                                                                          
+  div(class="footer" style="margin-top:20px; position:relative !important;")
+     div(style="padding:5px;")
+        img(src="images/map.png", alt="Netlight", style="border-width:0px; width: 50px")
+        
+        
+        
+        

@@ -6,17 +6,19 @@ html
     link(rel='stylesheet', href='/stylesheets/netlight.css')
     link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
     link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.css')
-    script(type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js")
-    script(type='text/javascript', src='/bootstrap-select/bootstrap-select.js')
-    link(rel="stylesheet" type="text/css" href="bootstrap-select/bootstrap-select.css")
+    link(rel='stylesheet', href='/stylesheets/player.css')
+    script(type="text/javascript" src="/javascripts/jquery-2.1.1.js")
+    script(type="text/javascript" src="/javascripts/jquery-migrate-1.2.1.min.js")
     script(type='text/javascript', src='/bootstrap/js/bootstrap.js')
+    script(type='text/javascript', src='/javascripts/utils.js')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=0')
     meta(name='robots', content='noindex, nofollow')
     link(rel='shortcut icon', href='images/favicon.png')
-    script(type='text/javascript').
-       $(window).on('load', function () { $('.selectpicker').selectpicker({'selectedText': 'cat'});});
 
+    if scripts
+      each script in scripts
+           script(type='text/javascript', src=script)
   body
    if loggedIn
      div(class="container-fluid")
@@ -29,48 +31,31 @@ html
                       span(class="icon-bar")
                       span(class="icon-bar")
                       span(class="icon-bar")
+                   - active = ""
                    div(class="nav-collapse collapse")
+                      ul(class="nav" style="")
+                         li(class="active" style="color: white; width:150px")
+                            a(href="/")!= "Hello " + netlighter + "!"  
                       ul(class="nav" style="left:5%")
-                         li(style="color: white; width:150px")
-                            a(href="/")!= "Hello " + netlighter + "!"                      
-                         li(class="active")
-                            a(href="/")!= "Daggen Match"
-                         li(class="dropdown")
-                            a(href="#" class="dropdown-toggle" data-toggle="dropdown")!= "Competition"
-                               b(class="caret")
-                            ul(class="dropdown-menu")
-                               li
-                                  a(href="/competition")!= "Group Stage"
-                               li
-                                  a(href="#")!= "Round of 16"
-                               li
-                                  a(href="#")!= "Quarter Finals"
-                               li
-                                  a(href="#")!= "Semi Finals"
-                               li
-                                  a(href="#")!= "Final"
-                         li
-                            a(href="/bonuses")!= "Bonuses"                                        
-                         li(class="dropdown")
-                            a(href="/news" class="dropdown-toggle" data-toggle="dropdown")!= "News"
-                               b(class="caret")
-                            ul(class="dropdown-menu")
-                               li
-                                  a(href="http://metsnake.wordpress.com/" target="_blank")!= "By Netlighters"
-                               li
-                                  a(href="http://www.espnfc.com/video/espnfc/index?league=fifa.world" target="_blank")!= "Media"
-                               li
-                                  a(href="/pictures")!= "Pictures"
-                         li
-                            a(href="http://www.fifa.com/" target="_blank")!= "Official Site"
-                         li(class="dropdown")
-                            a(href="#" class="dropdown-toggle" data-toggle="dropdown")!= "Us & You"
-                               b(class="caret")
-                            ul(class="dropdown-menu")
-                               li
-                                  a(href="#")!= "The Works"
-                               li
-                                  a(href="/contactus")!= "Contact" 
+                         - if(menu == 'today')
+                             - active = "active"                    
+                         li(class=active)
+                            a(href="/")!= "Today"
+                         - active = ""
+                         - if(menu == 'calendar')
+                             - active = "active"                              
+                         li(class=active)
+                            a(href="/calendar")!= "Calendar"
+                         - active = ""
+                         - if(menu == 'ranking')
+                             - active = "active"  
+                         li(class=active)
+                            a(href="/ranking")!= "Ranking"
+                         - active = ""
+                         - if(menu == 'help')
+                             - active = "active" 
+                         li(class=active)
+                            a(href="/help")!= "Help"                            
                          li
                             a(href="/logout" style="color:yellow")
                                i!= "Logout"                                  

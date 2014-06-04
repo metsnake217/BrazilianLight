@@ -1,7 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 var PassportLocalStrategy = require('passport-local').Strategy;
 var NetlighterFinder = require('./netlighterfinder').NetlighterFinder;
-var User = new NetlighterFinder();
+var User = app.get('models').User;
 
 module.exports = function(passport) {
 	

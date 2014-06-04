@@ -1,0 +1,33 @@
+ @media (min-width: 440px) {
+  .player{
+  border-width:0px; 
+  width: 250px; 
+  float: right !important;
+  }
+  
+  .logo {
+  border-width:0px; 
+  width: 50px;
+  float: right;
+  }
+ }
+
+@media (max-width: 440px) {
+  .player, .flag {
+    height: 50% !important;
+    width: 50% !important;
+    float: right !important;
+  }
+  
+  .logo {
+    float: left !important;
+    border-width:0px; 
+  	width: 50px;
+  }
+
+ .vs {
+    font-size: 32px !important;
+    margin: 35px;
+  }
+}
+  

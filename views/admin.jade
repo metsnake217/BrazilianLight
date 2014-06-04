@@ -1,0 +1,78 @@
+extends layout
+
+block content
+                           
+  div(style="padding-left: 20px")
+
+     h1= title
+     p Enter results daily and run the script!
+  #matches
+       - now = (new Date('2014-06-14 00:00:00')).getTime()
+       - count = 0
+       - predicted = false
+       - predictedteam = ''
+       - scoretyp = ''
+       - scorehemma = ''
+       - background = 'background:rgba(0, 0, 0, 0);'
+       - flagtyp = ''
+       - flaghemma = ''
+     div(id="ctl00_Div2" style="padding:20px;"+background class="container").match
+       if successmessage
+         div(class="alert alert-success")!= successmessage
+       if errormessage
+         div(class="alert alert-success")!= errormessage
+       - each match in matches
+         - matchdate = (match.datum).getTime()
+         - predicted = false
+         - scoretyp = ''
+         - scorehemma = ''
+         - background = 'background:rgba(0, 0, 0, 0);'
+         - flagtyp = "/images/" + match.typ + "_flag.png"
+         - flaghemma = "/images/" + match.hemma + "_flag.png"
+         - count++
+         - result = match.resultat
+         - if(result != null && result.length>2)
+            - results = result.split(':')
+            - scoretyp = results[0]
+            - scorehemma = results[1]
+         - if(match.datum < now && scoretyp == '')
+              - background = 'background-color:rgba(173, 20, 245, 0.64);padding: 10px;'
+         - if(match.datum < now && scoretyp != '')
+              - background = 'border-style:solid;border-color:rgba(173, 20, 245, 0.64); padding: 10px;'
+           
+           
+         p(style="padding-top:10px;"+background)
+            - if(matchdate < now)
+                  img(src="/images/logo.png" alt="Predicted" style="border-width:0px; width: 50px;float: right;")
+            //match.typ + ' vs. ' + match.hemma
+            img(src=flagtyp alt="" style="border-width:0px;")
+            span!= match.typ+'  '
+            input(id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scoretyp').val($(this).val())")
+            span!= ' v '
+            input(id="hemma"+match.bet name="hemma"+match.bet value=scorehemma type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scorehemma').val($(this).val())")
+            span!= '  '+match.hemma
+            img(src=flaghemma alt="" style="border-width:0px;")
+                  
+
+            form(method="post" action="/admin" id="predict" style="float:left;")
+              input(name="user" type="hidden" value=''+user)
+              input(name="position" class="position" id="position" type="hidden" value=count)
+              input(name="typ" class="typ" id="typ" type="hidden" value=match.typ)
+              input(name="hemma" class="hemma" id="hemma" type="hidden" value=match.hemma)
+              input(name="scoretyp" class="scoretyp" id="scoretyp" type="hidden" value=scoretyp)
+              input(name="scorehemma" class="scorehemma" id="scorehemma" type="hidden" value=scorehemma)
+              input(name="bet" class="bet" id="bet" type="hidden" value=match.bet)
+
+              div(class="buttons" style="float:left;")
+                 input(type="submit" class="button" value="Build Points for Match "+match.bet)
+                     
+            div(style="background-color:blue; height:5px;margin-top:50px")!= ' '
+               
+               
+  div(class="footer" style="margin-top:20px; position:relative !important;")
+     div(style="padding:5px;")
+        img(src="/images/map.png", alt="Netlight", style="border-width:0px; width: 50px")
+        
+        
+        
+        

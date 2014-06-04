@@ -12,7 +12,8 @@ var store  = new session.MemoryStore;
 var router = express.Router();
 
 app.use(cookieParser());
-app.use(session({
+
+/*app.use(session({
 	secret : 'keyboard cat',
 	name : 'sid',
 	store: store,
@@ -22,6 +23,17 @@ app.use(session({
         expires: false
 	}
 }));
+*/
+
+app.use(session({
+	  cookie: {
+	    path    : '/',
+	    httpOnly: false,
+	    maxAge  : 24*60*60*1000
+	  },
+	  secret: 'wearethebest'
+	}));
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -42,11 +54,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
-//app.use('/', routes);
 
+//app.use('/', routes);
 var routes = require('./routes/index')(app);
+
 // / catch 404 and forward to error handler
 app.use(function(req, res, next) {
 	var err = new Error('Not Found');
@@ -84,4 +95,3 @@ app.listen(port, function() {
 	console.log("Listening on " + port);
 });
 
-//module.exports = app;

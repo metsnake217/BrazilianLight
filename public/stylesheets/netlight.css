@@ -1,3 +1,5 @@
+
+  
 @font-face{font-family:'TeXGyreAdventorBold';src:url("fonts/texgyreadventor-bold-webfont.eot");src:url("fonts/texgyreadventor-bold-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/texgyreadventor-bold-webfont.woff") format("woff"),url("fonts/texgyreadventor-bold-webfont.ttf") format("truetype"),url("fonts/texgyreadventor-bold-webfont.svg#TeXGyreAdventorBold") format("svg");font-weight:normal;font-style:normal}
 @font-face{font-family:'TeXGyreAdventorBoldItalic';src:url("fonts/texgyreadventor-bolditalic-webfont.eot");src:url("fonts/texgyreadventor-bolditalic-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/texgyreadventor-bolditalic-webfont.woff") format("woff"),url("fonts/texgyreadventor-bolditalic-webfont.ttf") format("truetype"),url("fonts/texgyreadventor-bolditalic-webfont.svg#TeXGyreAdventorBoldItalic") format("svg");font-weight:normal;font-style:normal}
 @font-face{font-family:'PTSansBoldItalic';src:url("fonts/pts76f-webfont.eot");src:url("fonts/pts76f-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/pts76f-webfont.woff") format("woff"),url("fonts/pts76f-webfont.ttf") format("truetype"),url("fonts/pts76f-webfont.svg#fonts/ptsansBoldItalic") format("svg");font-weight:normal;font-style:normal}
@@ -6,6 +8,12 @@
 @font-face{font-family:'PTSansBold';src:url("fonts/pts75f-webfont.eot");src:url("fonts/pts75f-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/pts75f-webfont.woff") format("woff"),url("fonts/pts75f-webfont.ttf") format("truetype"),url("fonts/pts75f-webfont.svg#fonts/ptsansBold") format("svg");font-weight:normal;font-style:normal}
 @font-face{font-family:'TeXGyreAdventorRegular';src:url("fonts/texgyreadventor-regular-webfont.eot");src:url("fonts/texgyreadventor-regular-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/texgyreadventor-regular-webfont.woff") format("woff"),url("fonts/texgyreadventor-regular-webfont.ttf") format("truetype"),url("fonts/texgyreadventor-regular-webfont.svg#TeXGyreAdventorRegular") format("svg");font-weight:normal;font-style:normal}
 
+  input.score {
+  	width: 22px !important;
+  	font-size: 38.5px !important;
+  	height: 80px !important;
+  }
+  
 html, body {
   height: 100%;
   margin: 0;
@@ -205,6 +213,15 @@ p {
    .successNotification
   {
   	color:Green;
+  }
+  
+}
+
+@media (max-width: 770px) {
+  input.score {
+  	width: 42px !important;
+  	font-size: 18.5px !important;
+  	height: 40px !important;
   }
   
 }
