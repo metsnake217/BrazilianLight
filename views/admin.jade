@@ -42,7 +42,7 @@ block content
            
            
          p(style="padding-top:10px;"+background)
-            - if(matchdate < now)
+            - if(moment(matchdate).diff(moment(now)) < 0)
                   img(src="/images/logo.png" alt="Predicted" style="border-width:0px; width: 50px;float: right;")
             //match.typ + ' vs. ' + match.hemma
             img(src=flagtyp alt="" style="border-width:0px;")

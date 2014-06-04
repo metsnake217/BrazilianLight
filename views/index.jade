@@ -37,7 +37,7 @@ block content
                - betpoints = bet.points
 
            div(id="ctl00_Div2" style="padding:20px;"+background class="container").match
-               if matchdate < now
+               if moment(matchdate).diff(moment(now)) < 0
                   img(src="/images/logo.png" alt="Predicted" class="logo")
                h1
                   //match.typ + ' vs. ' + match.hemma
@@ -53,16 +53,18 @@ block content
                fieldset
                   p
                      if(match.grupp != 'X')
-                        div.group!= '<b>Grupp:</b> ' + match.grupp
-                     div.date!= '<b>Datum:</b> ' + match.datum
-                     if(predicted && betpoints != null)
-                       div.points!= 'You have earned <b>' + betpoints + '</b> points.'
+                        div.group!= '<b>Group:</b> ' + match.grupp
+                     div.date!= '<b>Date:</b> ' + moment(match.datum).format('LLL')
+                     if(match.resultat != null)
+                        div.results!= 'This game has ended and the result is <b>' + match.resultat + '</b>.'
+                        if(predicted && betpoints != null)
+                           div.points!= 'You have earned <b>' + betpoints + '</b> points.'
 
                      if predicted && !placesuccess
                        if predictedteam != 'none'
                           div.prediction!= '<br/>You have predicted <b>' + predictedteam + '</b> as the winner! '
                        else
-                          div.prediction!= '<br/>You have predicted it\'s a <b>tie</b>?! '
+                          div.prediction!= '<br/>You have predicted this match to end in a <b>tie</b>?! '
                
                   if placesuccess == count
                      div(class="alert alert-success")!= successmessage
@@ -78,7 +80,7 @@ block content
                     input(name="scoretyp" class="scoretyp" id="scoretyp" type="hidden" value=scoretyp)
                     input(name="scorehemma" class="scorehemma" id="scorehemma" type="hidden" value=scorehemma)
                     input(name="bet" class="bet" id="bet" type="hidden" value=match.bet)
-                    if matchdate >= now
+                    if moment(matchdate).diff(moment(now)) >= 0
                        div(class="buttons")
                           input(type="submit" class="button predictBtn" value="Predict!")
                

@@ -13,7 +13,7 @@
  }
 
 @media (max-width: 440px) {
-  .player, .flag {
+  .player/*, .flag*/ {
     height: 50% !important;
     width: 50% !important;
     float: right !important;

@@ -38,7 +38,8 @@ module.exports = function(router) {
 					betsMade : singleBetsMade,
 					netlighter : req.session.user,
 					user : req.session.userid,
-					menu : 'today'
+					menu : 'today',
+					moment: moment
 				});
 			});
 		});
@@ -126,7 +127,8 @@ module.exports = function(router) {
 																	betsMade : betsMade,
 																	placesuccess : predictedPosition,
 																	successmessage : successMessage,
-																	menu : 'today'
+																	menu : 'today',
+																	moment: moment
 																});
 											});
 								});
@@ -156,7 +158,8 @@ module.exports = function(router) {
 							betsMade : singleBetsMade,
 							netlighter : req.session.user,
 							user : req.session.userid,
-							menu : 'calendar'
+							menu : 'calendar',
+							moment: moment
 						});
 					});
 				});
@@ -238,7 +241,8 @@ module.exports = function(router) {
 																	betsMade : betsMade,
 																	placesuccess : predictedPosition,
 																	successmessage : successMessage,
-																	menu : 'calendar'
+																	menu : 'calendar',
+																	moment: moment
 																});
 											});
 								});
@@ -359,8 +363,7 @@ module.exports = function(router) {
 					function(req, res) {
 						var username = req.body.user;
 						var password = req.body.pass;
-						if (username != null && password != null) {
-
+						if (username != null && username.length>0 && password != null && password.length > 0 ) {
 							var netlighter = new Netlighter(username, password);
 
 							netlighter
@@ -435,7 +438,8 @@ module.exports = function(router) {
 						title : 'Administer Results & Points',
 						loggedIn : true,
 						netlighter : req.session.user,
-						matches: allmatches
+						matches: allmatches,
+						moment: moment
 					});
 				});
 				
@@ -467,6 +471,7 @@ module.exports = function(router) {
 						loggedIn : true,
 						netlighter : req.session.user,
 						matches: allmatches,
+						moment: moment,
 						successmessage: 'You have successfully updated the Game Result <b>'+typ+' v '+hemma+'</b> and Points'
 					});
 				});});});

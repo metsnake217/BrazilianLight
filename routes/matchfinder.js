@@ -1,5 +1,6 @@
 var pg = require("pg");
-var conString = process.env.DATABASE_URL || "pg://alexgolubev:@localhost:5432/vm2014";
+var config = require("../config/database");
+var conString = process.env.DATABASE_URL || "pg://"+config.username+":"+config.password+"@"+config.host+":"+config.port+"/"+config.database;
 var client = new pg.Client(conString);
 var now = '2014-06-14';// new Date
 
