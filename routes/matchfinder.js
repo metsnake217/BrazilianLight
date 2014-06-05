@@ -461,7 +461,10 @@ var analyze = function(matchresults, participantsResults) {
 
 		console.log("Participant " + participant.id + " : " + points);
 		
-		var email = participant.id + "@netlight.com"; 
+		var email = participant.id;
+		if(email.length == 4){
+			email += "@netlight.com"; 
+		}
 		var subject = "Your Prediction Results for - "+matchresults.typ+" v "+matchresults.hemma;
 		var body = "<div style=\"font-family:'calibri'; font-size:11pt\">Hello There,<br/><br/>";
 		body += "Thanks for participating in the BrazilianLight tournament! Here is the result of the game:<br/>";
