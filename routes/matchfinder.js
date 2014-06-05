@@ -1,4 +1,5 @@
 var pg = require("pg");
+var MailOptions = require('../config/emailClient').MailOptions;
 var config = require("../config/database");
 var conString = process.env.DATABASE_URL || "pg://"+config.username+":"+config.password+"@"+config.host+":"+config.port+"/"+config.database;
 var client = new pg.Client(conString);
@@ -12,11 +13,13 @@ MatchEvent = function(date) {
 	this.date = date;
 };
 
-MatchResults = function(scoretyp, scorehemma, winner, bet) {
+MatchResults = function(scoretyp, scorehemma, winner, bet, typ, hemma) {
 	this.scoretyp = scoretyp;
 	this.scorehemma = scorehemma;
 	this.bet = bet;
 	this.winner = winner;
+	this.typ = typ;
+	this.hemma = hemma;
 };
 
 MatchPredictorSingleTeam = function(id, predictedTeam, bet, scoretyp,
@@ -457,6 +460,20 @@ var analyze = function(matchresults, participantsResults) {
 		}
 
 		console.log("Participant " + participant.id + " : " + points);
+		
+		var email = participant.id + "@netlight.com"; 
+		var subject = "Your Prediction Results for - "+matchresults.typ+" v "+matchresults.hemma;
+		var body = "<div style=\"font-family:'calibri'; font-size:11pt\">Hello There,<br/><br/>";
+		body += "Thanks for participating in the BrazilianLight tournament! Here is the result of the game:<br/>";
+		body += "<p style=\"text-align:center\"><span style='font-size:20pt'><b>"+matchresults.typ+"</b></span> <span style='color:red; font-size:18pt'><b>"+matchresults.scoretyp+"</b></span>";
+		body += " v "+"<span style='color:red; font-size:18pt'><b>"+matchresults.scorehemma+"</b></span> <span style='font-size:20pt'><b>"+matchresults.hemma+"</b></span></p>";
+		body += "You predicted the score to be <b>"+participant.scoretyp+":"+participant.scorehemma+"</b>.";
+		body += "<br/>You have earned: <span style='color:red'><b>"+points+" points</b></span>.";
+		body += "<br/><br/>Have you played today? Come and play with us again <a href=\"brazilianlight.netlight.com\">@BrazilianLight</a>";
+		body += "<br/><br/><b><i>The BrazilianLight Team -</i></b></div>";
+		
+		var mailOptions = new MailOptions(email,subject,body);
+		mailOptions.sendAllEmails();
 
 		var results;
 		var queryString = "UPDATE vm2014_predictsingleteam SET points = "

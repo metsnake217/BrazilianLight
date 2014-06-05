@@ -16,6 +16,7 @@ var router = express.Router();
 module.exports = function(router) {
 	
 	router.get('/', isLoggedIn, function(req, res) {
+		
 		console.log('retrieve session '+req.session.test);
 		console.log('in getMatchOfTheDay for ' + req.session.userid);
 		var netlighterMakesBets = new NetlighterMakesBets(
@@ -462,7 +463,7 @@ module.exports = function(router) {
 		
 		console.log("winner is " + team);
 				console.log('administration post '+ scoretyp + ' - ' + scorehemma + '-'+req.body.bet);
-				var matchResults = new MatchResults(scoretyp,scorehemma, team, req.body.bet);
+				var matchResults = new MatchResults(scoretyp,scorehemma, team, req.body.bet, typ, hemma);
 				matchResults.putResults(function(error, results) {
 					matchResults.analyzeResults(function(error, participantsResults) {
 						matchFinder.getAllMatches(function(error, allmatches) {
