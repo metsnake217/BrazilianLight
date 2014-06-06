@@ -3,7 +3,7 @@ var MailOptions = require('../config/emailClient').MailOptions;
 var config = require("../config/database");
 var conString = process.env.DATABASE_URL || "pg://"+config.username+":"+config.password+"@"+config.host+":"+config.port+"/"+config.database;
 var client = new pg.Client(conString);
-var now = '2014-06-14';// new Date
+var now = '2014-06-15';// new Date
 
 MatchFinder = function() {
 	client.connect();
