@@ -6,8 +6,9 @@ var client = new pg.Client(conString);
 var now = '2014-06-07';// new Date
 
 
-MatchFinder = function() {
+MatchFinder = function(today) {
 	client.connect();
+	this.now = today
 };
 
 MatchEvent = function(date) {
@@ -68,7 +69,7 @@ MatchFinder.prototype.getMatchOfTheDay = function(callback) {
 	var results
 	var query = client
 			.query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
-					+ now + "'");
+					+ this.now + "'");
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});

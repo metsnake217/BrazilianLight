@@ -8,7 +8,10 @@ var MatchPhase = matchFinderClass.MatchPhase;
 var Netlighter = matchFinderClass.Netlighter;
 var MatchResults = matchFinderClass.MatchResults;
 
-var matchFinder = new MatchFinder();
+
+var now = '2014-06-07 00:00:00';
+var dateStripped = '2014-06-07';
+var matchFinder = new MatchFinder(dateStripped);
 
 var express = require('express');
 var router = express.Router();
@@ -40,7 +43,8 @@ module.exports = function(router) {
 					netlighter : req.session.user,
 					user : req.session.userid,
 					menu : 'today',
-					moment: moment
+					moment: moment,
+					now: now
 				});
 			});
 		});
@@ -129,7 +133,8 @@ module.exports = function(router) {
 																	placesuccess : predictedPosition,
 																	successmessage : successMessage,
 																	menu : 'today',
-																	moment: moment
+																	moment: moment,
+																	now: now
 																});
 											});
 								});
@@ -160,7 +165,8 @@ module.exports = function(router) {
 							netlighter : req.session.user,
 							user : req.session.userid,
 							menu : 'calendar',
-							moment: moment
+							moment: moment,
+							now: now
 						});
 					});
 				});
@@ -243,7 +249,8 @@ module.exports = function(router) {
 																	placesuccess : predictedPosition,
 																	successmessage : successMessage,
 																	menu : 'calendar',
-																	moment: moment
+																	moment: moment,
+																	now: now
 																});
 											});
 								});
@@ -440,7 +447,8 @@ module.exports = function(router) {
 						loggedIn : true,
 						netlighter : req.session.user,
 						matches: allmatches,
-						moment: moment
+						moment: moment,
+						now: now
 					});
 				});
 				
@@ -473,6 +481,7 @@ module.exports = function(router) {
 						netlighter : req.session.user,
 						matches: allmatches,
 						moment: moment,
+						now: now,
 						successmessage: 'You have successfully updated the Game Result <b>'+typ+' v '+hemma+'</b> and Points'
 					});
 				});});});

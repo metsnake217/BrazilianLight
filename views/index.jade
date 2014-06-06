@@ -8,7 +8,7 @@ block content
          img(src=image alt=matches[0].image class="player")
          h1!= title
          p Please make your predictions below & get closer to your fun prize!
-            - now = (new Date('2014-06-07 00:00:00')).getTime()
+            - now = (new Date(now)).getTime()
             - count = 0
             - predicted = false
             - predictedteam = ''
@@ -63,7 +63,7 @@ block content
                            if predicted && !placesuccess
                               if predictedteam != 'none'
                                  div.prediction!= '<br/>You have predicted <b>' + predictedteam + '</b> as the winner! '
-                           else
+                           else if predicted && predictedteam == 'none'
                               div.prediction!= '<br/>You have predicted this match to end in a <b>tie</b>?! '
                
                         if placesuccess == count
