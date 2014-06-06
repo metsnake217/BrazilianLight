@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+
+        body {
+
+            padding-top:50px;
+        }
+
+        .navbar-fixed-top{
+
+            background-color: #077762;
+            border:0;
+        }
+
+        .active, .btn-primary:hover, .btn-primary:active
+        {
+            background-color: #02664E;
+        }
+
+        .navbar-inverse .navbar-brand,  .navbar-inverse .navbar-nav>li>a{
+
+            color:white;
+        }
+
+        .navbar-inverse .navbar-brand:hover{
+            cursor:pointer;
+        }
+
+        .navbar-inverse .navbar-nav>.active>a{
+
+            background-color: #02664E;
+        }
+
+
+        .dayHdr{
+            background-color: #460077;
+            color:white;
+            height:40px;
+            text-align:center;
+            padding-top:10px;
+            padding-bottom:10px;
+
+            font-size:16px;
+        }
+
+        .btn-primary{
+            background-color: #077762;
+            width:278px;
+        }
+
+        .btn-success{
+            background-color: #460077;
+            width:278px;
+        }
+
+        .btn-primary:disabled{
+            background-color: #DCDDD9;
+            border-color: #DCDDD9;
+
+        }
+        .gameTime
+        {
+            text-align:center;
+            height:46px;
+            padding-top:10px;
+            padding-bottom:10px;
+            border-bottom: solid 1px #DCDDD9;
+            font-weight:bold;
+            font-size:18px;
+        }
+
+        .gameRivals{
+            text-align: center ;
+
+
+
+        }
+
+
+
+        .gameRivals .countryDomain{
+
+            font-size: 64px;
+            font-weight: bolder;
+            color:#460077;
+            display: inline-block;
+
+
+
+
+        }
+
+        .versus{
+
+            font-size: 16px;
+            display:inline-block;
+            padding-right:15px;
+            padding-left:15px;
+
+        }
+
+        .btnCon{
+            padding-top:30px;
+            padding-bottom:20px;
+            border-bottom: solid 5px #DCDDD9;
+            text-align:center;
+        }
+
+
+
+        .navbar-brand{
+            margin-left:0px;
+        }
+
+        .teamsFull{
+
+            margin-top:-15px;
+        }
+
+        .teamsFull .aligner {
+
+            margin-right:110px;
+
+        }
+
+        .inputs {
+            margin-top: 10px;
+        }
+        .teamsFull input{
+
+            width:46px;
+            display: inline-block;
+        }
+
+
+    </style>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand active " href="#">Today</a>
+
+            <a class="navbar-brand" style="margin-left: 0px;"  href="#">Calendar</a>
+
+
+            <a class="navbar-brand" style="margin-left: 0px;"  href="#">Rank</a>
+
+
+        </div>
+
+        <div class="collapse navbar-collapse ">
+            <ul class="nav navbar-nav navbar-right">
+                <li class=""><a href="http://getbootstrap.com/examples/starter-template/#">Help</a></li>
+                <li class=""><a href="http://getbootstrap.com/examples/starter-template/#">About</a></li>
+                <li><a href="http://getbootstrap.com/examples/starter-template/#contact">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+
+
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row dayHdr">
+
+        <div class="col-xs-12 ">Day 1: 28 Monday July 24</div>
+
+
+    </div>
+
+    <div class="row gameTime" >
+
+        <div class="col-xs-12">12:00 GMT</div>
+
+
+    </div>
+
+    <div class="row gameRivals">
+
+
+
+        <div class="col-xs-12">
+            <span id="circle" class="countryDomain hidden-xs"><img src="" alt="!flag!"></span>
+            <span class="countryDomain">BR</span>
+            <span class="versus">Vs.</span>
+            <span class="countryDomain">EN</span>
+            <span id="circle"  class="countryDomain hidden-xs"><img src="" alt="!flag!"></span>
+            <div class="col-xs-12 teamsFull ">
+                <span class="aligner">Brazil</span>
+
+                <span>England</span>
+                <div class="col-xs-12 inputs">
+                    <input type="text" class="input-lg form-control aligner" placeholder="__">
+                    <input type="text"  class="input-lg form-control" placeholder="__">
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="row btnCon" >
+
+        <div class="col-xs-12"><button type="button" class="btn btn-primary btn-lg btn-block center-block">Submit your guess </button></div>
+
+
+    </div>
+</div><!-- /.container -->
+
+<div class="container">
+
+
+
+    <div class="row gameTime" >
+
+        <div class="col-xs-12">14:00 GMT</div>
+
+
+    </div>
+
+    <div class="row gameRivals">
+
+        <div class="col-xs-12 " >
+            <span class="countryDomain">RU</span>
+            <span class="versus">Vs.</span>
+            <span class="countryDomain">NL</span>
+            <div class="col-xs-12 teamsFull " style=" margin-top:-15px; ">
+                <span class="">Russia</span>
+                <span style="display:inline-block; width:100px;"></span>
+                <span class="">Nethrlnds</span>
+                <div class="col-xs-12 inputs" style=" margin-top:10px;  ">
+                    <input type="text"   class="input-lg form-control" placeholder="__" disabled="disabled">
+                    <span style=" width:110px;  display: inline-block;"></span>
+                    <input type="text"  class="input-lg form-control" placeholder="__" disabled="disabled">
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <div class="row btnCon" >
+
+        <div class="col-xs-12"><button type="button" class="btn btn-primary btn-lg btn-block center-block" disabled="disabled">Game started!</button></div>
+
+
+    </div>
+</div><!-- /.container -->
+
+
+<div class="container">
+
+
+
+    <div class="row gameTime" >
+
+        <div class="col-xs-12">18:00 GMT</div>
+
+
+    </div>
+
+    <div class="row gameRivals">
+
+
+        <div class="col-xs-12 " style="">
+
+
+            <span class="countryDomain">ES</span>
+            <span class="versus">Vs.</span>
+            <span class="countryDomain">PT</span>
+            <div class="col-xs-12 teamsFull" style=" margin-top:-15px; ">
+                <span class="">Spain</span>
+
+                <span style="display:inline-block; width:100px;"></span>
+                <span class="">Portugal</span>
+                <div class="col-xs-12 inputs" style=" margin-top:10px;  ">
+                    <input type="text"  class="input-lg form-control" placeholder="3" disabled="disabled">
+                    <span style=" width:110px;  display: inline-block;"></span>
+                    <input type="text" class="input-lg form-control" placeholder="1" disabled="disabled">
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <div class="row btnCon" >
+
+        <div class="col-xs-12"><button type="button" class="btn btn-success btn-lg btn-block center-block">Done! Change your mind?</button></div>
+
+
+    </div>
+</div><!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+</body></html>
