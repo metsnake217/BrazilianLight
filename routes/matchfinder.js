@@ -91,23 +91,6 @@ MatchFinder.prototype.getTeams = function(callback) {
 	});
 };
 
-MatchFinder.prototype.getBonuses = function(callback) {
-	var results;
-	var query = client
-			.query("SELECT * FROM vm2014_extra where date_trunc('day',datumFrom) <= to_timestamp('"
-					+ now
-					+ "', 'YYYY-MM-DD') and date_trunc('day',datumTo) >= to_timestamp('"
-					+ now + "', 'YYYY-MM-DD')");
-	query.on("row", function(row, result) {
-		result.addRow(row);
-	});
-	query.on("end", function(result) {
-		// console.log(JSON.stringify(result.rows, null, " "));
-		results = result.rows;
-		callback(null, results)
-	});
-};
-
 MatchFinder.prototype.getTeamsPerGroup = function(callback) {
 	var results;
 	var query = client.query("SELECT DISTINCT typ, grupp FROM vm2014_match");
@@ -462,7 +445,7 @@ var analyze = function(matchresults, participantsResults) {
 		console.log("Participant " + participant.id + " : " + points);
 		
 		var email = participant.id;
-		if(email.length == 4){
+		if(email.length == 4 || email.length == 2){
 			email += "@netlight.com"; 
 		}
 		var subject = "Your Prediction Results for - "+matchresults.typ+" v "+matchresults.hemma;

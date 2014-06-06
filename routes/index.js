@@ -333,7 +333,7 @@ module.exports = function(router) {
 
 	function isAdmin(req, res, next) {
 		console.log("who are you admin? "+req.session.userid);
-		if (req.session.userid == 'agob' || req.session.userid == 'ajweh' || req.session.userid == 'mkon')
+		if (req.session.userid == 'algo' || req.session.userid == 'amjw' || req.session.userid == 'mkon')
 			return next();
 		res.redirect('/');
 	}
