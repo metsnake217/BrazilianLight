@@ -9,6 +9,7 @@ block content
      p!= "So far, the World Cup is going strong! Check the current ranking below! Points are aggregated based on our point system. <br/>Check the Help section for more information"
   #netlighters
      div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none" class="container").match
+      if netlighters !=null && netlighters.length > 0  
         - i = 0
         - className = ""
         table(class="table table-striped table-responsive table-hover" width="647")
