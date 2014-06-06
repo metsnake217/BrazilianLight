@@ -86,8 +86,10 @@ block content
  
     else
        div(style="padding-left: 20px")
-          h1!= "Rest Day"
-          p!= "Today is a rest day. There are no matches. However you can always: <br/><span style='text-align:center'>Make your predictions with the <a href='/calendar'  style='font-weight:bold'>Calendar</a></span><br/><span style='text-align:center'>Check <a href='/ranking' style='font-weight:bold'>Your Ranking</a>!</span>"              
+          div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none" class="container").match
+             h1!= "Rest Day"
+             img(src="/images/armadillo.png" class="player")
+             p!= "Today is a rest day. There are no matches. However you can always: <br/><span style='text-align:center'>Make your predictions with the <a href='/calendar'  style='font-weight:bold'>Calendar</a></span><br/><span style='text-align:center'>Check <a href='/ranking' style='font-weight:bold'>Your Ranking</a>!</span>"              
                
     div(class="footer" style="margin-top:20px; position:relative !important;")
        div(style="padding:5px;")
