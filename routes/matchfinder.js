@@ -52,7 +52,7 @@ NetlighterMakesBets = function(id) {
 MatchEvent.prototype.getMatchOfTheDay = function(callback) {
 	var results
 	var query = client
-			.query("SELECT * FROM test_vm2014_match where date_trunc('day',datum)='"
+			.query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
 					+ this.date + "' order by datum");
 	query.on("row", function(row, result) {
 		result.addRow(row);
@@ -67,7 +67,7 @@ MatchEvent.prototype.getMatchOfTheDay = function(callback) {
 MatchFinder.prototype.getMatchOfTheDay = function(callback) {
 	var results
 	var query = client
-			.query("SELECT * FROM test_vm2014_match where date_trunc('day',datum)='"
+			.query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
 					+ this.now + "'");
 	query.on("row", function(row, result) {
 		result.addRow(row);
@@ -81,7 +81,7 @@ MatchFinder.prototype.getMatchOfTheDay = function(callback) {
 
 MatchFinder.prototype.getTeams = function(callback) {
 	var results
-	var query = client.query("SELECT DISTINCT typ FROM test_vm2014_match");
+	var query = client.query("SELECT DISTINCT typ FROM vm2014_match");
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -94,7 +94,7 @@ MatchFinder.prototype.getTeams = function(callback) {
 
 MatchFinder.prototype.getTeamsPerGroup = function(callback) {
 	var results;
-	var query = client.query("SELECT DISTINCT typ, grupp FROM test_vm2014_match");
+	var query = client.query("SELECT DISTINCT typ, grupp FROM vm2014_match");
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -107,7 +107,7 @@ MatchFinder.prototype.getTeamsPerGroup = function(callback) {
 
 MatchFinder.prototype.getGroupStage = function(callback) {
 	var results
-	var query = client.query("SELECT * FROM test_vm2014_match");
+	var query = client.query("SELECT * FROM vm2014_match");
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -121,7 +121,7 @@ MatchFinder.prototype.getGroupStage = function(callback) {
 MatchPhase.prototype.getCalendar = function(callback) {
 	var results
 	var query = client
-			.query("SELECT *, to_char(datum, 'YYYY-MM-DD') as shortdate FROM test_vm2014_match where phase="
+			.query("SELECT *, to_char(datum, 'YYYY-MM-DD') as shortdate FROM vm2014_match where phase="
 					+ this.phase + " order by shortdate");
 	query.on("row", function(row, result) {
 		result.addRow(row);
@@ -365,7 +365,7 @@ Netlighter.prototype.changepassword = function(callback) {
 
 MatchFinder.prototype.getAllMatches = function(callback) {
 	var results
-	var query = client.query("SELECT * FROM test_vm2014_match order by datum asc");
+	var query = client.query("SELECT * FROM vm2014_match order by datum asc");
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -380,7 +380,7 @@ MatchResults.prototype.putResults = function(callback) {
 	var results
 	console.log("result " + this.scoretyp + ':' + this.scorehemma);
 	var result = this.scoretyp + ':' + this.scorehemma;
-	var queryString = "UPDATE test_vm2014_match SET resultat = '" + result
+	var queryString = "UPDATE vm2014_match SET resultat = '" + result
 			+ "' where bet = " + this.bet;
 	var query = client.query(queryString);
 	query.on("row", function(row, result) {
