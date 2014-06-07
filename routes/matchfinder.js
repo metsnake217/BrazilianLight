@@ -378,7 +378,6 @@ MatchAdvancing.prototype.updateWinner = function(callback) {
 		else if(typorhemma == 2)
 			queryString0 = "UPDATE vm2014_match SET hemma = '" + advanced + "' where bet = " + match ;
 		var query0 = client.query(queryString0);
-		console.log("query is "+queryString0);
 		query0.on("row", function(row, result) {
 			result.addRow(row);
 		});
@@ -445,8 +444,6 @@ var analyze = function(matchresults, participantsResults) {
 		} else if (predictedteam == winner) {
 			points = 3;
 		}
-
-		//console.log("Participant " + participant.id + " : " + points);
 		
 		var email = participant.id;
 		if(email.length == 4 || email.length == 2){

@@ -128,9 +128,6 @@ module.exports = function(router) {
 									netlighterMakesBets
 											.checkIfBetsMade(function(error,
 													singleBetsMade) {
-												console
-														.log('first check if bets mades '
-																+ singleBetsMade);
 												betsMade = singleBetsMade;
 
 												var successMessage = 'Great job! ';
@@ -268,9 +265,7 @@ module.exports = function(router) {
 									netlighterMakesBets
 											.checkIfBetsMade(function(error,
 													singleBetsMade) {
-												console
-														.log('first check if bets mades '
-																+ singleBetsMade);
+												
 												betsMade = singleBetsMade;
 
 												var successMessage = 'Great job! ';
@@ -453,15 +448,12 @@ module.exports = function(router) {
 											req.session.userid = done[0].id;
 
 											if (done[0].active == 0) {
-												console
-														.log('you are being redirected to changepassword');
+												
 												return res
 														.redirect('/changepassword');
 											}
 
-											console
-													.log('you are already active and '
-															+ req.session.user);
+											
 											res.redirect('/');
 										} else {
 											res
