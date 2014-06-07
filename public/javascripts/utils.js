@@ -7,7 +7,7 @@ $(document).ready(function() {
 	});
 
 	if ($('div.alert').length > 0) {
-		$(this).scrollTop($('div.alert').position().top + 340);
+		$(this).scrollTop($('div.alert').position().top);
 	}
 	
     $('.predictBtn').click( function(){

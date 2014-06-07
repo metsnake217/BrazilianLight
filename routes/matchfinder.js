@@ -14,6 +14,12 @@ MatchEvent = function(date) {
 	this.date = date;
 };
 
+MatchAdvancing = function(advanced, typorhemma, match) {
+	this.advanced = advanced;
+	this.typorhemma = typorhemma;
+	this.match = match;
+};
+
 MatchResults = function(scoretyp, scorehemma, winner, bet, typ, hemma) {
 	this.scoretyp = scoretyp;
 	this.scorehemma = scorehemma;
@@ -328,6 +334,62 @@ MatchFinder.prototype.getAllMatches = function(callback) {
 	});
 };
 
+MatchFinder.prototype.getAllWinners = function(callback) {
+	var results
+	var query = client.query("SELECT * FROM vm2014_teamadvancing order by id asc");
+	query.on("row", function(row, result) {
+		result.addRow(row);
+	});
+	query.on("end", function(result) {
+		results = result.rows;
+		callback(null, results)
+	});
+};
+
+MatchFinder.prototype.getAllTeams = function(callback) {
+	var results
+	var query = client.query("select distinct typ from vm2014_match where phase=1 order by typ");
+	query.on("row", function(row, result) {
+		result.addRow(row);
+	});
+	query.on("end", function(result) {
+		results = result.rows;
+		callback(null, results)
+	});
+};
+
+MatchAdvancing.prototype.updateWinner = function(callback) {
+	var results
+	var typorhemma = this.typorhemma;
+	var advanced = this.advanced;
+	var match = this.match;
+	var queryString = "UPDATE vm2014_teamadvancing SET advancing = '" + advanced
+			+ "' where position = " + typorhemma + " and match = " + match ;
+	
+	var query = client.query(queryString);
+	query.on("row", function(row, result) {
+		result.addRow(row);
+	});
+	query.on("end", function(result) {
+		
+		var queryString0 = '';
+		if(typorhemma == 1)
+			queryString0 = "UPDATE vm2014_match SET typ = '" + advanced + "' where bet = " + match ;
+		else if(typorhemma == 2)
+			queryString0 = "UPDATE vm2014_match SET hemma = '" + advanced + "' where bet = " + match ;
+		var query0 = client.query(queryString0);
+		console.log("query is "+queryString0);
+		query0.on("row", function(row, result) {
+			result.addRow(row);
+		});
+		query0.on("end", function(result) {
+			results = result.rows;
+			callback(null, results)
+		});
+		
+	});
+};
+
 MatchResults.prototype.putResults = function(callback) {
 	var results
 	var result = this.scoretyp + ':' + this.scorehemma;
@@ -426,3 +488,4 @@ exports.NetlighterMakesBets = NetlighterMakesBets;
 exports.MatchPhase = MatchPhase;
 exports.MatchEvent = MatchEvent;
 exports.MatchResults = MatchResults;
+exports.MatchAdvancing = MatchAdvancing;

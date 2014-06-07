@@ -143,7 +143,7 @@ ALTER TABLE vm2014_users
   OWNER TO postgres;
 
 
-INSERT INTO test_vm2014_users(id, password, name, active) VALUES 
+INSERT INTO vm2014_users(id, password, name, active) VALUES 
 ('perp','netlight-8017','Per',0),
 ('pepe','netlight-8018','Petter',0),
 ('caek','netlight-8001','Carl',0),
@@ -713,15 +713,76 @@ INSERT INTO test_vm2014_users(id, password, name, active) VALUES
 ('mamo','netlight-744','Malte',0);
 
 
----------------------------- MINI TOURNAMENT SUPPORT
+----
+--- administer teams advancing
+
+-----
+DROP TABLE IF EXISTS vm2014_teamadvancing;
+CREATE TABLE vm2014_teamadvancing
+(
+  id integer NOT NULL,
+  "group" text,
+  match integer,
+  team text,
+  "position" integer,
+  phase integer,
+  advancing text,
+  CONSTRAINT id_team_winners PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE vm2014_teamadvancing
+  OWNER TO postgres;
+  
+----
+--- all matches with teams advancing
+-----
+  
+INSERT INTO vm2014_teamadvancing (id,group,match,team,position,phase,advancing) VALUES
+(1,'A',49,'',1,2,''),
+(2,'A',51,'',2,2,''),
+(3,'B',51,'',1,2,''),
+(4,'B',49,'',2,2,''),
+(5,'C',50,'',1,2,''),
+(6,'C',52,'',2,2,''),
+(7,'D',52,'',1,2,''),
+(8,'D',50,'',2,2,''),
+(9,'E',53,'',1,2,''),
+(10,'E',55,'',2,2,''),
+(11,'F',55,'',1,2,''),
+(12,'F',53,'',2,2,''),
+(13,'G',54,'',1,2,''),
+(14,'G',56,'',2,2,''),
+(15,'H',56,'',1,2,''),
+(16,'H',54,'',2,2,''),
+(17,'Quarter',57,'53',1,3,''),
+(18,'Quarter',57,'54',2,3,''),
+(19,'Quarter',58,'49',1,3,''),
+(20,'Quarter',58,'50',2,3,''),
+(21,'Quarter',59,'51',1,3,''),
+(22,'Quarter',59,'52',2,3,''),
+(23,'Quarter',60,'55',1,3,''),
+(24,'Quarter',60,'56',2,3,''),
+(25,'Semis',62,'57',1,4,''),
+(26,'Semis',62,'58',2,4,''),
+(27,'Semis',61,'59',1,4,''),
+(28,'Semis',61,'60',2,4,''),
+(29,'Third',63,'61',1,5,''),
+(30,'Third',63,'62',2,5,''),
+(31,'Final',64,'61',1,6,''),
+(32,'Final',64,'62',2,6,'')
+
+
+---------------------------- MINI TOURNAMENT SUPPORT ---------------------------- 
 
 
 --
--- The 'test_wm2014_match' table
+-- The 'vm2014_match' table
 --
 
-DROP TABLE IF EXISTS test_vm2014_match;
-CREATE TABLE IF NOT EXISTS test_vm2014_match (
+DROP TABLE IF EXISTS vm2014_match;
+CREATE TABLE IF NOT EXISTS vm2014_match (
   id integer NOT NULL,
   borta text,
   typ text,
@@ -733,10 +794,10 @@ CREATE TABLE IF NOT EXISTS test_vm2014_match (
   bet integer,
   phase integer,
   image text,
-  CONSTRAINT test_id_match PRIMARY KEY (id)
+  CONSTRAINT id_match PRIMARY KEY (id)
 ) WITH (
   OIDS=FALSE
-); ALTER TABLE test_vm2014_match
+); ALTER TABLE vm2014_match
   OWNER TO postgres;
 
 
@@ -744,7 +805,7 @@ CREATE TABLE IF NOT EXISTS test_vm2014_match (
 -- All test matches for the world cup
 --
 
-INSERT INTO test_vm2014_match (id, borta, typ, hemma, beskrivning, resultat, datum, grupp, bet, phase, image) VALUES
+INSERT INTO vm2014_match (id, borta, typ, hemma, beskrivning, resultat, datum, grupp, bet, phase, image) VALUES
 (1,'M','Croatia','Brazil','','','2014-06-09 13:00:00','X',1,3,'neymar0'),
 (2,'M','Cameroon','Mexico','','','2014-06-09 13:00:00','X',2,3,'etoo'),
 (3,'M','Netherlands','Spain','','','2014-06-09 18:00:00','X',3,3,'robben'),
@@ -754,13 +815,49 @@ INSERT INTO test_vm2014_match (id, borta, typ, hemma, beskrivning, resultat, dat
 (7,'M','Loser Match 5','Loser Match 6','','','2014-06-10 20:00:00','X',7,5,'sad'),
 (8,'M','Winner Match 5','Winner Match 6','','','2014-06-10 22:00:00','X',8,6,'trophy');
 
+----
+--- administer teams advancing
+
+-----
+DROP TABLE IF EXISTS vm2014_teamadvancing;
+CREATE TABLE vm2014_teamadvancing
+(
+  id integer NOT NULL,
+  "group" text,
+  match integer,
+  team text,
+  "position" integer,
+  phase integer,
+  advancing text,
+  CONSTRAINT id_team_winners PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE vm2014_teamadvancing
+  OWNER TO postgres;
+
+----
+--- all matches with teams advancing
+-----
+
+INSERT INTO vm2014_teamadvancing (id,group,match,team,position,phase,advancing) VALUES
+(1,'Semis',5,'1',1,4,''),
+(2,'Semis',5,'2',2,4,''),
+(3,'Semis',6,'3',1,4,''),
+(4,'Semis',6,'4',2,4,''),
+(5,'Third',7,'5',1,5,''),
+(6,'Third',7,'6',2,5,''),
+(7,'Final',8,'5',1,6,''),
+(8,'Final',8,'6',2,6,'')
+
 
 ----------
--- Create or alter test_vm2014_predictsingleteam
+-- Create or alter vm2014_predictsingleteam
 
 -----------------------------
 
--CREATE TABLE test_vm2014_predictsingleteam
+-CREATE TABLE vm2014_predictsingleteam
 (
   id text NOT NULL,
   predictedteam text,
@@ -768,37 +865,37 @@ INSERT INTO test_vm2014_match (id, borta, typ, hemma, beskrivning, resultat, dat
   points integer,
   scoretyp integer,
   scorehemma integer,
-  CONSTRAINT test_preditsingle PRIMARY KEY (id, bet)
+  CONSTRAINT preditsingle PRIMARY KEY (id, bet)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE test_vm2014_predictsingleteam
+ALTER TABLE vm2014_predictsingleteam
   OWNER TO postgres;
 
 
 ----------
--- Create or alter test_vm2014_users
+-- Create or alter vm2014_users
 
 -----------------------------
 
 
-CREATE TABLE test_vm2014_users
+CREATE TABLE vm2014_users
 (
   id text NOT NULL,
   password text,
   name text,
   active integer,
-  CONSTRAINT test_id_user PRIMARY KEY (id)
+  CONSTRAINT id_user PRIMARY KEY (id)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE test_vm2014_users
+ALTER TABLE vm2014_users
   OWNER TO postgres;
 
 
-INSERT INTO test_vm2014_users(id, password, name, active) VALUES 
+INSERT INTO vm2014_users(id, password, name, active) VALUES 
 ('mkon','netlight-111','Gnagna',0),
 ('amjw','netlight-112','Amer',0),
 ('algo','netlight-113','Alexander',0),
