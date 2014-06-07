@@ -26,9 +26,10 @@ block content
                 - if(netlighterid == userid)
                     - netlighterid = "<b>" + netlighterid + "</b>"
                     - className = "success"
+                   - participantName = netlighterid.split('@')
                    tr(class=className)
                       td!= i
-                      td!= netlighterid
+                      td!= participantName[0]
                       td!= netlighter.totalpoints
                
                
