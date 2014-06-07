@@ -6,8 +6,9 @@ block content
      img(src="/images/armadillo_logo_2.png" alt="" style="border-width:0px; width: 350px;float: right;")
      h1= title
      p See below the complete calendar for the World Cup per phase. Select a date to make predictions & get closer to your fun prize!
-  #calendarGroupStage
-        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+   #calendarGroupStage
+     if groupPhase && groupPhase!=null && groupPhase.length > 0
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);margin:20px; width:auto" class="container")
           h1= 'First Round'
           - nodups = []
           - each phaseone in groupPhase 
@@ -17,7 +18,8 @@ block content
                       div!= phaseone.shortdate
                    - nodups.push(phaseone.shortdate)
    #secondPhase
-        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+     if secondPhase && secondPhase!=null && secondPhase.length > 0
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);margin:20px; width:auto" class="container")
           h1= 'Second Phase'
           - nodups = []
           - each phase in secondPhase 
@@ -28,7 +30,8 @@ block content
                    - nodups.push(phase.shortdate)            
  
      #quarters
-        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+     if quarters && quarters!=null && quarters.length > 0
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);margin:20px; width:auto" class="container")
           h1= 'Quarterfinals'
           - nodups = []
           - each phase in quarters 
@@ -39,7 +42,8 @@ block content
                    - nodups.push(phase.shortdate)     
 
      #semis
-        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+     if semis && semis!=null && semis.length > 0
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);margin:20px; width:auto" class="container")
           h1= 'Semi Finals'
           - nodups = []
           - each phase in semis 
@@ -50,7 +54,8 @@ block content
                    - nodups.push(phase.shortdate)     
 
      #third
-        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+     if third && third!=null && third.length > 0
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);margin:20px; width:auto" class="container")
           h1= 'Third Place'
           - nodups = []
           - each phase in third 
@@ -61,7 +66,7 @@ block content
                    - nodups.push(phase.shortdate)  
                    
      #finals
-        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);" class="container")
+        div(id="ctl00_Div2" style="padding:20px; background:rgba(0, 0, 0, 0);margin:20px; width:auto" class="container")
           h1= 'Final'
           - nodups = []
           - each phase in finals 

@@ -8,7 +8,7 @@ block content
      h1= title
      p!= "So far, the World Cup is going strong! Check the current ranking below! <b>Points</b> are aggregated based on our <a href='/help'>point system</a>.<br/>"
   #netlighters
-     div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none" class="container").match
+     div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
       if netlighters !=null && netlighters.length > 0  
         - i = 0
         - className = ""

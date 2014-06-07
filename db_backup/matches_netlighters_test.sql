@@ -745,38 +745,14 @@ CREATE TABLE IF NOT EXISTS test_vm2014_match (
 --
 
 INSERT INTO test_vm2014_match (id, borta, typ, hemma, beskrivning, resultat, datum, grupp, bet, phase, image) VALUES
-(1,'M','Croatia','Brazil','','','2014-06-09 15:00:00','A',1,1,'neymar0'),
-(2,'M','Cameroon','Mexico','','','2014-06-09 15:00:00','A',2,1,'etoo'),
-(3,'M','Netherlands','Spain','','','2014-06-09 15:00:00','B',3,1,'etoo'),
-(4,'M','Australia','Chile','','','2014-06-09 15:59:59','B',4,1,'etoo'),
-(5,'M','Greece','Colombia','','','2014-06-09 20:00:00','C',5,1,'james'),
-(6,'M','Costa Rica','Uruguay','','','2014-06-09 20:00:00','D',6,1,'james'),
-(7,'M','Japan','Ivory Coast','','','2014-06-09 20:00:00','C',7,1,'dd'),
-(8,'M','Italy','England','','','2014-06-09 19:59:59','D',8,1,'james'), 
-(9,'M','Mexico','Brazil','','','2014-06-10 13:00:00','A',9,1,'hazard'),
-(10,'M','Netherlands','Australia','','','2014-06-10 15:00:00','B',10,1,'robben'),
-(11,'M','Croatia','Cameroon','','','2014-06-10 13:59:59','A',11,1,'robben'),
-(12,'M','Chile','Spain','','','2014-06-10 15:00:00','B',12,1,'robben'),
-(13,'M','Ivory Coast','Colombia','','','2014-06-10 15:00:00','C',13,1,'yaya'),
-(14,'M','England','Uruguay','','','2014-06-10 16:00:00','D',14,1,'yaya'),
-(15,'M','Greece','Japan','','','2014-06-10 17:59:59','C',15,1,'yaya'),
-(16,'M','Costa Rica','Italy','','','2014-06-10 18:00:00','D',16,1,'balotelli'),
-(17,'M','Spain','Australia','','','2014-06-10 18:00:00','B',17,1,'ramos'),
-(18,'M','Chile','Netherlands','','','2014-06-10 18:00:00','B',18,1,'ramos'),
-(19,'M','Brazil','Cameroon','','','2014-06-10 20:00:00','A',19,1,'ramos'),
-(20,'M','Mexico','Croatia','','','2014-06-10 21:00:00','A',20,1,'ramos'),
-(21,'M','Uruguay','Italy','','','2014-06-10 21:00:00','D',21,1,'suarez'),
-(22,'M','England','Costa Rica','','','2014-06-10 22:00:00','D',22,1,'suarez'),
-(23,'M','Colombia','Japan','','','2014-06-10 22:00:00','C',23,1,'suarez'),
-(24,'M','Ivory Coast','Greece','','','2014-06-10 22:00:00','C',24,1,'suarez'),
-(25,'M','1A','2B','','','2014-06-11 15:00:00','X',25,3,'armadillo_logo'),
-(26,'M','1C','2D','','','2014-06-11 18:00:00','X',26,3,'armadillo_logo'),
-(27,'M','1B','2A','','','2014-06-11 15:00:00','X',27,3,'armadillo_logo'),
-(28,'M','1D','2C','','','2014-06-11 22:00:00','X',28,3,'armadillo_logo'),
-(29,'M','Winner Match 25','Winner Match 26','','','2014-06-11 15:00:00','X',29,4,'armadillo_logo'),
-(30,'M','Winner Match 27','Winner Match 28','','','2014-06-11 15:00:00','X',30,4,'armadillo_logo'),
-(35,'M','Loser Match 29','Loser Match 30','','','2014-06-11 20:00:00','X',31,5,'sad'),
-(36,'M','Winner Match 29','Winner Match 30','','','2014-06-11 22:00:00','X',32,6,'trophy');
+(1,'M','Croatia','Brazil','','','2014-06-09 13:00:00','X',1,3,'neymar0'),
+(2,'M','Cameroon','Mexico','','','2014-06-09 13:00:00','X',2,3,'etoo'),
+(3,'M','Netherlands','Spain','','','2014-06-09 18:00:00','X',3,3,'robben'),
+(4,'M','Argentina','Australia','','','2014-06-09 18:00:00','X',4,3,'messi'),
+(5,'M','Winner match 1','Winner match 2','','','2014-06-10 14:00:00','X',5,4,'armadillo_logo'),
+(6,'M','Winner match 3','Winner match 4','','','2014-06-10 14:00:00','X',6,4,'armadillo_logo'),
+(7,'M','Loser Match 5','Loser Match 6','','','2014-06-10 20:00:00','X',7,5,'sad'),
+(8,'M','Winner Match 5','Winner Match 6','','','2014-06-10 22:00:00','X',8,6,'trophy');
 
 
 ----------

@@ -5,7 +5,7 @@ block content
   div(style="padding-left: 20px; min-height:100%")
      h1= 'Welcome and Please login:'
      p Making predictions is a step away. Please login first!
-     div(id="ctl00_Div2" style="padding:20px" class="container")
+     div(id="ctl00_Div2" style="padding:20px; margin:20px; width:auto" class="container")
       if message
          div(class="alert alert-danger")!= message
       form(action="/login" method="post")
