@@ -1,6 +1,6 @@
 var matchFinderClass = require('./matchfinder');
 var moment = require('moment');
-var dates = require('../config/competitiondates');
+var dates = require('../config/competitionDates');
 var MatchFinder = matchFinderClass.MatchFinder;
 var MatchPredictorSingleTeam = matchFinderClass.MatchPredictorSingleTeam;
 var NetlighterMakesBet = matchFinderClass.NetlighterMakesBet;
