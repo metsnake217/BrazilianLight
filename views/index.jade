@@ -3,7 +3,7 @@ extends layout
 block content
    if(matches!=null && matches.length > 0)
       #matches                     
-      div(style="padding-left: 20px")
+      div(style="padding-left: 20px; min-height:100%")
          - image = "/images/"+matches[0].image + ".png"
          img(src=image alt=matches[0].image class="player")
          h1!= title
@@ -63,8 +63,8 @@ block content
                            if predicted && !placesuccess
                               if predictedteam != 'none'
                                  div.prediction!= '<br/>You have predicted <b>' + predictedteam + '</b> as the winner! '
-                           else if predicted && predictedteam == 'none'
-                              div.prediction!= '<br/>You have predicted this match to end in a <b>tie</b>?! '
+                              else
+                                 div.prediction!= '<br/>You have predicted this match to end in a <b>tie</b>?! '
                
                         if placesuccess == count
                            div(class="alert alert-success")!= successmessage
@@ -84,14 +84,26 @@ block content
                               div(class="buttons")
                                  input(type="submit" class="button predictBtn" value="Predict!")
  
-    else
-       div(style="padding-left: 20px")
+    else if state == 'rest'
+       div(style="padding-left: 20px; min-height:100%")
           div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none" class="container").match
-             h1!= "Rest Day"
-             img(src="/images/armadillo.png" class="player")
-             p!= "Today is a rest day. There are no matches. However you can always: <br/><span style='text-align:center'>Make your predictions with the <a href='/calendar'  style='font-weight:bold'>Calendar</a></span><br/><span style='text-align:center'>Check <a href='/ranking' style='font-weight:bold'>Your Ranking</a>!</span>"              
+             h1!= title
+             img(src="/images/armadillo.png" class="player armadillo")
+             p!= "Today is a rest day. There are no matches. However you can always: <br/><br/><span style='text-align:center'>Make your predictions with the <a href='/calendar'  style='font-weight:bold'>Calendar</a></span><br/><span style='text-align:center'>Check <a href='/ranking' style='font-weight:bold'>Your Ranking</a>!</span>"              
+     else if state == 'notstarted'
+       div(style="padding-left: 20px; min-height:100%")
+          div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none" class="container").match
+             h1!= title
+             img(src="/images/armadillo.png" class="player armadillo")
+             p!= "The World Cup in Brazil has not started yet! <br/>Please come back on <span style='color:red; font-weight:bold'>" + moment(startDate).format('LL') + "</span> and make your predictions!!"              
+     else if state == 'ended'
+       div(style="padding-left: 20px; min-height:100%")
+          div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none" class="container").match
+             h1!= title
+             img(src="/images/armadillo.png" class="player armadillo")
+             p!= "Thank <span style='font-weight:bold; color:#36185F'>YOU</span> for participating in this epic event! <br/>Make sure to check the <a href='/ranking'> ranking results</a> before you log out! We had so much fun playing together :)"              
                
-    div(class="footer" style="margin-top:20px; position:relative !important;")
+    div(class="footer" style="margin-top:20px;")
        div(style="padding:5px;")
           img(src="/images/map.png", alt="Netlight", style="border-width:0px; width: 50px")
         
