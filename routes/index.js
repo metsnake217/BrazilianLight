@@ -22,8 +22,6 @@ module.exports = function(router) {
 	
 	router.get('/', isLoggedIn, function(req, res) {
 
-		console.log('retrieve session ' + req.session.test);
-		console.log('in getMatchOfTheDay for ' + req.session.userid);
 		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
 		var betsMade;
 		var dateStripped = moment(new Date).format('YYYY-MM-DD'); //'2014-06-09'
@@ -44,8 +42,6 @@ module.exports = function(router) {
 			if (moment(competitionStarts).diff(moment(dateStripped)) <= 0) {
 				netlighterMakesBets.checkIfBetsMade(function(error,
 						singleBetsMade) {
-					console.log('bets made while getting match of the day: '
-							+ singleBetsMade);
 					
 					var matchFinder = new MatchFinder(dateStripped);
 					matchFinder.getMatchOfTheDay(function(error, match) {
@@ -100,8 +96,6 @@ module.exports = function(router) {
 					'/',
 					isLoggedIn,
 					function(req, res) {
-						console.log('in posting prediction for '
-								+ req.session.userid);
 						var id = req.body.user;
 						var predictedTeam = '';
 						var predictedPosition = req.body.position;
@@ -119,13 +113,11 @@ module.exports = function(router) {
 								predictedTeam = "none";
 							}
 						}
-						console.log("in posting prediction predictedteam is: "
-								+ predictedTeam);
+
 						var matchPredictorSingle = new MatchPredictorSingleTeam(
 								id, predictedTeam, bet, scoretyp, scorehemma);
 						var netlighterMakesBets = new NetlighterMakesBets(id);
 						var betsMade;
-						console.log('posting pred.. check if bets mades');
 
 						matchPredictorSingle
 								.setPrediction(function(error, predict) {
@@ -160,7 +152,6 @@ module.exports = function(router) {
 
 												successMessage += '<br/>Good luck!';
 
-												console.log('second render');
 												res
 														.render(
 																'index',
@@ -186,7 +177,6 @@ module.exports = function(router) {
 					});
 
 	router.get('/event/:date', isLoggedIn, function(req, res) {
-		console.log('in getMatchOfTheDay for event ' + req.session.userid);
 		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
 		var betsMade;
 		var dateStripped = moment(new Date).format('YYYY-MM-DD'); //'2014-06-09'
@@ -207,8 +197,6 @@ module.exports = function(router) {
 			if (moment(competitionStarts).diff(moment(dateStripped)) <= 0) {
 
 		netlighterMakesBets.checkIfBetsMade(function(error, singleBetsMade) {
-			console.log('bets made while getting match of the day: '
-					+ singleBetsMade);
 			var matchEvent = new MatchEvent(req.params.date);
 			matchEvent.getMatchOfTheDay(function(error, match) {
 				req.session.matchEvent = match;
@@ -251,7 +239,6 @@ module.exports = function(router) {
 					'/event/:date',
 					isLoggedIn,
 					function(req, res) {
-						console.log('in posting prediction for event');
 						var id = req.body.user;
 						var predictedTeam = '';
 						var predictedPosition = req.body.position;
@@ -274,7 +261,6 @@ module.exports = function(router) {
 								id, predictedTeam, bet, scoretyp, scorehemma);
 						var netlighterMakesBets = new NetlighterMakesBets(id);
 						var betsMade;
-						console.log('posting pred.. check if bets mades');
 
 						matchPredictorSingle
 								.setPrediction(function(error, predict) {
@@ -343,7 +329,6 @@ module.exports = function(router) {
 					});
 
 	router.get('/calendar', isLoggedIn, function(req, res) {
-		console.log('in get bonuses');
 
 		var matchPhaseStageGroup = new MatchPhase(1);
 		var matchPhaseSecondPhase = new MatchPhase(2);
@@ -383,8 +368,6 @@ module.exports = function(router) {
 	});
 
 	router.get('/help', isLoggedIn, function(req, res) {
-		console.log('in get help');
-
 		res.render('help', {
 			title : 'You & BrazilianLight',
 			loggedIn : true,
@@ -395,7 +378,6 @@ module.exports = function(router) {
 	});
 
 	router.get('/ranking', isLoggedIn, function(req, res) {
-		console.log('in ranking');
 		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
 
 		netlighterMakesBets.getranking(function(error, netlightersRanking) {
@@ -411,7 +393,6 @@ module.exports = function(router) {
 	});
 
 	router.get('/logout', function(req, res) {
-		console.log("logging out");
 		req.logout();
 		req.session.user = null;
 		res.redirect('/login');
@@ -424,7 +405,6 @@ module.exports = function(router) {
 	}
 
 	function isAdmin(req, res, next) {
-		console.log("who are you admin? " + req.session.userid);
 		if (req.session.userid == 'algo' || req.session.userid == 'amjw'
 				|| req.session.userid == 'mkon')
 			return next();
@@ -432,8 +412,6 @@ module.exports = function(router) {
 	}
 
 	router.get('/login', function(req, res) {
-		console.log('retrieve session before ' + req.session.test);
-		console.log('loggin in');
 		if (req.session.user) {
 			res.redirect('/');
 		} else {
@@ -504,7 +482,6 @@ module.exports = function(router) {
 					});
 
 	router.get('/changepassword', isLoggedIn, function(req, res) {
-		console.log('get to changing password');
 		res.render('changepassword', {
 			title : 'You & BrazilianLight',
 			loggedIn : true,
@@ -513,7 +490,6 @@ module.exports = function(router) {
 	});
 
 	router.post('/changepassword', isLoggedIn, function(req, res) {
-		console.log('changing password');
 		var netlighter = new Netlighter(req.session.userid, req.body.pass);
 
 		netlighter.changepassword(function(error, done) {
@@ -524,7 +500,6 @@ module.exports = function(router) {
 	});
 
 	router.get('/admin', isAdmin, function(req, res) {
-		console.log('administration');
 		var dateStripped = moment(new Date).format('YYYY-MM-DD'); //'2014-06-09'
 		var matchFinder = new MatchFinder(dateStripped);
 		matchFinder.getAllMatches(function(error, allmatches) {
@@ -550,7 +525,6 @@ module.exports = function(router) {
 						var scorehemma = req.body.scorehemma;
 						var typ = req.body.typ;
 						var hemma = req.body.hemma;
-						console.log("building team " + typ);
 						if (scoretyp == scorehemma)
 							team = 'none';
 						else if (scoretyp > scorehemma)
@@ -558,9 +532,6 @@ module.exports = function(router) {
 						else
 							team = hemma;
 
-						console.log("winner is " + team);
-						console.log('administration post ' + scoretyp + ' - '
-								+ scorehemma + '-' + req.body.bet);
 						var matchResults = new MatchResults(scoretyp,
 								scorehemma, team, req.body.bet, typ, hemma);
 						matchResults
