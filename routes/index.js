@@ -189,6 +189,22 @@ module.exports = function(router) {
 		console.log('in getMatchOfTheDay for event ' + req.session.userid);
 		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
 		var betsMade;
+		var dateStripped = moment(new Date).format('YYYY-MM-DD'); //'2014-06-09'
+		
+		if (moment(competitionEnds).diff(moment(dateStripped)) < 0) {
+			res.render('index', {
+				title : 'The World Cup has ended!',
+				matches : null,
+				loggedIn : true,
+				netlighter : req.session.user,
+				user : req.session.userid,
+				menu : 'today',
+				state : 'ended',
+				moment : moment,
+				now : moment(new Date).format('YYYY-MM-DD 00:00:00') //'2014-06-09 00:00:00'
+			});
+		} else {
+			if (moment(competitionStarts).diff(moment(dateStripped)) <= 0) {
 
 		netlighterMakesBets.checkIfBetsMade(function(error, singleBetsMade) {
 			console.log('bets made while getting match of the day: '
@@ -213,6 +229,21 @@ module.exports = function(router) {
 				});
 			});
 		});
+			} else {
+				res.render('index', {
+					title : 'Countdown to the World Cup!!!',
+					matches : null,
+					loggedIn : true,
+					netlighter : req.session.user,
+					user : req.session.userid,
+					menu : 'today',
+					state : 'notstarted',
+					startdate : competitionStarts,
+					moment : moment,
+					now : moment(new Date).format('YYYY-MM-DD 00:00:00') //'2014-06-09 00:00:00'
+				});
+			}
+		}
 	});
 
 	router
