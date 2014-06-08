@@ -5,6 +5,7 @@ block content
 
 
   #calendarGroupStage.container
+    if groupPhase && groupPhase!=null && groupPhase.length > 0
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'First Round'
           - nodups = []
@@ -17,7 +18,8 @@ block content
 
                        a(href=link)= phaseone.shortdate
                        - nodups.push(phaseone.shortdate)
-   #secondPhase.container
+  #secondPhase.container
+    if secondPhase && secondPhase!=null && secondPhase.length > 0
         div(id="ctl00_Div2" class="row roundHdr")
           h1= 'Round of 16'
           - nodups = []
@@ -30,7 +32,8 @@ block content
                            a(href=link)= phase.shortdate
                            - nodups.push(phase.shortdate)
  
-     #quarters.container
+  #quarters.container
+    if quarters && quarters!=null && quarters.length > 0
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'Quarter-Finals'
           - nodups = []
@@ -43,7 +46,8 @@ block content
                            a(href=link)= phase.shortdate
                            - nodups.push(phase.shortdate)
 
-     #semis.container
+  #semis.container
+    if semis && semis!=null && semis.length > 0
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'Semi-Finals'
           - nodups = []
@@ -56,7 +60,8 @@ block content
                            a(href=link)= phase.shortdate
                            - nodups.push(phase.shortdate)
 
-     #third.container
+  #third.container
+    if third && third!=null && third.length > 0
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'Third Place'
           - nodups = []
@@ -69,7 +74,7 @@ block content
                            a(href=link)= phase.shortdate
                            - nodups.push(phase.shortdate)
                    
-     #finals.container
+  #finals.container
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'FINAL'
           - nodups = []

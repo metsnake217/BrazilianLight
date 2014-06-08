@@ -1,5 +1,6 @@
 var matchFinderClass = require('./matchfinder');
 var moment = require('moment');
+var dates = require('../config/competitionDates');
 var MatchFinder = matchFinderClass.MatchFinder;
 var MatchPredictorSingleTeam = matchFinderClass.MatchPredictorSingleTeam;
 var NetlighterMakesBet = matchFinderClass.NetlighterMakesBet;
@@ -7,47 +8,91 @@ var NetlighterMakesBets = matchFinderClass.NetlighterMakesBets;
 var MatchPhase = matchFinderClass.MatchPhase;
 var Netlighter = matchFinderClass.Netlighter;
 var MatchResults = matchFinderClass.MatchResults;
-
-
-var now = '2014-06-07 00:00:00';
-var dateStripped = '2014-06-07';
-var matchFinder = new MatchFinder(dateStripped);
+var MatchAdvancing = matchFinderClass.MatchAdvancing;
 
 var express = require('express');
 var router = express.Router();
 
 module.exports = function(router) {
-	
+
+	var competitionStarts = dates.competitionStarts;
+	var competitionEnds = dates.competitionEnds;
+
 	router.get('/', isLoggedIn, function(req, res) {
-		
-		console.log('retrieve session '+req.session.test);
-		console.log('in getMatchOfTheDay for ' + req.session.userid);
-		var netlighterMakesBets = new NetlighterMakesBets(
-				req.session.userid);
+
+		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
 		var betsMade;
+		var dateStripped = moment(new Date).format('YYYY-MM-DD'); // '2014-06-09'
 
-		netlighterMakesBets.checkIfBetsMade(function(error, singleBetsMade) {
-			console.log('bets made while getting match of the day: '
-					+ singleBetsMade);
+		if (moment(competitionEnds).diff(moment(dateStripped)) < 0) {
+			res.render('index', {
+				title : 'The World Cup has ended!',
+				matches : null,
+				loggedIn : true,
+				netlighter : req.session.user,
+				user : req.session.userid,
+				menu : 'today',
+				state : 'ended',
+				moment : moment,
+				now : moment(new Date).format('YYYY-MM-DD 00:00:00')
+			// '2014-06-09 00:00:00'
+			});
+		} else {
+			if (moment(competitionStarts).diff(moment(dateStripped)) <= 0) {
+				netlighterMakesBets.checkIfBetsMade(function(error,
+						singleBetsMade) {
 
-			matchFinder.getMatchOfTheDay(function(error, match) {
-				req.session.matches = match;
+					var matchFinder = new MatchFinder(dateStripped);
+					matchFinder.getMatchOfTheDay(function(error, match) {
+						if (match != null && match.length > 0) {
+							req.session.matches = match;
+							res.render('index', {
+								title : 'Today\'s Match',
+								matches : match,
+								scripts : [ '/javascripts/utils.js' ],
+								loggedIn : true,
+								betsMade : singleBetsMade,
+								netlighter : req.session.user,
+								user : req.session.userid,
+								menu : 'today',
+								moment : moment,
+								now : moment(new Date).format(
+										'YYYY-MM-DD 00:00:00')
+							// '2014-06-09 00:00:00'
+							});
+						} else {
+							res.render('index', {
+								title : 'Rest Day',
+								matches : null,
+								loggedIn : true,
+								netlighter : req.session.user,
+								user : req.session.userid,
+								menu : 'today',
+								state : 'rest',
+								moment : moment,
+								now : moment(new Date).format(
+										'YYYY-MM-DD 00:00:00')
+							// '2014-06-09 00:00:00'
+							});
+						}
+					});
+				});
+			} else {
 				res.render('index', {
-					title : 'Today\'s Match',
-					matches : match,
-					scripts : [ '/javascripts/utils.js',
-							'/bootstrap-select/bootstrap-select.js' ],
-					links : 'bootstrap-select/bootstrap-select.css',
+					title : 'Countdown to the World Cup!!!',
+					matches : null,
 					loggedIn : true,
-					betsMade : singleBetsMade,
 					netlighter : req.session.user,
 					user : req.session.userid,
 					menu : 'today',
-					moment: moment,
-					now: now
+					state : 'notstarted',
+					startdate : competitionStarts,
+					moment : moment,
+					now : moment(new Date).format('YYYY-MM-DD 00:00:00')
+				// '2014-06-09 00:00:00'
 				});
-			});
-		});
+			}
+		}
 	});
 
 	router
@@ -55,8 +100,6 @@ module.exports = function(router) {
 					'/',
 					isLoggedIn,
 					function(req, res) {
-						console.log('in posting prediction for '
-								+ req.session.userid);
 						var id = req.body.user;
 						var predictedTeam = '';
 						var predictedPosition = req.body.position;
@@ -74,22 +117,17 @@ module.exports = function(router) {
 								predictedTeam = "none";
 							}
 						}
-						console.log("in posting prediction predictedteam is: "
-								+ predictedTeam);
+
 						var matchPredictorSingle = new MatchPredictorSingleTeam(
 								id, predictedTeam, bet, scoretyp, scorehemma);
 						var netlighterMakesBets = new NetlighterMakesBets(id);
 						var betsMade;
-						console.log('posting pred.. check if bets mades');
 
 						matchPredictorSingle
 								.setPrediction(function(error, predict) {
 									netlighterMakesBets
 											.checkIfBetsMade(function(error,
 													singleBetsMade) {
-												console
-														.log('first check if bets mades '
-																+ singleBetsMade);
 												betsMade = singleBetsMade;
 
 												var successMessage = 'Great job! ';
@@ -115,7 +153,6 @@ module.exports = function(router) {
 
 												successMessage += '<br/>Good luck!';
 
-												console.log('second render');
 												res
 														.render(
 																'index',
@@ -133,51 +170,73 @@ module.exports = function(router) {
 																	placesuccess : predictedPosition,
 																	successmessage : successMessage,
 																	menu : 'today',
-																	moment: moment,
-																	now: now
+																	moment : moment,
+																	now : moment(
+																			new Date)
+																			.format(
+																					'YYYY-MM-DD 00:00:00')
+																// '2014-06-09
+																// 00:00:00'
 																});
 											});
 								});
 					});
 
-	router.get('/event/:date', isLoggedIn,
-			function(req, res) {
-				console.log('in getMatchOfTheDay for event '
-						+ req.session.userid);
-				var netlighterMakesBets = new NetlighterMakesBets(
-						req.session.userid);
-				var betsMade;
+	router.get('/event/:date', isLoggedIn, function(req, res) {
+		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
+		var betsMade;
+		var dateStripped = moment(new Date).format('YYYY-MM-DD'); // '2014-06-09'
 
-				netlighterMakesBets.checkIfBetsMade(function(error,
-						singleBetsMade) {
-					console.log('bets made while getting match of the day: '
-							+ singleBetsMade);
-					var matchEvent = new MatchEvent(req.params.date);
-					matchEvent.getMatchOfTheDay(function(error, match) {
-						req.session.matchEvent = match;
-						res.render('index', {
-							title :'Events held '+moment(req.params.date).endOf('day').fromNow() +' <br/>'
-							+ '[' + moment(req.params.date).format('LL')+']',
-							matches : match,
-							scripts : [ '/javascripts/utils.js' ],
-							loggedIn : true,
-							betsMade : singleBetsMade,
-							netlighter : req.session.user,
-							user : req.session.userid,
-							menu : 'calendar',
-							moment: moment,
-							now: now
+		if (moment(competitionStarts).diff(moment(dateStripped)) <= 0) {
+
+			netlighterMakesBets
+					.checkIfBetsMade(function(error, singleBetsMade) {
+						var matchEvent = new MatchEvent(req.params.date);
+						matchEvent.getMatchOfTheDay(function(error, match) {
+							req.session.matchEvent = match;
+							res.render('index', {
+								title : 'Events held '
+										+ moment(req.params.date).endOf('day')
+												.fromNow() + ' <br/>' + '['
+										+ moment(req.params.date).format('LL')
+										+ ']',
+								matches : match,
+								scripts : [ '/javascripts/utils.js' ],
+								loggedIn : true,
+								betsMade : singleBetsMade,
+								netlighter : req.session.user,
+								user : req.session.userid,
+								menu : 'calendar',
+								moment : moment,
+								now : moment(new Date).format(
+										'YYYY-MM-DD 00:00:00')
+							// '2014-06-09 00:00:00'
+							});
 						});
 					});
-				});
+		} else {
+			res.render('index', {
+				title : 'Countdown to the World Cup!!!',
+				matches : null,
+				loggedIn : true,
+				netlighter : req.session.user,
+				user : req.session.userid,
+				menu : 'today',
+				state : 'notstarted',
+				startdate : competitionStarts,
+				moment : moment,
+				now : moment(new Date).format('YYYY-MM-DD 00:00:00')
+			// '2014-06-09 00:00:00'
 			});
+		}
+
+	});
 
 	router
 			.post(
 					'/event/:date',
 					isLoggedIn,
 					function(req, res) {
-						console.log('in posting prediction for event');
 						var id = req.body.user;
 						var predictedTeam = '';
 						var predictedPosition = req.body.position;
@@ -200,16 +259,13 @@ module.exports = function(router) {
 								id, predictedTeam, bet, scoretyp, scorehemma);
 						var netlighterMakesBets = new NetlighterMakesBets(id);
 						var betsMade;
-						console.log('posting pred.. check if bets mades');
 
 						matchPredictorSingle
 								.setPrediction(function(error, predict) {
 									netlighterMakesBets
 											.checkIfBetsMade(function(error,
 													singleBetsMade) {
-												console
-														.log('first check if bets mades '
-																+ singleBetsMade);
+												
 												betsMade = singleBetsMade;
 
 												var successMessage = 'Great job! ';
@@ -238,8 +294,19 @@ module.exports = function(router) {
 														.render(
 																'index',
 																{
-																	title : 'Events held '+moment(req.params.date).endOf('day').fromNow() +' <br/>'
-																			+ '[' + moment(req.params.date).format('LL')+']',
+																	title : 'Events held '
+																			+ moment(
+																					req.params.date)
+																					.endOf(
+																							'day')
+																					.fromNow()
+																			+ ' <br/>'
+																			+ '['
+																			+ moment(
+																					req.params.date)
+																					.format(
+																							'LL')
+																			+ ']',
 																	matches : req.session.matchEvent,
 																	scripts : [ '/javascripts/utils.js' ],
 																	loggedIn : true,
@@ -249,8 +316,13 @@ module.exports = function(router) {
 																	placesuccess : predictedPosition,
 																	successmessage : successMessage,
 																	menu : 'calendar',
-																	moment: moment,
-																	now: now
+																	moment : moment,
+																	now : moment(
+																			new Date)
+																			.format(
+																					'YYYY-MM-DD 00:00:00')
+																// '2014-06-09
+																// 00:00:00'
 																});
 											});
 								});
@@ -258,7 +330,6 @@ module.exports = function(router) {
 					});
 
 	router.get('/calendar', isLoggedIn, function(req, res) {
-		console.log('in get bonuses');
 
 		var matchPhaseStageGroup = new MatchPhase(1);
 		var matchPhaseSecondPhase = new MatchPhase(2);
@@ -275,30 +346,29 @@ module.exports = function(router) {
 									calendarSemis) {
 								matchPhaseThird.getCalendar(function(error,
 										calendarThird) {
-								matchPhaseFinal.getCalendar(function(error,
-										calendarFinal) {
-									res.render('calendar', {
-										title : 'Calendar',
-										groupPhase : calendarGroupStage,
-										secondPhase : calendarSecondPhase,
-										quarters : calendarQuarters,
-										semis : calendarSemis,
-										third : calendarThird,
-										finals : calendarFinal,
-										loggedIn : true,
-										netlighter : req.session.user,
-										menu : 'calendar'
+									matchPhaseFinal.getCalendar(function(error,
+											calendarFinal) {
+										res.render('calendar', {
+											title : 'Calendar',
+											groupPhase : calendarGroupStage,
+											secondPhase : calendarSecondPhase,
+											quarters : calendarQuarters,
+											semis : calendarSemis,
+											third : calendarThird,
+											finals : calendarFinal,
+											loggedIn : true,
+											netlighter : req.session.user,
+											menu : 'calendar'
+										});
 									});
 								});
 							});
-						});});
+						});
 			});
 		});
 	});
 
 	router.get('/help', isLoggedIn, function(req, res) {
-		console.log('in get help');
-
 		res.render('help', {
 			title : 'You & BrazilianLight',
 			loggedIn : true,
@@ -309,9 +379,7 @@ module.exports = function(router) {
 	});
 
 	router.get('/ranking', isLoggedIn, function(req, res) {
-		console.log('in ranking');
-		var netlighterMakesBets = new NetlighterMakesBets(
-				req.session.userid);
+		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
 
 		netlighterMakesBets.getranking(function(error, netlightersRanking) {
 			res.render('ranking', {
@@ -326,7 +394,6 @@ module.exports = function(router) {
 	});
 
 	router.get('/logout', function(req, res) {
-		console.log("logging out");
 		req.logout();
 		req.session.user = null;
 		res.redirect('/login');
@@ -339,15 +406,13 @@ module.exports = function(router) {
 	}
 
 	function isAdmin(req, res, next) {
-		console.log("who are you admin? "+req.session.userid);
-		if (req.session.userid == 'algo' || req.session.userid == 'amjw' || req.session.userid == 'mkon')
+		if (req.session.userid == 'algo' || req.session.userid == 'amjw'
+				|| req.session.userid == 'mkon')
 			return next();
 		res.redirect('/');
 	}
-	
+
 	router.get('/login', function(req, res) {
-		console.log('retrieve session before '+req.session.test);
-		console.log('loggin in');
 		if (req.session.user) {
 			res.redirect('/');
 		} else {
@@ -371,25 +436,24 @@ module.exports = function(router) {
 					function(req, res) {
 						var username = req.body.user;
 						var password = req.body.pass;
-						if (username != null && username.length>0 && password != null && password.length > 0 ) {
+						if (username != null && username.length > 0
+								&& password != null && password.length > 0) {
 							var netlighter = new Netlighter(username, password);
 
 							netlighter
 									.login(function(error, done) {
+
 										if (done != null && done.length > 0) {
 											req.session.user = done[0].name;
 											req.session.userid = done[0].id;
 
 											if (done[0].active == 0) {
-												console
-														.log('you are being redirected to changepassword');
+												
 												return res
 														.redirect('/changepassword');
 											}
 
-											console
-													.log('you are already active and '
-															+ req.session.user);
+											
 											res.redirect('/');
 										} else {
 											res
@@ -416,7 +480,6 @@ module.exports = function(router) {
 					});
 
 	router.get('/changepassword', isLoggedIn, function(req, res) {
-		console.log('get to changing password');
 		res.render('changepassword', {
 			title : 'You & BrazilianLight',
 			loggedIn : true,
@@ -424,68 +487,134 @@ module.exports = function(router) {
 		});
 	});
 
-	router.post('/changepassword', isLoggedIn,
-			function(req, res) {
-				console.log('changing password');
-				var netlighter = new Netlighter(req.session.userid,
-						req.body.pass);
+	router.post('/changepassword', isLoggedIn, function(req, res) {
+		var netlighter = new Netlighter(req.session.userid, req.body.pass);
 
-				netlighter.changepassword(function(error, done) {
-					if (done != null) {
-						res.redirect('/');
+		netlighter.changepassword(function(error, done) {
+			if (done != null) {
+				res.redirect('/');
+			}
+		});
+	});
+
+	router.get('/admin', isAdmin, function(req, res) {
+		var dateStripped = moment(new Date).format('YYYY-MM-DD'); // '2014-06-09'
+		var matchFinder = new MatchFinder(dateStripped);
+		matchFinder.getAllTeams(function(error, allteams) {
+		matchFinder.getAllWinners(function(error, winners) {
+			matchFinder.getAllMatches(function(error, allmatches) {
+				res.render('admin', {
+					title : 'Administer Results, Teams & Points',
+					loggedIn : true,
+					netlighter : req.session.user,
+					allteams: allteams,
+					matches : allmatches,
+					winners : winners,
+					moment : moment,
+					now : moment(new Date).format('YYYY-MM-DD 00:00:00')
+				// '2014-06-09 00:00:00'
+				});
+			});});
+		});
+	});
+
+	router
+			.post(
+					'/admin',
+					isAdmin,
+					function(req, res) {
+						var team;
+						var scoretyp = req.body.scoretyp;
+						var scorehemma = req.body.scorehemma;
+						var typ = req.body.typ;
+						var hemma = req.body.hemma;
+						var advanced = req.body.advanced;
+						if (scoretyp == scorehemma)
+							team = 'none';
+						else if (scoretyp > scorehemma)
+							team = typ;
+						else
+							team = hemma;
+						if(scoretyp !=null){
+						var matchResults = new MatchResults(scoretyp,
+								scorehemma, team, req.body.bet, typ, hemma);
+						matchResults
+								.putResults(function(error, results) {
+									matchResults
+											.analyzeResults(function(error,
+													participantsResults) {
+
+												var dateStripped = moment(
+														new Date).format(
+														'YYYY-MM-DD'); // '2014-06-09'
+												var matchFinder = new MatchFinder(
+														dateStripped);
+												matchFinder.getAllTeams(function(error, allteams) {
+													matchFinder.getAllWinners(function(error, winners) {
+														matchFinder.getAllMatches(function(error, allmatches) {
+															res
+																	.render(
+																			'admin',
+																			{
+																				title : 'Administer Results, Teams & Points',
+																				loggedIn : true,
+																				netlighter : req.session.user,
+																				allteams: allteams,
+																				matches : allmatches,
+																				winners : winners,
+																				moment : moment,
+																				now : moment(
+																						new Date)
+																						.format(
+																								'YYYY-MM-DD 00:00:00'), // '2014-06-09
+																														// 00:00:00'
+																				successmessage : 'You have successfully updated the Game Result <b>'
+																						+ typ
+																						+ ' v '
+																						+ hemma
+																						+ '</b> and Points'
+																			});
+														});
+											});});});
+								});
+					} else if(advanced!=null){
+						var matchAdvancing = new MatchAdvancing(req.body.advanced,
+								req.body.typorhemma, req.body.bet);
+						matchAdvancing
+								.updateWinner(function(error, results) {
+									var dateStripped = moment(
+											new Date).format(
+											'YYYY-MM-DD'); // '2014-06-09'
+									var matchFinder = new MatchFinder(
+											dateStripped);
+									matchFinder.getAllTeams(function(error, allteams) {
+										matchFinder.getAllWinners(function(error, winners) {
+											matchFinder.getAllMatches(function(error, allmatches) {
+												
+												res.render('admin', {
+												title : 'Administer Results, Teams & Points',
+												loggedIn : true,
+												netlighter : req.session.user,
+												allteams: allteams,
+												matches : allmatches,
+												winners : winners,
+												moment : moment,
+												now : moment(
+														new Date)
+														.format(
+																'YYYY-MM-DD 00:00:00'), // '2014-06-09
+																						// 00:00:00'
+												advancedsuccess : 'You have successfully updated the Advancing team for Match <b>'
+														+ req.body.bet + '</b>.'
+											});
+								
+										});
+									});
+						});
+	});
+					} else {
+						res.redirect('/admin');
 					}
-				});
-			});
 
-	
-	router.get('/admin', isAdmin,
-			function(req, res) {
-				console.log('administration');
-				matchFinder.getAllMatches(function(error, allmatches) {
-					res.render('admin', {
-						title : 'Administer Results & Points',
-						loggedIn : true,
-						netlighter : req.session.user,
-						matches: allmatches,
-						moment: moment,
-						now: now
 					});
-				});
-				
-			});
-	
-	router.post('/admin', isAdmin,
-			function(req, res) {
-		var team;
-		var scoretyp = req.body.scoretyp;
-		var scorehemma = req.body.scorehemma;
-		var typ = req.body.typ;
-		var hemma = req.body.hemma;
-		console.log("building team " + typ);
-		if (scoretyp == scorehemma)
-			team = 'none';
-		else if (scoretyp > scorehemma)
-			team = typ;
-		else
-			team = hemma;
-		
-		console.log("winner is " + team);
-				console.log('administration post '+ scoretyp + ' - ' + scorehemma + '-'+req.body.bet);
-				var matchResults = new MatchResults(scoretyp,scorehemma, team, req.body.bet, typ, hemma);
-				matchResults.putResults(function(error, results) {
-					matchResults.analyzeResults(function(error, participantsResults) {
-						matchFinder.getAllMatches(function(error, allmatches) {
-					res.render('admin', {
-						title : 'Administer Results & Points',
-						loggedIn : true,
-						netlighter : req.session.user,
-						matches: allmatches,
-						moment: moment,
-						now: now,
-						successmessage: 'You have successfully updated the Game Result <b>'+typ+' v '+hemma+'</b> and Points'
-					});
-				});});});
-				
-			});
 };
-

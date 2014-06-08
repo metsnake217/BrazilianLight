@@ -18,6 +18,7 @@ head
         each script in scripts
             script(type='text/javascript', src=script)
     body
+     if loggedIn
         .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
             .container
                 .navbar-header

@@ -27,10 +27,10 @@ block content
                     - className = "active"
                 - if(netlighterid == userid)
                     - className = "boldify"
-
-                   tr(class=className id=netlighterid)
+                - participantName = netlighterid.split('@')
+                tr(class=className id=netlighterid)
                       td= i
-                      td= netlighterid
+                      td!= participantName[0]
                       td= netlighter.totalpoints + " pt"
 
 

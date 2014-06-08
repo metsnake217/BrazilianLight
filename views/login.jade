@@ -2,12 +2,10 @@ extends layout
 
 block content
                            
-  div.container
-   div.row
-    div.col-xs-12
-     h1= 'Welcome!'
+  div(style="padding-left: 20px; min-height:100%")
+     h1= 'Welcome and Please login:'
      p Making predictions is a step away. Please login first!
-     div(id="ctl00_Div2" style="" class="container")
+     div(id="ctl00_Div2" style="padding:20px; margin:20px; width:auto" class="container")
       if message
          div(class="alert alert-danger")!= message
       form(action="/login" method="post")
@@ -18,11 +16,7 @@ block content
         div(class="buttons")
            input(type="submit" class="button" value="Get in")
  
-  div(class="footer" style="margin-top:20px; position:relative !important;")
+  div(class="footer" style="margin-top:20px;")
      div(style="padding:5px;")
         img(src="images/map.png", alt="Netlight", style="border-width:0px; width: 50px")
         //a(href="/match/new")!= "Predict!"
-        
-        
-        
-        
