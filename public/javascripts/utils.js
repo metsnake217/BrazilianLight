@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     // preventing event bubbling (hack to introduce bootstrap 3 for now)
 
-    $('.predictBtn2').click( function(){
+    $('.predictBtn').click( function(){
 
 
 
@@ -22,7 +22,7 @@ $(document).ready(function() {
 
         var matchForm = $(this).parent();
 
-        matchForm.parent().parent().parent().find('.input-lg').each(function(){
+        matchForm.parent().find('.input-lg').each(function(){
             var score = $(this).val();
             if (score == '' || score < 0 || score == null || isNaN(score)){
                 alert('Watch your input!');
