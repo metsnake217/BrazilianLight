@@ -27,9 +27,13 @@ head
                         span.icon-bar
                         span.icon-bar
                         span.icon-bar
+
                     - activate = ""
                     - if (menu == 'today')
                         - activate = "active"
+
+                    a.navbar-brand(style="padding:0px;" href="/")
+                      img(src="/images/BL2.png")
                     a.navbar-brand(style='margin-left: 0px;', href='/', class=activate) Today
                     - activate = ""
                         - if (menu == 'calendar')
@@ -38,9 +42,14 @@ head
                     - activate = ""
                         - if (menu == 'ranking')
                             - activate = "active"
-                    a.navbar-brand(style='margin-left: 0px;', href='/ranking', class=activate) Rank
+                    //a.navbar-brand(style='margin-left: 0px;', href='/ranking', class=activate) Rank
 
                 .collapse.navbar-collapse
+                    ul.nav.navbar-nav
+
+                        li
+                            a(href="/ranking") Rank
+
                     ul.nav.navbar-nav.navbar-right
                         - activate = ""
                         - if (menu == 'help')

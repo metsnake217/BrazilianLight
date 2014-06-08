@@ -10,14 +10,17 @@ block content
      span!= "Wondering how our points sytem works and how to participate in BrazilianLight? Look no further... "
      //img(src="/images/brazil_folder.png" alt="" style="float: left;")
      h1()
-        span!= 'Points system'
-     span!= "<b>-</b> Score was 3-1. Your prediction: 0-1  => 0 points (wrong prediction)<br/>"
-     span!= "<b>-</b> Score was 3-1. Your prediction: 1-0 => 3 points (for predicting the winner)<br/>"
-     span!= "<b>-</b> Score was 2-2. Your prediction: 1-1 => 3 points (for predicting a draw)<br/>"
-     span!= "<b>-</b> Score was 4-2. Your prediction: 2-0 => 4 points (for predicting the winner and winning margin)<br/>"
-     span!= "<b>-</b> Score was 1-0. Your prediction: 1-0 => 6 points (perfect prediction) <br/><br/><br/>"
+        //span!= 'Points system'
+     ul.pointsLayout
+        li Score was 3-1. Your prediction: 0-1  <br/> => 0 points (wrong prediction)
+
+        li Score was 3-1. Your prediction: 1-0 <br/> => 3 points (for predicting the winner)
+        li Score was 2-2. Your prediction: 1-1 <br/> => 3 points (for predicting a draw)
+        li Score was 4-2. Your prediction: 2-0 <br/> => 4 points (for predicting the winner and winning margin)
+        li Score was 1-0. Your prediction: 1-0 <br/> => 6 points (perfect prediction)<br/><br/><br/>
+
      
-     table(class="table table-striped table-responsive table-hover" )
+     //table(class="table table-striped table-responsive table-hover" )
            thead
               tr
                  th!='Score was'
@@ -46,10 +49,9 @@ block content
                  td!= "6 points"                                                              
 
      p
-        h1(style="font-size:24px")
-           img(src="/images/brazil_help_contact.png" alt="" style="border-width:0px;float:center;width:75px")   
+        h1(style="font-size:20px")
+           //img(src="/images/brazil_help_contact.png" alt="" style="border-width:0px;float:center;width:75px")
            span!= ' '+netlighter +', you can always reach us at:' 
-     p 
-        a(href="mailto:brazilianlight2014@gmail.com")!= 'brazilianlight2014@gmail.com'
+        a(href="mailto:brazilianlight2014@gmail.com")!= ' brazilianlight2014@gmail.com'
                
                

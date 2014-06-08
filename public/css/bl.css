@@ -59,8 +59,15 @@ body {
 
 
     background-color: #460077;
+
 }
 
+.navbar-brand
+{
+    font-size:14px;
+    padding:15px 10px;
+
+}
 /*today's page*/
 .dayHdr{
     background-color: #460077;
@@ -260,7 +267,7 @@ body {
 .roundHdr ul li a{
 
     display: inline-block;
-    padding: 3px 0px;
+    padding: 3px 0;
     font-size:18px;
 }
 
@@ -273,4 +280,11 @@ body {
 
     background-color: #DCDDD9;
 
+}
+
+/*help */
+
+.pointsLayout li
+{
+    padding:10px;
 }
