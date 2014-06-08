@@ -1,0 +1,237 @@
+
+/* general stuff*/
+body {
+
+    padding-top:50px;
+}
+
+.footer2{
+    margin-top:60px;
+    padding:20px 0px;
+    color: #808080;
+    text-align: center;
+}
+
+.footer {
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height:40px;
+    background-color: #36185F;
+}
+.uppercase {text-transform:uppercase;}
+/*navbar*/
+.navbar-fixed-top{
+
+    background-color: #077762;
+    border:0;
+}
+
+.active, .btn-primary:hover, .btn-primary:active
+{
+    background-color: #02664E;
+}
+
+.navbar-inverse .navbar-brand,  .navbar-inverse .navbar-nav>li>a{
+
+    color:white;
+}
+
+.navbar-inverse .navbar-brand:hover{
+    cursor:pointer;
+}
+
+.navbar-inverse .navbar-nav>.active>a{
+
+    background-color: #02664E;
+}
+
+/*today's page*/
+.dayHdr{
+    background-color: #460077;
+    color:white;
+    height:40px;
+    text-align:center;
+    padding-top:10px;
+    padding-bottom:10px;
+
+    font-size:16px;
+}
+
+.btn-primary{
+    background-color: #077762;
+    width:278px;
+}
+
+.btn-success{
+    background-color: #460077;
+    width:278px;
+}
+
+.btn-primary:disabled{
+    background-color: #DCDDD9;
+    border-color: #DCDDD9;
+
+}
+.gameTime
+{
+    text-align:center;
+    height:46px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-bottom: solid 1px #DCDDD9;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.gameRivals{
+    text-align: center ;
+
+
+
+}
+
+
+
+.gameRivals .countryDomain{
+
+    font-size: 64px;
+    font-weight: bolder;
+    color:#460077;
+    display: inline-block;
+    text-transform: uppercase;
+
+
+
+}
+
+.versus{
+
+    font-size: 16px;
+    display:inline-block;
+    padding-right:15px;
+    padding-left:15px;
+
+}
+
+.btnCon{
+    padding-top:30px;
+    padding-bottom:20px;
+    border-bottom: solid 5px #DCDDD9;
+    text-align:center;
+
+}
+
+
+
+
+.navbar-brand{
+    margin-left:0px;
+}
+
+.teamsFull{
+
+    margin-top:-15px;
+}
+
+ .aligner {
+
+    margin-right:110px;
+
+}
+
+.inputs {
+    margin-top: 10px;
+}
+.teamsFull input{
+
+    width:46px;
+    display: inline-block;
+}
+
+.countryDomain img {
+    margin-bottom:12px;
+    margin-left:15px;
+    margin-right:15px;
+}
+
+
+/*ranking page*/
+
+.rank
+{
+    margin: 0 auto;
+    width:80%
+}
+
+
+#rankTbl{
+
+    overflow-x: visible;
+}
+
+#rankTbl tr.boldify{
+    font-weight:bold;
+}
+#rankTbl td
+{
+    text-align: center;
+    font-size:16px;
+}
+
+
+
+.jump{
+    display: block;
+    padding:27px 0px;
+
+}
+
+
+.jump:hover{
+
+    cursor: pointer;
+}
+
+
+
+/*calendar sida*/
+
+.roundHdr h1{
+
+    font-size:32px;
+    text-align: center;
+    color:#460077;
+    margin-top:25px;
+
+}
+
+.roundHdr ul{
+
+    text-align: center;
+    list-style-type: none;
+    padding:0px;
+    margin-left: 10%;
+    margin-right: 10%;
+
+
+
+}
+
+.roundHdr ul li a{
+
+    display: inline-block;
+    padding: 3px 0px;
+    font-size:18px;
+}
+
+.roundHdr ul li a:hover{
+
+    cursor: pointer;
+}
+
+.gone{
+
+    background-color: #DCDDD9;
+
+}

@@ -45,14 +45,13 @@ block content
                   //img(src="/images/logo.png" alt="Predicted" class="logo")
 
 
-             div(class="row gameRivals")
+             div(class="row gameRivals" style=""+background)
                div.col-xs-12
                   //match.typ + ' vs. ' + match.hemma
                   - if(bet)
                         span(class="test")!= bet.scorehemma
                   span.countryDomain.hidden-xs
                       img(src=flagtyp, alt='!flag!')
-
                   span.countryDomain= match.typ.substr(0,2)
                   span.versus Vs.
                   span.countryDomain= match.hemma.substr(0,2)
@@ -75,7 +74,7 @@ block content
                           //input.input-lg.form-control(type='text', placeholder='__')
 
              div(class="row btnCon")
-                div.col-xs-12()
+                div.col-xs-12
                     form(method="post" id="predict")
 
                         input(name="user" type="hidden" value=''+user)
@@ -91,26 +90,8 @@ block content
                                 button.btn.btn-success.btn-lg.btn-block.center-block.predictBtn(type='button') Done! Change your mind?
                             else
                                 button.btn.btn-primary.btn-lg.btn-block.center-block.predictBtn(type='button') Submit your guess
-                                //input(type="submit" class="button predictBtn " value="Predict!")
                         else
-                            button.btn.btn-primary.btn-lg.btn-block.center-block(type='button', disabled='disabled') Can't do anymore!
-
-                        if(match.resultat != null)
-                        div.results!= 'This game has ended and the result is <b>' + match.resultat + '</b>.'
-                        if(predicted && betpoints != null)
-                            div.points!= 'You have earned <b>' + betpoints + '</b> points.'
-
-                        if predicted && !placesuccess
-                            if predictedteam != 'none'
-                                div.prediction!= '<br/>You have predicted <b>' + predictedteam + '</b> as the winner! '
-                        else
-                            div.prediction!= '<br/>You have predicted this match to end in a <b>tie</b>?! '
-
-                    if placesuccess == count
-                        div(class="alert alert-success")!= successmessage
-                    if error
-                        div(class="alert alert-success")!= message
-
+                            button.btn.btn-primary.btn-lg.btn-block.center-block.predictBtn(type='button', disabled='disabled') Can't do anymore!
 
 
                   //img(src=flagtyp alt=""  class="flag")
@@ -121,26 +102,26 @@ block content
                   //span!= '  '+match.hemma
                   //img(src=flaghemma alt="" style="border-width:0px;" class="flag")
 
-                  //p
-                     //if(match.grupp != 'X')
+                  p
+                     if(match.grupp != 'X')
                         div.group!= '<b>Group:</b> ' + match.grupp
                      //div.date!= '<b>Date:</b> ' + moment(match.datum).format('LLL')
-                     //if(match.resultat != null)
+                     if(match.resultat != null)
                         div.results!= 'This game has ended and the result is <b>' + match.resultat + '</b>.'
                         if(predicted && betpoints != null)
                            div.points!= 'You have earned <b>' + betpoints + '</b> points.'
 
-                     //if predicted && !placesuccess
+                     if predicted && !placesuccess
                        if predictedteam != 'none'
                           div.prediction!= '<br/>You have predicted <b>' + predictedteam + '</b> as the winner! '
                        else
                           div.prediction!= '<br/>You have predicted this match to end in a <b>tie</b>?! '
-               
-                  //if placesuccess == count
-                    // div(class="alert alert-success")!= successmessage
-                  //if error
-                    // div(class="alert alert-success")!= message
-               
+
+                  if placesuccess == count
+                     div(class="alert alert-success")!= successmessage
+                  if error
+                     div(class="alert alert-success")!= message
+
                   //div
                     form(method="post" id="predict")
                     input(name="user" type="hidden" value=''+user)

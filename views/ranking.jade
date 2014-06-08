@@ -1,37 +1,38 @@
 extends layout
 
 block content
-                           
-  div(style="padding-left: 20px")
-     p
-        img(src="/images/neymar.png" alt="" style="width: 50%; height: 50%;float: left;")
-     h1= title
-     p!= "So far, the World Cup is going strong! Check the current ranking below! Points are aggregated based on our point system. <br/>Check the Help section for more information"
-  #netlighters
-     div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none" class="container").match
-      if netlighters !=null && netlighters.length > 0  
+
+
+  #netlighters.container
+    - fn = "#" + userid
+    a.jump(href=fn) jump to your rank
+    div(id="ctl00_Div2" class="row rank").match
         - i = 0
         - className = ""
-        table(class="table table-striped table-responsive table-hover" width="647")
-           thead
-              tr
-                 th!='Ranking'
-                 th!='Name'
-                 th!='Points'                    
-           tbody
+
+
+
+       div(class="table-responsive")
+          table(id="rankTbl" class="table")
+
+            tbody
               - each netlighter in netlighters
                 - i++
                 - netlighterid = netlighter.id
                 - className = ""
+
+                - if (i == 1)
+                    - className = "info"
+                - if (i == 2 || i == 3)
+                    - className = "active"
                 - if(netlighterid == userid)
-                    - netlighterid = "<b>" + netlighterid + "</b>"
-                    - className = "success"
-                   tr(class=className)
-                      td!= i
-                      td!= netlighterid
-                      td!= netlighter.totalpoints
-               
-               
-  div(class="footer" style="margin-top:20px; position:relative !important;")
-     div(style="padding:5px;")
-        img(src="images/map.png", alt="Netlight", style="border-width:0px; width: 50px")
+                    - className = "boldify"
+
+                   tr(class=className id=netlighterid)
+                      td= i
+                      td= netlighterid
+                      td= netlighter.totalpoints + " pt"
+
+
+
+

@@ -2,20 +2,22 @@ extends layout
 
 block content
                            
-  div(style="padding-left: 20px")
-     img(src="/images/referee.png" alt="" style="border-width:0px; width: 250px;float: right;")
+  div(class="container")
+   div(class="row")
+    div(class="col-xs-12")
+     //img(src="/images/referee.png" alt="" style="border-width:0px; width: 250px;float: right;")
      h1!= title
      span!= "Wondering how our points sytem works and how to participate in BrazilianLight? Look no further... "
-     img(src="/images/brazil_folder.png" alt="" style="float: left;")
-     h1(style="font-size:24px")
+     //img(src="/images/brazil_folder.png" alt="" style="float: left;")
+     h1()
         span!= 'Points system'
-     span!= "<b>1.</b> Score was 3-1. Your prediction: 0-1  ? 0 points (wrong prediction)<br/>"
-     span!= "<b>2.</b> Score was 3-1. Your prediction: 1-0 ? 3 points (for predicting the winner)<br/>"
-     span!= "<b>3.</b> Score was 2-2. Your prediction: 1-1 ? 3 points (for predicting a draw)<br/>"
-     span!= "<b>4.</b> Score was 4-2. Your prediction: 2-0 ? 4 points (for predicting the winner and winning margin)<br/>"
-     span!= "<b>5.</b> Score was 1-0. Your prediction: 1-0 ? 6 points (perfect prediction) <br/>"
+     span!= "<b>-</b> Score was 3-1. Your prediction: 0-1  => 0 points (wrong prediction)<br/>"
+     span!= "<b>-</b> Score was 3-1. Your prediction: 1-0 => 3 points (for predicting the winner)<br/>"
+     span!= "<b>-</b> Score was 2-2. Your prediction: 1-1 => 3 points (for predicting a draw)<br/>"
+     span!= "<b>-</b> Score was 4-2. Your prediction: 2-0 => 4 points (for predicting the winner and winning margin)<br/>"
+     span!= "<b>-</b> Score was 1-0. Your prediction: 1-0 => 6 points (perfect prediction) <br/><br/><br/>"
      
-     table(class="table table-striped table-responsive table-hover" width="647")
+     table(class="table table-striped table-responsive table-hover" )
            thead
               tr
                  th!='Score was'
@@ -51,6 +53,3 @@ block content
         a(href="emailto:brazilianlight2014@gmail.com")!= 'brazilianlight2014@gmail.com'
                
                
-  div(class="footer" style="margin-top:20px; position:relative !important;")
-     div(style="padding:5px;")
-        img(src="images/map.png", alt="Netlight", style="border-width:0px; width: 50px")

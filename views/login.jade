@@ -2,10 +2,12 @@ extends layout
 
 block content
                            
-  div(style="padding-left: 20px")
-     h1= 'Welcome and Please login:'
+  div.container
+   div.row
+    div.col-xs-12
+     h1= 'Welcome!'
      p Making predictions is a step away. Please login first!
-     div(id="ctl00_Div2" style="padding:20px" class="container")
+     div(id="ctl00_Div2" style="" class="container")
       if message
          div(class="alert alert-danger")!= message
       form(action="/login" method="post")
