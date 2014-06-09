@@ -34,16 +34,18 @@ module.exports = function(router) {
 				menu : 'today',
 				state : 'ended',
 				moment : moment,
-				now : moment(new Date).format('YYYY-MM-DD 00:00:00')
-			// '2014-06-09 00:00:00'
+				now : moment(new Date).format('YYYY-MM-DD HH:mm:ss')
+			// '2014-06-09 HH:mm:ss'
 			});
 		} else {
+			
 			if (moment(competitionStarts).diff(moment(dateStripped)) <= 0) {
 				netlighterMakesBets.checkIfBetsMade(function(error,
 						singleBetsMade) {
 
 					var matchFinder = new MatchFinder(dateStripped);
 					matchFinder.getMatchOfTheDay(function(error, match) {
+						console.log('here '+match.length)
 						if (match != null && match.length > 0) {
 							req.session.matches = match;
 							res.render('index', {
@@ -57,8 +59,8 @@ module.exports = function(router) {
 								menu : 'today',
 								moment : moment,
 								now : moment(new Date).format(
-										'YYYY-MM-DD 00:00:00')
-							// '2014-06-09 00:00:00'
+										'YYYY-MM-DD HH:mm:ss')
+							// '2014-06-09 HH:mm:ss'
 							});
 						} else {
 							res.render('index', {
@@ -71,8 +73,8 @@ module.exports = function(router) {
 								state : 'rest',
 								moment : moment,
 								now : moment(new Date).format(
-										'YYYY-MM-DD 00:00:00')
-							// '2014-06-09 00:00:00'
+										'YYYY-MM-DD HH:mm:ss')
+							// '2014-06-09 HH:mm:ss'
 							});
 						}
 					});
@@ -88,8 +90,8 @@ module.exports = function(router) {
 					state : 'notstarted',
 					startdate : competitionStarts,
 					moment : moment,
-					now : moment(new Date).format('YYYY-MM-DD 00:00:00')
-				// '2014-06-09 00:00:00'
+					now : moment(new Date).format('YYYY-MM-DD HH:mm:ss')
+				// '2014-06-09 HH:mm:ss'
 				});
 			}
 		}
@@ -174,9 +176,9 @@ module.exports = function(router) {
 																	now : moment(
 																			new Date)
 																			.format(
-																					'YYYY-MM-DD 00:00:00')
+																					'YYYY-MM-DD HH:mm:ss')
 																// '2014-06-09
-																// 00:00:00'
+																// HH:mm:ss'
 																});
 											});
 								});
@@ -186,7 +188,7 @@ module.exports = function(router) {
 		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
 		var betsMade;
 		var dateStripped = moment(new Date).format('YYYY-MM-DD'); // '2014-06-09'
-
+		
 		if (moment(competitionStarts).diff(moment(dateStripped)) <= 0) {
 
 			netlighterMakesBets
@@ -209,8 +211,8 @@ module.exports = function(router) {
 								menu : 'calendar',
 								moment : moment,
 								now : moment(new Date).format(
-										'YYYY-MM-DD 00:00:00')
-							// '2014-06-09 00:00:00'
+										'YYYY-MM-DD HH:mm:ss')
+							// '2014-06-09 HH:mm:ss'
 							});
 						});
 					});
@@ -225,8 +227,8 @@ module.exports = function(router) {
 				state : 'notstarted',
 				startdate : competitionStarts,
 				moment : moment,
-				now : moment(new Date).format('YYYY-MM-DD 00:00:00')
-			// '2014-06-09 00:00:00'
+				now : moment(new Date).format('YYYY-MM-DD HH:mm:ss')
+			// '2014-06-09 HH:mm:ss'
 			});
 		}
 
@@ -320,9 +322,9 @@ module.exports = function(router) {
 																	now : moment(
 																			new Date)
 																			.format(
-																					'YYYY-MM-DD 00:00:00')
+																					'YYYY-MM-DD HH:mm:ss')
 																// '2014-06-09
-																// 00:00:00'
+																// HH:mm:ss'
 																});
 											});
 								});
@@ -511,8 +513,8 @@ module.exports = function(router) {
 					matches : allmatches,
 					winners : winners,
 					moment : moment,
-					now : moment(new Date).format('YYYY-MM-DD 00:00:00')
-				// '2014-06-09 00:00:00'
+					now : moment(new Date).format('YYYY-MM-DD HH:mm:ss')
+				// '2014-06-09 HH:mm:ss'
 				});
 			});});
 		});
@@ -566,8 +568,8 @@ module.exports = function(router) {
 																				now : moment(
 																						new Date)
 																						.format(
-																								'YYYY-MM-DD 00:00:00'), // '2014-06-09
-																														// 00:00:00'
+																								'YYYY-MM-DD HH:mm:ss'), // '2014-06-09
+																														// HH:mm:ss'
 																				successmessage : 'You have successfully updated the Game Result <b>'
 																						+ typ
 																						+ ' v '
@@ -602,8 +604,8 @@ module.exports = function(router) {
 												now : moment(
 														new Date)
 														.format(
-																'YYYY-MM-DD 00:00:00'), // '2014-06-09
-																						// 00:00:00'
+																'YYYY-MM-DD HH:mm:ss'), // '2014-06-09
+																						// HH:mm:ss'
 												advancedsuccess : 'You have successfully updated the Advancing team for Match <b>'
 														+ req.body.bet + '</b>.'
 											});
