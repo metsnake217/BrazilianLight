@@ -88,19 +88,16 @@ block content
        div(style="padding-left: 20px; min-height:100%")
           div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
              h1!= title
-             //img(src="/images/armadillo.png" class="player armadillo")
              p!= "Today is a rest day. There are no matches. However you can always: <br/><br/><span style='text-align:center'>Make your predictions with the <a href='/calendar'  style='font-weight:bold'>Calendar</a></span><br/><span style='text-align:center'>Check <a href='/ranking' style='font-weight:bold'>Your Ranking</a>!</span>"              
      else if state == 'notstarted'
        div(style="padding-left: 20px; min-height:100%")
           div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
              h1!= title
-             //img(src="/images/armadillo.png" class="player armadillo")
              p!= "The World Cup in Brazil has not started yet! <br/>Please come back on <span style='color:red; font-weight:bold'>" + moment(startdate).format('LL') + "</span> and make your predictions!!"              
      else if state == 'ended'
        div(style="padding-left: 20px; min-height:100%")
           div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
              h1!= title
-             //img(src="/images/trophy.png" class="player armadillo")
              p!= "Thank <span style='font-weight:bold; color:#36185F'>YOU</span> for participating in this epic event! <br/>Make sure to check the <a href='/ranking'> ranking results</a> before you log out! We had so much fun playing together :)"              
                
 
