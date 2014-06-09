@@ -485,7 +485,8 @@ module.exports = function(router) {
 		res.render('changepassword', {
 			title : 'You & BrazilianLight',
 			loggedIn : true,
-			netlighter : req.session.user
+			netlighter : req.session.user,
+			scripts : [ '/javascripts/utils.js' ]
 		});
 	});
 
