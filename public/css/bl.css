@@ -42,7 +42,8 @@ body {
 
 .active, .btn-primary:hover, .btn-primary:active
 {
-    background-color: #6B238E;
+
+    font-weight:bold;
 
 }
 
@@ -243,7 +244,8 @@ body {
 
 /*calendar sida*/
 
-.roundHdr h1{
+.roundHdr h1
+{
 
     font-size:32px;
     text-align: center;
