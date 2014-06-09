@@ -40,6 +40,17 @@ body {
 
     margin-bottom: 5px;
 }
+
+.login form input{
+
+    max-width: 400px;
+
+}
+
+.login .buttons
+{
+    margin-top:20px;
+}
 /*navbar*/
 .navbar-fixed-top{
 
@@ -47,7 +58,7 @@ body {
     border:0;
 }
 
-/*.active,*/ .btn-primary:hover, .btn-primary:active
+.active
 {
 
     font-weight:bold;
@@ -88,7 +99,7 @@ body {
     font-size:16px;
 }
 
-.btn-primary{
+.btn-primary, .btn-primary:hover, .btn-primary:active{
     background-color: #077762;
     width:278px;
 }
@@ -96,6 +107,8 @@ body {
 .btn-success{
     background-color: #460077;
     width:278px;
+    border: 0;
+
 }
 
 .btn-success:hover{
@@ -197,7 +210,7 @@ body {
 
 .patchyteam{
 
-    width:90px;
+    width:87px;
     display: inline-block;
     font-size:15px;
     font-weight:bold;
@@ -293,18 +306,33 @@ body {
 
 /*help */
 
-.pointsLayout li
+.help h4, .help h2
 {
-    padding:10px;
+    padding-top:15px;
+    color: #460077;
+    font-weight:bold;
 }
 
-  .score{
+.pointsLayout
+{
+    padding-left:30px;
+}
+.pointsLayout li
+{
+    padding:10px 0;
+}
+
+.score{
   	height: 40px !important;
 	width: 50px;
 	text-align: center;
-  }
+}
   
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 -webkit-appearance: none;
+}
+.row {
+margin-left: 0px !important;
+margin-right: 0px !important;
 }

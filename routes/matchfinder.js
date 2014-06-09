@@ -3,7 +3,6 @@ var MailOptions = require('../config/emailClient').MailOptions;
 var config = require("../config/database");
 var conString = process.env.DATABASE_URL || "pg://"+config.username+":"+config.password+"@"+config.host+":"+config.port+"/"+config.database;
 var client = new pg.Client(conString);
-var now = '2014-06-07';// new Date
 client.connect();
 
 MatchFinder = function(today) {
@@ -66,7 +65,7 @@ MatchEvent.prototype.getMatchOfTheDay = function(callback) {
 };
 
 MatchFinder.prototype.getMatchOfTheDay = function(callback) {
-	var results
+	var results;
 	var query = client
 			.query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
 					+ this.now + "'");
@@ -354,6 +353,16 @@ MatchFinder.prototype.getAllTeams = function(callback) {
 	});
 	query.on("end", function(result) {
 		results = result.rows;
+		if(results!= null && results.length < 32){
+			var query0 = client.query("select distinct hemma from vm2014_match where phase=3 order by typ");
+			query0.on("row", function(row, result) {
+				result.addRow(row);
+			});
+			query.on("end", function(result) {
+				results += result.rows;
+				callback(null, results)
+			});
+		}
 		callback(null, results)
 	});
 };
