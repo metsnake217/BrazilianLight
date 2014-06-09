@@ -45,27 +45,22 @@ block content
            div(style=background+"width:40%;margin-bottom: 20px;float:"+float)
              p(style="padding-top:10px;")
                span!= 'In Group '+ winner.group + ' '
-           
-               div(class="dropdown")
-                     select(style="width:50%" id="advanced"+winner.id name="advanced"+winner.id class="btn dropdown-toggle sr-only" type="button" data-toggle="dropdown" onchange="javascript:$(this).parent().parent().find('.advanced').val($(this).val())")
-                        option(value="")!='Select A Team'
-                        - each team in allteams
-                           - select = ''
-                           - if(team.typ == winner.advancing)
-                              option(value=team.typ selected)!=team.typ
-                           - else
-                              option(value=team.typ)!=team.typ
 
-
-               //input(id="advanced"+winner.match name="advanced"+winner.match value=winner.advancing type="text" placeholder="team" class="input-xlarge search-query advancing" maxlength="15" onchange="javascript:$(this).parent().parent().find('.advanced').val($(this).val())")
-            
                form(method="post" action="/admin" id="advancing" style="float:left;")
                  input(name="user" type="hidden" value=''+user)
                  input(name="phase" class="phase" id="phase" type="hidden" value=winner.phase)
                  input(name="typorhemma" class="typorhemma" id="typorhemma" type="hidden" value=winner.position)
-                 input(name="advanced" class="advanced" id="advanced" type="hidden" value=winner.advancing)
+                 
                  input(name="bet" class="bet" id="bet" type="hidden" value=winner.match)
-              
+                 div(class="form-group")
+                    select(class="form-control" name="advanced")
+                       option(value="")!='Select A Team'
+                       - each team in allteams
+                         - select = ''
+                         - if(team.typ == winner.advancing)
+                             option(value=team.typ selected)!=team.typ
+                         - else
+                             option(value=team.typ)!=team.typ
                  - game = ''
                  - if(winner.phase == 2)
                     - game = winner.position + '' + winner.group
@@ -75,7 +70,7 @@ block content
                     - game = 'Loser from Match ' + winner.team 
                  - if(winner.phase == 6)
                     - game = 'Final from Match ' + winner.team 
-                 div(class="buttons" style="float:left;")
+                 div(class="buttons" style="")
                     input(type="submit" class="button" value="Advancing "+game)
                      
                div(style="background-color:#36185F; height:3px;margin-top:50px; width:50%")!= ' '
@@ -141,9 +136,7 @@ block content
             div(style="background-color:#36185F; height:3px;margin-top:50px")!= ' '
                
                
-  div(class="footer" style="margin-top:20px;")
-     div(style="padding:5px;")
-        img(src="/images/map.png", alt="Netlight", style="border-width:0px; width: 50px")
+
         
         
         
