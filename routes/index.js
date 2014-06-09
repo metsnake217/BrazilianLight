@@ -51,7 +51,7 @@ module.exports = function(router) {
 							res.render('index', {
 								title : 'Today\'s Match',
 								matches : match,
-								scripts : [ '/javascripts/utils.js' ],
+								scripts : [ '/javascripts/utils.js','/javascripts/image_preload.js' ],
 								loggedIn : true,
 								betsMade : singleBetsMade,
 								netlighter : req.session.user,
@@ -162,9 +162,7 @@ module.exports = function(router) {
 																	title : 'Today\'s Match',
 																	matches : req.session.matches,
 																	scripts : [
-																			'/javascripts/utils.js',
-																			'/bootstrap-select/bootstrap-select.js' ],
-																	links : 'bootstrap-select/bootstrap-select.css',
+																			'/javascripts/utils.js','/javascripts/image_preload.js' ],
 																	loggedIn : true,
 																	netlighter : req.session.user,
 																	user : req.session.userid,
@@ -203,7 +201,7 @@ module.exports = function(router) {
 										+ moment(req.params.date).format('LL')
 										+ ']',
 								matches : match,
-								scripts : [ '/javascripts/utils.js' ],
+								scripts : [ '/javascripts/utils.js','/javascripts/image_preload.js' ],
 								loggedIn : true,
 								betsMade : singleBetsMade,
 								netlighter : req.session.user,
@@ -310,7 +308,7 @@ module.exports = function(router) {
 																							'LL')
 																			+ ']',
 																	matches : req.session.matchEvent,
-																	scripts : [ '/javascripts/utils.js' ],
+																	scripts : [ '/javascripts/utils.js','/javascripts/image_preload.js' ],
 																	loggedIn : true,
 																	netlighter : req.session.user,
 																	user : req.session.userid,
