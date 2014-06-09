@@ -3,13 +3,9 @@ extends layout
 block content
    if(matches!=null && matches.length > 0)
       #matches
-       //div(class="row dayHdr")
          - now = (new Date(now)).getTime()
          div.col-xs-12(class="uppercase")= matches[0].datum.toLocaleDateString()
        div
-         //- image = "/images/"+matches[0].image + ".png"
-         //img(src=image alt=matches[0].image class="player")
-         //h1!= title
          div
             - now = (new Date(now)).getTime()
             - count = 0
@@ -42,7 +38,6 @@ block content
 
                   div(id="ctl00_Div2" style=""+background class="container patchycontainer").match
                      if moment(matchdate).diff(moment(now)) < 0
-                        //img(src="/images/logo.png" alt="Predicted" class="logo")
                      div.row
                        div(class="col-xs-12 patchyrow")
                         - if(bet)
