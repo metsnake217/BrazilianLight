@@ -3,11 +3,11 @@ extends layout
 block content
    if(matches!=null && matches.length > 0)
       #matches
-         - now = (new Date(now)).getTime()
+         - now = (new Date(now))
          div.col-xs-12(class="uppercase")= matches[0].datum.toLocaleDateString()
        div
          div
-            - now = (new Date(now)).getTime()
+            - now = (new Date(now))
             - count = 0
             - predicted = false
             - predictedteam = ''
@@ -17,7 +17,7 @@ block content
             - flagtyp = ''
             - flaghemma = ''
             - each match in matches
-               - matchdate = (new Date(match.datum)).getTime()
+               - matchdate = (new Date(match.datum))
                - predicted = false
                - scoretyp = ''
                - scorehemma = ''
@@ -79,6 +79,7 @@ block content
                            input(name="scoretyp" class="scoretyp" id="scoretyp" type="hidden" value=scoretyp)
                            input(name="scorehemma" class="scorehemma" id="scorehemma" type="hidden" value=scorehemma)
                            input(name="bet" class="bet" id="bet" type="hidden" value=match.bet)
+                           input(name="here" class=matchdate id=now type="hidden" value=moment(matchdate).diff(moment(now)) )
                            if moment(matchdate).diff(moment(now)) >= 0
                              button.btn.btn-primary.btn-lg.btn-block.center-block.predictBtn(type='submit') Predict!
                            else
