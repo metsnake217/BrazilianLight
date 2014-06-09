@@ -33,6 +33,13 @@ body {
 }
 
 .uppercase {text-transform:uppercase;}
+
+/*login*/
+
+.login form div{
+
+    margin-bottom: 5px;
+}
 /*navbar*/
 .navbar-fixed-top{
 
@@ -98,7 +105,7 @@ body {
 
 .btn-primary:disabled{
     background-color: #DCDDD9;
-    border-color: #DCDDD9;
+    border-color: darkgrey;
 
 }
 .gameTime
