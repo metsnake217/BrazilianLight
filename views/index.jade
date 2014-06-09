@@ -4,7 +4,7 @@ block content
    if(matches!=null && matches.length > 0)
       #matches
          - now = (new Date(now))
-         div.col-xs-12(class="uppercase")= matches[0].datum.toLocaleDateString()
+         div.col-xs-12(class="uppercase")= moment(matches[0].datum).format('dddd, MMMM Do, YYYY')
        div
          div
             - now = (new Date(now))
@@ -79,7 +79,6 @@ block content
                            input(name="scoretyp" class="scoretyp" id="scoretyp" type="hidden" value=scoretyp)
                            input(name="scorehemma" class="scorehemma" id="scorehemma" type="hidden" value=scorehemma)
                            input(name="bet" class="bet" id="bet" type="hidden" value=match.bet)
-                           input(name="here" class=matchdate id=now type="hidden" value=moment(matchdate).diff(moment(now)) )
                            if moment(matchdate).diff(moment(now)) >= 0
                              button.btn.btn-primary.btn-lg.btn-block.center-block.predictBtn(type='submit') Predict!
                            else
