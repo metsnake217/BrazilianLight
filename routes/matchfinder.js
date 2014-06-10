@@ -353,16 +353,6 @@ MatchFinder.prototype.getAllTeams = function(callback) {
 	});
 	query.on("end", function(result) {
 		results = result.rows;
-		if(results!= null && results.length < 32){
-			var query0 = client.query("select distinct hemma from vm2014_match where phase=3 order by typ");
-			query0.on("row", function(row, result) {
-				result.addRow(row);
-			});
-			query.on("end", function(result) {
-				results += result.rows;
-				callback(null, results)
-			});
-		}
 		callback(null, results)
 	});
 };
