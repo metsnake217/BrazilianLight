@@ -410,6 +410,12 @@ module.exports = function(router) {
 		res.redirect('/login');
 	}
 
+	function isLoggedInAndNotActive(req, res, next) {
+		if (req.session.active!=null && req.session.active == 0)
+			return next();
+		res.redirect('/');
+	}
+	
 	function isAdmin(req, res, next) {
 		if (req.session.userid == 'algo' || req.session.userid == 'amjw'
 				|| req.session.userid == 'mkon')
@@ -451,6 +457,7 @@ module.exports = function(router) {
 										if (done != null && done.length > 0) {
 											req.session.user = done[0].name;
 											req.session.userid = done[0].id;
+											req.session.active = done[0].active;
 
 											if (done[0].active == 0) {
 
@@ -483,7 +490,7 @@ module.exports = function(router) {
 
 					});
 
-	router.get('/changepassword', isLoggedIn, function(req, res) {
+	router.get('/changepassword', isLoggedInAndNotActive, function(req, res) {
 		res.render('changepassword', {
 			title : 'You & BrazilianLight',
 			loggedIn : true,
