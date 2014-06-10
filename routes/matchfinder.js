@@ -438,9 +438,9 @@ var analyze = function(matchresults, participantsResults) {
 				&& participant.scorehemma == matchresults.scorehemma
 				&& winner != 'none') {
 			points = 6;
-		} else if (predictedteam == winner && matchmargin == participantmargin) {
+		} else if (predictedteam == winner && matchmargin == participantmargin && matchresults.scorehemma != matchresults.scoretyp) {
 			points = 4;
-		} else if (predictedteam == winner) {
+		} else if (predictedteam == winner || (participant.scoretyp == matchresults.scoretyp && participant.scorehemma == matchresults.scorehemma)) {
 			points = 3;
 		}
 		
