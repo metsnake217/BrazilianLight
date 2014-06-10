@@ -45,7 +45,6 @@ module.exports = function(router) {
 
 					var matchFinder = new MatchFinder(dateStripped);
 					matchFinder.getMatchOfTheDay(function(error, match) {
-						console.log('here '+match.length)
 						if (match != null && match.length > 0) {
 							req.session.matches = match;
 							res.render('index', {
