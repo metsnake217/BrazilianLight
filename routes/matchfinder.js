@@ -347,7 +347,7 @@ MatchFinder.prototype.getAllWinners = function(callback) {
 
 MatchFinder.prototype.getAllTeams = function(callback) {
 	var results
-	var query = client.query("select distinct typ from vm2014_match where phase=1 order by typ");
+	var query = client.query("select distinct typ from vm2014_match where phase=3 order by typ");
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});

@@ -1,10 +1,10 @@
 extends layout
 
 block content
-   if(matches!=null && matches.length > 0)
+    if(matches!=null && matches.length > 0)
       #matches
          - now = (new Date(now))
-         div.col-xs-12(class="uppercase" style="display:none;")= moment(matches[0].datum).format('dddd, MMMM Do, YYYY')
+         div.col-xs-12(class="uppercase" style="display:none;")= moment(matches[0].datum).tz("Europe/Berlin").format('dddd, MMMM Do, YYYY')
        div
          div
             - now = (new Date(now))
@@ -37,7 +37,6 @@ block content
                         - betpoints = bet.points
 
                   div(id="ctl00_Div2" style=""+background class="container patchycontainer").match
-                     if moment(matchdate).diff(moment(now)) < 0
                      div.row
                        div(class="col-xs-12 patchyrow")
                         - if(bet)
@@ -82,23 +81,64 @@ block content
                            if moment(matchdate).diff(moment(now)) >= 0
                              button.btn.btn-primary.btn-lg.btn-block.center-block.predictBtn(type='submit') Predict!
                            else
-                               button.btn.btn-primary.btn-lg.btn-block.center-block(type='submit', disabled='disabled') Can't do!
+                             button.btn.btn-primary.btn-lg.btn-block.center-block(type='submit', disabled='disabled') Can't do!
  
     else if state == 'rest'
        div(style="padding-left: 20px; min-height:100%")
-          div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
+          div(id="" style="padding:0px 10px 10px 10px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
              h1!= title
-             p!= "Today is a rest day. There are no matches. However you can always: <br/><br/><span style='text-align:center'>Make your predictions with the <a href='/calendar'  style='font-weight:bold'>Calendar</a></span><br/><span style='text-align:center'>Check <a href='/ranking' style='font-weight:bold'>Your Ranking</a>!</span>"              
-     else if state == 'notstarted'
-       div(style="padding-left: 20px; min-height:100%")
-          div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
+             p!= "Today is a rest day. There are no matches. However you can always: <br/><span style='text-align:center'>Make your predictions with the <a href='/calendar'  style='font-weight:bold'>Calendar</a></span><br/><span style='text-align:center'>Check <a href='/ranking' style='font-weight:bold'>Your Ranking</a>!</span>.<br/><br/>And here are our three <b>leaders</b>:"                       
+             div(id="ctl00_Div2" style="padding-top:20px; width:95%" class="row rank").match  
+                div(class="table-responsive")       
+                  table(id="rankTbl" class="table")
+                     tbody
+                     - i=0
+                     - each rank in ranking
+                        - i++
+                        - netlighterid = rank.id
+                        - className = ""
+                        - if (i == 1  || i == 2 || i == 3)
+                           - if (i == 1)
+                              - className = "info boldify"
+                           - if (i == 3 || i == 2)
+                              - className = "active"
+                           - if(netlighterid == userid)
+                              - className = +" boldify"
+                           - participantName = netlighterid.split('@')
+                           tr(class=className id=participantName[0])
+                              td= i
+                              td!= participantName[0]
+                              td= rank.totalpoints + " pt"
+                      
+    else if state == 'notstarted'
+       div(style="padding-left: 0px; min-height:100%")
+          div(id="ctl00_Div2" style="padding:0px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
              h1!= title
              p!= "The World Cup in Brazil has not started yet! <br/>Please come back on <span style='color:red; font-weight:bold'>" + moment(startdate).format('LL') + "</span> and make your predictions!!"              
-     else if state == 'ended'
+    else if state == 'ended'
        div(style="padding-left: 20px; min-height:100%")
-          div(id="ctl00_Div2" style="padding:20px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
+          div(id="" style="padding:0px 10px 10px 10px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
              h1!= title
-             p!= "Thank <span style='font-weight:bold; color:#36185F'>YOU</span> for participating in this epic event! <br/>Make sure to check the <a href='/ranking'> ranking results</a> before you log out! We had so much fun playing together :)"              
-               
-
+             p!= "Thank <span style='font-weight:bold; color:#36185F'>YOU</span> for participating in this epic event! <br/>Make sure to check the <a href='/ranking'> ranking results</a> before you log out! We had so much fun playing together :) <br/>Wondering who our three <span style='font-weight:bold; color:#36185F'>WINNERS</span> are? Look no further...<br/>"              
+             div(id="ctl00_Div2" style="padding-top:20px; width:95%" class="row rank").match  
+                div(class="table-responsive")       
+                  table(id="rankTbl" class="table")
+                     tbody
+                     - i=0
+                     - each rank in ranking
+                        - i++
+                        - netlighterid = rank.id
+                        - className = ""
+                        - if (i == 1  || i == 2 || i == 3)
+                           - if (i == 1)
+                              - className = "info boldify"
+                           - if (i == 3 || i == 2)
+                              - className = "active"
+                           - if(netlighterid == userid)
+                              - className += " boldify"
+                           - participantName = netlighterid.split('@')
+                           tr(class=className id=participantName[0])
+                              td= i
+                              td!= participantName[0]
+                              td= rank.totalpoints + " pt"
           
