@@ -1,4 +1,4 @@
 module.exports = { 
-		competitionStarts: '2014-06-08',
-		competitionEnds: '2014-06-10'
+		competitionStarts: '2014-06-12',
+		competitionEnds: '2014-07-13'
 	};
