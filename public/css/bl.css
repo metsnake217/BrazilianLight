@@ -58,12 +58,12 @@ body {
     border:0;
 }
 
-/*.active
+.activeNav
 {
 
     font-weight:bold;
 
-}*/
+}
 
 .navbar-inverse .navbar-brand,  .navbar-inverse .navbar-nav>li>a{
 
@@ -78,6 +78,7 @@ body {
 
 
     background-color: #460077;
+
 
 }
 
@@ -159,6 +160,16 @@ body {
     display:inline-block;
     padding-right:15px;
     padding-left:15px;
+
+}
+
+
+.versuspatch{
+
+
+    display:inline-block;
+    padding-right:4px;
+    padding-left:4px;
 
 }
 
