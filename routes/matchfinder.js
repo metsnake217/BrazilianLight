@@ -68,7 +68,7 @@ MatchFinder.prototype.getMatchOfTheDay = function(callback) {
 	var results;
 	var query = client
 			.query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
-					+ this.now + "'");
+					+ this.now + "' order by datum");
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
