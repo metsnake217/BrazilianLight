@@ -444,7 +444,9 @@ var analyze = function(matchresults, participantsResults) {
 			points = 3;
 		}
 		
+		
 		var email = participant.id;
+		if(email != 'chwh' && email != 'moku' && email != 'chge'){
 		if(email.length == 4 || email.length == 2){
 			email += "@netlight.com"; 
 		}
@@ -460,6 +462,7 @@ var analyze = function(matchresults, participantsResults) {
 		
 		var mailOptions = new MailOptions(email,subject,body);
 		mailOptions.sendAllEmails();
+		}
 
 		var results;
 		var queryString = "UPDATE vm2014_predictsingleteam SET points = "

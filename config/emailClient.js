@@ -9,6 +9,16 @@ var smtpTransport = nodemailer.createTransport("SMTP", {
 	}
 });
 
+var transport = nodemailer.createTransport("SMTP", {
+    host: "smtp.gmail.com", // hostname
+    secureConnection: true, // use SSL
+    port: 465, // port for secure SMTP
+    auth: {
+        user: "brazilianlight2014@gmail.com",
+        pass: "alexamergna"
+    }
+});
+
 // setup e-mail data with unicode symbols
 var MailOptions = function(to, subject, body) {
 	this.from = "BrazilianLight <brazilianlight2014@gmail.com>";
@@ -26,7 +36,7 @@ MailOptions.prototype.sendAllEmails = function() {
 		subject : this.subject,
 		html : this.body
 	}
-	smtpTransport.sendMail(mailOptions, function(error, response) {
+	transport.sendMail(mailOptions, function(error, response) {
 		console.log("sent");
 		if (error) {
 			console.log(error);
@@ -36,7 +46,7 @@ MailOptions.prototype.sendAllEmails = function() {
 
 		// if you don't want to use this transport object anymore, uncomment
 		// following line
-		smtpTransport.close(); // shut down the connection pool, no more
+		//transport.close(); // shut down the connection pool, no more
 								// messages
 	});
 };
