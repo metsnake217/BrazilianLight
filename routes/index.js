@@ -392,6 +392,7 @@ module.exports = function(router) {
 				netlighters : netlightersRanking,
 				loggedIn : true,
 				userid : req.session.userid,
+				scripts : [ '/javascripts/scrolling.js' ],
 				netlighter : req.session.user,
 				menu : 'ranking'
 			});
