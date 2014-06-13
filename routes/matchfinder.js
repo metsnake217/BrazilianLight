@@ -457,7 +457,7 @@ var analyze = function(matchresults, participantsResults) {
 		body += " v "+"<span style='color:red; font-size:18pt'><b>"+matchresults.scorehemma+"</b></span> <span style='font-size:20pt'><b>"+matchresults.hemma+"</b></span></p>";
 		body += "You predicted the score to be <b>"+participant.scoretyp+":"+participant.scorehemma+"</b>.";
 		body += "<br/>You have earned: <span style='color:red'><b>"+points+" points</b></span>.";
-		body += "<br/><br/>Have you played today? Come and play with us again <a href=\"brazilianlight.netlight.com\">@BrazilianLight</a>";
+		body += "<br/><br/>Have you played today? Come and play with us again <a href=\"http:\/\/brazilianlight.netlight.com\">@BrazilianLight</a>";
 		body += "<br/><br/><b><i>The BrazilianLight Team -</i></b></div>";
 		
 		var mailOptions = new MailOptions(email,subject,body);
