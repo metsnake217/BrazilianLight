@@ -15,8 +15,9 @@ block content
 
                    ul
                      li
-
-                       a(href=link)= phaseone.shortdate
+                       - if(moment(phaseone.shortdate).diff(moment(now).subtract('days', 1)) < 0)
+                          span(class="icon-thumbs-up")
+                       a(href=link style=styl)= phaseone.shortdate
                        - nodups.push(phaseone.shortdate)
   #secondPhase.container
     if secondPhase && secondPhase!=null && secondPhase.length > 0
@@ -27,10 +28,11 @@ block content
                - if(nodups.indexOf(phase.shortdate) == -1)
                    - link = "/event/"+phase.shortdate
                    ul
-                       li
-
-                           a(href=link)= phase.shortdate
-                           - nodups.push(phase.shortdate)
+                      li
+                         - if(moment(phase.shortdate).diff(moment(now).subtract('days', 1)) < 0)
+                            span(class="icon-thumbs-up")
+                         a(href=link)= phase.shortdate
+                         - nodups.push(phase.shortdate)
  
   #quarters.container
     if quarters && quarters!=null && quarters.length > 0
@@ -41,10 +43,11 @@ block content
                - if(nodups.indexOf(phase.shortdate) == -1)
                    - link = "/event/"+phase.shortdate
                    ul
-                       li
-
-                           a(href=link)= phase.shortdate
-                           - nodups.push(phase.shortdate)
+                      li
+                         - if(moment(phase.shortdate).diff(moment(now).subtract('days', 1)) < 0)
+                            span(class="icon-thumbs-up")                         
+                         a(href=link)= phase.shortdate
+                         - nodups.push(phase.shortdate)
 
   #semis.container
     if semis && semis!=null && semis.length > 0
@@ -55,10 +58,11 @@ block content
                - if(nodups.indexOf(phase.shortdate) == -1)
                    - link = "/event/"+phase.shortdate
                    ul
-                       li
-
-                           a(href=link)= phase.shortdate
-                           - nodups.push(phase.shortdate)
+                      li
+                         - if(moment(phase.shortdate).diff(moment(now).subtract('days', 1)) < 0)
+                            span(class="icon-thumbs-up")
+                         a(href=link)= phase.shortdate
+                         - nodups.push(phase.shortdate)
 
   #third.container
     if third && third!=null && third.length > 0
@@ -69,10 +73,11 @@ block content
                - if(nodups.indexOf(phase.shortdate) == -1)
                    - link = "/event/"+phase.shortdate
                    ul
-                       li
-
-                           a(href=link)= phase.shortdate
-                           - nodups.push(phase.shortdate)
+                      li
+                         - if(moment(phase.shortdate).diff(moment(now).subtract('days', 1)) < 0)
+                            span(class="icon-thumbs-up")
+                         a(href=link)= phase.shortdate
+                         - nodups.push(phase.shortdate)
                    
   #finals.container
         div(id="ctl00_Div2"  class="row roundHdr")
@@ -83,10 +88,11 @@ block content
                    - link = "/event/"+phase.shortdate
 
                    ul
-                       li
-
-                           a(href=link)= phase.shortdate
-                           - nodups.push(phase.shortdate)
+                      li
+                         - if(moment(phase.shortdate).diff(moment(now).subtract('days', 1)) < 0)
+                            span(class="icon-thumbs-up")
+                         a(href=link)= phase.shortdate
+                         - nodups.push(phase.shortdate)
                                                                           
 
         

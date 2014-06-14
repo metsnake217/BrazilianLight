@@ -363,7 +363,9 @@ module.exports = function(router) {
 											finals : calendarFinal,
 											loggedIn : true,
 											netlighter : req.session.user,
-											menu : 'calendar'
+											menu : 'calendar',
+											moment : moment,
+											now : moment(new Date).tz("Europe/Berlin").format('YYYY-MM-DD HH:mm:ss')
 										});
 									});
 								});

@@ -7,8 +7,8 @@ block content
     - fn = "#" + userid
     a.jump(href=fn) jump to your rank
     div(id="ctl00_Div2" class="row rank").match
-        - i = 0
-        - className = ""
+       - i = 0
+       - className = ""
 
 
 
@@ -26,12 +26,12 @@ block content
                 - if (i == 2 || i == 3)
                     - className = "active"
                 - if(netlighterid == userid)
-                    - className = "boldify"
+                    - className = "boldify you"
                 - participantName = netlighterid.split('@')
                 tr(class=className id=participantName[0])
                       td= i
-                      td!= participantName[0]
-                      td= netlighter.totalpoints + " pt"
+                      td(class="wrapped")!= netlighter.long_name + ' [' +participantName[0] + ']'
+                      td= netlighter.totalpoints + " pts"
 
 
 
