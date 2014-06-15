@@ -12,12 +12,13 @@ block content
           - each phaseone in groupPhase 
                - if(nodups.indexOf(phaseone.shortdate) == -1)
                    - link = "/event/"+phaseone.shortdate
-
+                   - pastdate = ""
                    ul
                      li
                        - if(moment(phaseone.shortdate).diff(moment(now).subtract('days', 1)) < 0)
-                          span(class="icon-thumbs-up")
-                       a(href=link style=styl)= phaseone.shortdate
+                          - pastdate = "pastdate"
+                          span(class="icon-check")
+                       a(href=link class=pastdate)= phaseone.shortdate
                        - nodups.push(phaseone.shortdate)
   #secondPhase.container
     if secondPhase && secondPhase!=null && secondPhase.length > 0
@@ -27,11 +28,13 @@ block content
           - each phase in secondPhase 
                - if(nodups.indexOf(phase.shortdate) == -1)
                    - link = "/event/"+phase.shortdate
+                   - pastdate = ""
                    ul
                       li
                          - if(moment(phase.shortdate).diff(moment(now).subtract('days', 1)) < 0)
-                            span(class="icon-thumbs-up")
-                         a(href=link)= phase.shortdate
+                            - pastdate = "pastdate"
+                            span(class="icon-check")
+                         a(href=link class=pastdate)= phase.shortdate
                          - nodups.push(phase.shortdate)
  
   #quarters.container
@@ -42,11 +45,13 @@ block content
           - each phase in quarters 
                - if(nodups.indexOf(phase.shortdate) == -1)
                    - link = "/event/"+phase.shortdate
+                   - pastdate = ""
                    ul
                       li
                          - if(moment(phase.shortdate).diff(moment(now).subtract('days', 1)) < 0)
-                            span(class="icon-thumbs-up")                         
-                         a(href=link)= phase.shortdate
+                            - pastdate = "pastdate"
+                            span(class="icon-thumbs-up-1")                         
+                         a(href=link class=pastdate)= phase.shortdate
                          - nodups.push(phase.shortdate)
 
   #semis.container
@@ -57,11 +62,13 @@ block content
           - each phase in semis 
                - if(nodups.indexOf(phase.shortdate) == -1)
                    - link = "/event/"+phase.shortdate
+                   - pastdate = ""
                    ul
                       li
                          - if(moment(phase.shortdate).diff(moment(now).subtract('days', 1)) < 0)
-                            span(class="icon-thumbs-up")
-                         a(href=link)= phase.shortdate
+                            - pastdate = "pastdate"
+                            span(class="icon-thumbs-up-1")
+                         a(href=link class=pastdate)= phase.shortdate
                          - nodups.push(phase.shortdate)
 
   #third.container
@@ -72,11 +79,13 @@ block content
           - each phase in third 
                - if(nodups.indexOf(phase.shortdate) == -1)
                    - link = "/event/"+phase.shortdate
+                   - pastdate = ""
                    ul
                       li
                          - if(moment(phase.shortdate).diff(moment(now).subtract('days', 1)) < 0)
-                            span(class="icon-thumbs-up")
-                         a(href=link)= phase.shortdate
+                            - pastdate = "pastdate"
+                            span(class="icon-thumbs-up-1")
+                         a(href=link class=pastdate)= phase.shortdate
                          - nodups.push(phase.shortdate)
                    
   #finals.container
@@ -86,16 +95,11 @@ block content
           - each phase in finals 
                - if(nodups.indexOf(phase.shortdate) == -1)
                    - link = "/event/"+phase.shortdate
-
+                   - pastdate = ""
                    ul
                       li
                          - if(moment(phase.shortdate).diff(moment(now).subtract('days', 1)) < 0)
-                            span(class="icon-thumbs-up")
-                         a(href=link)= phase.shortdate
+                            - pastdate = "pastdate"
+                            span(class="icon-thumbs-up-1")
+                         a(href=link class=pastdate)= phase.shortdate
                          - nodups.push(phase.shortdate)
-                                                                          
-
-        
-        
-        
-        

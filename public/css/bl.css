@@ -356,7 +356,7 @@ input::-webkit-inner-spin-button {
 	margin-left: 0px !important;
 	margin-right: 0px !important;
 }
-.icon-thumbs-up {
+.icon-thumbs-up, .icon-thumbs-up-1, .icon-check {
 	color: #460077;
 	font-size: 25px;
 }
@@ -379,3 +379,11 @@ input::-webkit-inner-spin-button {
   
 }
 
+.pastdate {
+	color:#460077;
+}
+
+.pastdate:hover{
+   	cursor:pointer;
+   	color:#428bca;
+}
