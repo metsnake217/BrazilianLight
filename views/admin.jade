@@ -109,9 +109,6 @@ block content
            
            
          p(style="padding-top:10px;"+background)
-            - if(moment(matchdate).diff(moment(now)) < 0)
-                  img(src="/images/logo.png" alt="Predicted" style="border-width:0px; width: 50px;float: right;")
-            //match.typ + ' vs. ' + match.hemma
             img(src=flagtyp alt="" style="border-width:0px;")
             span!= match.typ+'  '
             input(id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scoretyp').val($(this).val())")
