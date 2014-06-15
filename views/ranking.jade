@@ -20,6 +20,7 @@ block content
                 - i++
                 - netlighterid = netlighter.id
                 - className = ""
+                - icon = ""
 
                 - if (i == 1)
                     - className = "info"
@@ -27,10 +28,11 @@ block content
                     - className = "active"
                 - if(netlighterid == userid)
                     - className = "boldify you"
+                    - icon = "icon-user"
                 - participantName = netlighterid.split('@')
                 tr(class=className id=participantName[0])
                       td= i
-                      td(class="wrapped")!= netlighter.long_name + ' [' +participantName[0] + ']'
+                      td(class="wrapped "+icon)!= netlighter.long_name + ' [' +participantName[0] + ']'
                       td= netlighter.totalpoints + " pts"
 
 

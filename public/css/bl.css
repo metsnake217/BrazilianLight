@@ -387,3 +387,7 @@ input::-webkit-inner-spin-button {
    	cursor:pointer;
    	color:#428bca;
 }
+
+.yammer{
+	font-size: 16px;
+}
