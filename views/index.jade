@@ -106,7 +106,7 @@ block content
                            - participantName = netlighterid.split('@')
                            tr(class=className id=participantName[0])
                               td= i
-                              td!= netlighter.first_name + ' ' + netlighter.name  + ' [' +participantName[0] + ']'
+                              td!= rank.first_name + ' ' + rank.name  + ' [' +participantName[0] + ']'
                               td= rank.totalpoints + " pt"
                       
     else if state == 'notstarted'
