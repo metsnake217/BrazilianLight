@@ -86,7 +86,7 @@ block content
        div(style="padding-left: 20px; min-height:100%")
           div(id="" style="padding:0px 10px 10px 10px;background:rgba(0, 0, 0, 0);border:none;margin:20px; width:auto" class="container").match
              h1!= title
-             p!= "Today is a rest day. There are no matches. However you can always: <br/><span style='text-align:center'>Make your predictions with the <a href='/calendar'  style='font-weight:bold'>Calendar</a></span><br/><span style='text-align:center'>Check <a href='/ranking' style='font-weight:bold'>Your Ranking</a>!</span>.<br/><br/>And here are our three <b>leaders</b>:"                       
+             p!= "Today is a rest day. There are no matches. However you can always: <br/><span style='text-align:center'>Make your predictions with the <a href='/calendar'  style='font-weight:bold'>Calendar</a></span><br/><span style='text-align:center'>Check <a href='/ranking' style='font-weight:bold'>Your Ranking</a>!</span><br/><br/>And here are our three <b>leaders</b>:"                       
              div(id="ctl00_Div2" style="padding-top:20px; width:95%" class="row rank").match  
                 div(class="table-responsive")       
                   table(id="rankTbl" class="table")
@@ -138,6 +138,6 @@ block content
                            - participantName = netlighterid.split('@')
                            tr(class=className id=participantName[0])
                               td= i
-                              td!= participantName[0]
+                              td!= rank.first_name + ' ' + rank.name  + ' [' +participantName[0] + ']'
                               td= rank.totalpoints + " pt"
           
