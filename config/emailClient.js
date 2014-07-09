@@ -5,7 +5,7 @@ var smtpTransport = nodemailer.createTransport("SMTP", {
 	service : "Gmail",
 	auth : {
 		user : "brazilianlight2014@gmail.com",
-		pass : "alexamergna"
+		pass : "ameralexgna"
 	}
 });
 
@@ -15,7 +15,7 @@ var transport = nodemailer.createTransport("SMTP", {
     port: 465, // port for secure SMTP
     auth: {
         user: "brazilianlight2014@gmail.com",
-        pass: "alexamergna"
+        pass: "ameralexgna"
     }
 });
 
