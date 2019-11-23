@@ -323,9 +323,9 @@ Netlighter.prototype.login = function(callback) {
 				}
 			} else {
 				var query = client
-						.query("SELECT * FROM vm2014_users where id='"
+						.query(new Query("SELECT * FROM vm2014_users where id='"
 								+ username + "' and password='" + password
-								+ "'");
+								+ "'"));
 				query.on("row", function(row, result) {
 					result.addRow(row);
 				});
