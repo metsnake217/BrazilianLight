@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS vm2014_match (
 ) WITH (
   OIDS=FALSE
 ); ALTER TABLE vm2014_match
-  OWNER TO postgres;
+  OWNER TO gfwjbvprahvcbm;
 
 
 --
@@ -119,7 +119,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE vm2014_predictsingleteam
-  OWNER TO postgres;
+  OWNER TO gfwjbvprahvcbm;
 
 
 ----------
@@ -140,7 +140,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE vm2014_users
-  OWNER TO postgres;
+  OWNER TO gfwjbvprahvcbm;
 
 
 INSERT INTO vm2014_users(id, password, name, active) VALUES 
@@ -733,7 +733,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE vm2014_teamadvancing
-  OWNER TO postgres;
+  OWNER TO gfwjbvprahvcbm;
   
 ----
 --- all matches with teams advancing
@@ -798,7 +798,7 @@ CREATE TABLE IF NOT EXISTS vm2014_match (
 ) WITH (
   OIDS=FALSE
 ); ALTER TABLE vm2014_match
-  OWNER TO postgres;
+  OWNER TO gfwjbvprahvcbm;
 
 
 --
@@ -835,7 +835,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE vm2014_teamadvancing
-  OWNER TO postgres;
+  OWNER TO gfwjbvprahvcbm;
 
 ----
 --- all matches with teams advancing
@@ -871,7 +871,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE vm2014_predictsingleteam
-  OWNER TO postgres;
+  OWNER TO gfwjbvprahvcbm;
 
 
 ----------
@@ -892,7 +892,7 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE vm2014_users
-  OWNER TO postgres;
+  OWNER TO gfwjbvprahvcbm;
 
 
 INSERT INTO vm2014_users(id, password, name, active) VALUES 

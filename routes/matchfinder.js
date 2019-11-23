@@ -56,8 +56,8 @@ NetlighterMakesBets = function(id) {
 MatchEvent.prototype.getMatchOfTheDay = function(callback) {
 	var results
 	var query = client
-			.query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
-					+ this.date + "' order by datum");
+			.query(new Query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
+					+ this.date + "' order by datum"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -83,7 +83,7 @@ MatchFinder.prototype.getMatchOfTheDay = function(callback) {
 
 MatchFinder.prototype.getTeams = function(callback) {
 	var results
-	var query = client.query("SELECT DISTINCT typ FROM vm2014_match");
+	var query = client.query(new Query("SELECT DISTINCT typ FROM vm2014_match"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -95,7 +95,7 @@ MatchFinder.prototype.getTeams = function(callback) {
 
 MatchFinder.prototype.getTeamsPerGroup = function(callback) {
 	var results;
-	var query = client.query("SELECT DISTINCT typ, grupp FROM vm2014_match");
+	var query = client.query(new Query("SELECT DISTINCT typ, grupp FROM vm2014_match"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -107,7 +107,7 @@ MatchFinder.prototype.getTeamsPerGroup = function(callback) {
 
 MatchFinder.prototype.getGroupStage = function(callback) {
 	var results
-	var query = client.query("SELECT * FROM vm2014_match");
+	var query = client.query(new Query("SELECT * FROM vm2014_match"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -150,7 +150,7 @@ MatchPredictorSingleTeam.prototype.setPrediction = function(callback) {
 				var canPredict = true;
 				var queryMatchString = "Select datum from vm2014_match where bet="
 						+ bet;
-				var queryMatch = client.query(queryMatchString);
+				var queryMatch = client.query(new Query(queryMatchString));
 				queryMatch.on("row", function(row, result) {
 					result.addRow(row);
 				});
@@ -181,7 +181,7 @@ MatchPredictorSingleTeam.prototype.setPrediction = function(callback) {
 									+ ", scorehemma=" + scorehemma
 									+ " where id='" + id + "' and bet=" + bet;
 						}
-						query = client.query(queryString);
+						query = client.query(new Query(queryString));
 
 					} else {
 						var queryString = "INSERT INTO vm2014_predictsingleteam VALUES (";
@@ -199,7 +199,7 @@ MatchPredictorSingleTeam.prototype.setPrediction = function(callback) {
 									+ scoretyp + "," + scorehemma + ")";
 						}
 
-						query = client.query(queryString);
+						query = client.query(new Query(queryString));
 
 					}
 
@@ -272,8 +272,8 @@ Netlighter = function(username, password) {
 
 MatchFinder.prototype.getNetlighter = function(callback) {
 	var results;
-	var query = client.query("SELECT * FROM vm2014_users where id='" + id
-			+ "' and password='" + password + "'");
+	var query = client.query(new Query("SELECT * FROM vm2014_users where id='" + id
+			+ "' and password='" + password + "'"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -285,8 +285,8 @@ MatchFinder.prototype.getNetlighter = function(callback) {
 
 MatchFinder.prototype.test = function(callback) {
 	var results;
-	var query = client.query("SELECT * FROM vm2014_users where id='"
-			+ this.username + "'"/* and password='"+password+"'" */);
+	var query = client.query(new Query("SELECT * FROM vm2014_users where id='"
+			+ this.username + "'"/* and password='"+password+"'" */));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -301,8 +301,8 @@ Netlighter.prototype.login = function(callback) {
 	var username = this.username;
 
 	var results;
-	var query = client.query("SELECT * FROM vm2014_users where id='" + username
-			+ "'"/* and password='"+password+"'" */);
+	var query = client.query(new Query("SELECT * FROM vm2014_users where id='" + username
+			+ "'"/* and password='"+password+"'" */));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -341,8 +341,8 @@ Netlighter.prototype.login = function(callback) {
 Netlighter.prototype.changepassword = function(callback) {
 	var hash = crypt.hashSync(this.password);
 	var results;
-	var query = client.query("UPDATE vm2014_users SET password='" + hash
-			+ "', active=1 where id='" + this.username + "'");
+	var query = client.query(new Query("UPDATE vm2014_users SET password='" + hash
+			+ "', active=1 where id='" + this.username + "'"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -354,7 +354,7 @@ Netlighter.prototype.changepassword = function(callback) {
 
 MatchFinder.prototype.getAllMatches = function(callback) {
 	var results
-	var query = client.query("SELECT * FROM vm2014_match order by datum asc");
+	var query = client.query(new Query("SELECT * FROM vm2014_match order by datum asc"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -399,7 +399,7 @@ MatchAdvancing.prototype.updateWinner = function(callback) {
 			+ advanced + "' where position = " + typorhemma + " and match = "
 			+ match;
 
-	var query = client.query(queryString);
+	var query = client.query(new Query(queryString));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -412,7 +412,7 @@ MatchAdvancing.prototype.updateWinner = function(callback) {
 		else if (typorhemma == 2)
 			queryString0 = "UPDATE vm2014_match SET hemma = '" + advanced
 					+ "' where bet = " + match;
-		var query0 = client.query(queryString0);
+		var query0 = client.query(new Query(queryString0));
 		query0.on("row", function(row, result) {
 			result.addRow(row);
 		});
@@ -429,7 +429,7 @@ MatchResults.prototype.putResults = function(callback) {
 	var result = this.scoretyp + ':' + this.scorehemma;
 	var queryString = "UPDATE vm2014_match SET resultat = '" + result
 			+ "' where bet = " + this.bet;
-	var query = client.query(queryString);
+	var query = client.query(new Query(queryString));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -449,7 +449,7 @@ MatchResults.prototype.analyzeResults = function(callback) {
 	var result = scoretyp + ':' + scorehemma;
 	var queryString = "Select * from vm2014_predictsingleteam where bet = "
 			+ bet;
-	var query = client.query(queryString);
+	var query = client.query(new Query(queryString));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -512,7 +512,7 @@ var analyze = function(matchresults, participantsResults) {
 		var queryString = "UPDATE vm2014_predictsingleteam SET points = "
 				+ points + " where bet = " + matchresults.bet + " and id = '"
 				+ participant.id + "'";
-		var query = client.query(queryString);
+		var query = client.query(new Query(queryString));
 		query.on("row", function(row, result) {
 			result.addRow(row);
 		});
