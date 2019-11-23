@@ -1,4 +1,5 @@
 var pg = require("pg");
+const { Client, Query } = require('pg');
 var moment = require('moment-timezone');
 var MailOptions = require('../config/emailClient').MailOptions;
 var config = require("../config/database");
