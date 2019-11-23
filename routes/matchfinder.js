@@ -71,8 +71,8 @@ MatchEvent.prototype.getMatchOfTheDay = function(callback) {
 MatchFinder.prototype.getMatchOfTheDay = function(callback) {
 	var results;
 	var query = client
-			.query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
-					+ this.now + "' order by datum");
+		.query(new Query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
+					+ this.now + "' order by datum"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -121,8 +121,8 @@ MatchFinder.prototype.getGroupStage = function(callback) {
 MatchPhase.prototype.getCalendar = function(callback) {
 	var results
 	var query = client
-			.query("SELECT *, to_char(datum, 'YYYY-MM-DD') as shortdate FROM vm2014_match where phase="
-					+ this.phase + " order by shortdate");
+		.query(new Query("SELECT *, to_char(datum, 'YYYY-MM-DD') as shortdate FROM vm2014_match where phase="
+					+ this.phase + " order by shortdate"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -222,8 +222,8 @@ MatchPredictorSingleTeam.prototype.setPrediction = function(callback) {
 NetlighterMakesBet.prototype.checkIfBetMade = function(callback) {
 	var results;
 	var query = client
-			.query("SELECT * FROM vm2014_predictSingleTeam where id='"
-					+ this.id + "' and bet=" + this.bet);
+		.query(new Query("SELECT * FROM vm2014_predictSingleTeam where id='"
+					+ this.id + "' and bet=" + this.bet));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -237,8 +237,8 @@ NetlighterMakesBet.prototype.checkIfBetMade = function(callback) {
 NetlighterMakesBets.prototype.checkIfBetsMade = function(callback) {
 	var results;
 	var query = client
-			.query("SELECT * FROM vm2014_predictsingleteam where id='"
-					+ this.id + "'");
+		.query(new Query("SELECT * FROM vm2014_predictsingleteam where id='"
+					+ this.id + "'"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -252,7 +252,7 @@ NetlighterMakesBets.prototype.checkIfBetsMade = function(callback) {
 NetlighterMakesBets.prototype.getranking = function(callback) {
 	var results;
 	var query = client
-			.query("SELECT a.id, sum(a.points) as totalpoints, b.first_name, b.name FROM vm2014_predictsingleteam a, vm2014_users_ext b where a.id=b.id group by a.id, b.first_name, b.name order by totalpoints desc");
+		.query(new Query("SELECT a.id, sum(a.points) as totalpoints, b.first_name, b.name FROM vm2014_predictsingleteam a, vm2014_users_ext b where a.id=b.id group by a.id, b.first_name, b.name order by totalpoints desc"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -368,7 +368,7 @@ MatchFinder.prototype.getAllMatches = function(callback) {
 MatchFinder.prototype.getAllWinners = function(callback) {
 	var results
 	var query = client
-			.query("SELECT * FROM vm2014_teamadvancing order by id asc");
+		.query(new Query("SELECT * FROM vm2014_teamadvancing order by id asc"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -381,7 +381,7 @@ MatchFinder.prototype.getAllWinners = function(callback) {
 MatchFinder.prototype.getAllTeams = function(callback) {
 	var results
 	var query = client
-			.query("select distinct typ from vm2014_match where phase=1 order by typ");
+		.query(new Query("select distinct typ from vm2014_match where phase=1 order by typ"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
