@@ -252,7 +252,8 @@ NetlighterMakesBets.prototype.checkIfBetsMade = function(callback) {
 NetlighterMakesBets.prototype.getranking = function(callback) {
 	var results;
 	var query = client
-		.query(new Query("SELECT a.id, sum(a.points) as totalpoints, b.first_name, b.name FROM vm2014_predictsingleteam a, vm2014_users_ext b where a.id=b.id group by a.id, b.first_name, b.name order by totalpoints desc"));
+		.query(new Query("SELECT a.id, sum(a.points) as totalpoints, b.first_name, b.name FROM vm2014_predictsingleteam a, vm2014_users b where a.id=b.id group by a.id, b.first_name, b.name order by totalpoints desc"));
+		//.query(new Query("SELECT a.id, sum(a.points) as totalpoints, b.first_name, b.name FROM vm2014_predictsingleteam a, vm2014_users_ext b where a.id=b.id group by a.id, b.first_name, b.name order by totalpoints desc"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
