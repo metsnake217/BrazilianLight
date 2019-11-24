@@ -52,7 +52,7 @@ body {
 
 .login form input{
 
-    max-width: 400px;
+    /*max-width: 400px;*/
 
 }
 
@@ -116,7 +116,7 @@ body {
 
 .btn-success{
     background-color: #460077;
-    width:278px;
+   /* width:278px;*/
     border: 0;
 
 }
