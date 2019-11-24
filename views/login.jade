@@ -3,11 +3,11 @@ extends layout
 block content
 
 
-  div(class="container login")
-     img(src="/images/bostonia.png")
+  div(class="container login" style="text-align:center")
+     img(src="/images/bostonia.png" style="width:40%")
      h1= 'Welcome!'
      p The Brazilian Light is a step away..
-     div(id="ctl00_Div2" style="" class="row")
+     div(id="ctl00_Div2" style="left: 29%; position: relative;" class="row")
        div
         if message
             div(class="alert alert-danger")!= message
@@ -16,7 +16,7 @@ block content
                 input(name="user" type="text" id="user" class="form-control" placeholder="Username")
             div(class="textentry")
                 input(name="pass" type="password" id="pass" class="form-control" placeholder="Password")
-            div(class="buttons")
+            div(class="buttons" style="left: 7%; position: relative;")
                 //input(type="submit" class="button" value="Get in")
                 button.btn.btn-success.btn-lg.btn-block(type='submit') Get in
  
