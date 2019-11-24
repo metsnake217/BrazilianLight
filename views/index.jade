@@ -78,9 +78,9 @@ block content
                            input(name="scorehemma" class="scorehemma" id="scorehemma" type="hidden" value=scorehemma)
                            input(name="bet" class="bet" id="bet" type="hidden" value=match.bet)
                            if moment(matchdate).diff(moment(now)) >= 0
-                              button.btn.btn-primary.btn-lg.btn-block.center-block.predictBtn(type='submit') Predict!
+                              button.btn.btn-primary.btn-lg.btn-block.center-block.predictBtn.navbar-item(type='submit') Predict!
                            else
-                              button.btn.btn-primary.btn-lg.btn-block.center-block(type='submit', disabled='disabled') Can't do!
+                              button.btn.btn-primary.btn-lg.btn-block.center-block.navbar-item(type='submit', disabled='disabled') Can't do!
  
     else if state == 'rest'
        div(style="padding-left: 20px; min-height:100%")

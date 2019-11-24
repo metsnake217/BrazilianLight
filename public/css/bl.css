@@ -108,10 +108,15 @@ body {
     font-size:16px;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:active{
-    background-color: #077762;
-    width:278px;
+.btn-primary, .btn-primary:active {
+	background-color: #077762;
+	width: 278px;
 }
+
+	.btn-primary:hover {
+		background-color: #cabb0bc7 !important;
+		width: 278px;
+	}
 
 .textentry {
 	margin-bottom: 10px;
