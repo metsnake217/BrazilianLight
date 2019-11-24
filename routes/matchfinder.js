@@ -58,7 +58,9 @@ MatchEvent.prototype.getMatchOfTheDay = function(callback) {
 	var results
 	var query = client
 			.query(new Query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
-					+ this.date + "' order by datum"));
+				+ this.date + "' order by datum"));
+	console.log("query: " + "SELECT * FROM vm2014_match where date_trunc('day',datum)='"
+		+ this.date + "' order by datum");
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
@@ -72,7 +74,9 @@ MatchFinder.prototype.getMatchOfTheDay = function(callback) {
 	var results;
 	var query = client
 		.query(new Query("SELECT * FROM vm2014_match where date_trunc('day',datum)='"
-					+ this.now + "' order by datum"));
+			+ this.now + "' order by datum"));
+	console.log("query1: " + "SELECT * FROM vm2014_match where date_trunc('day',datum)='"
+		+ this.date + "' order by datum");
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});

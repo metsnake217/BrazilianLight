@@ -13,7 +13,7 @@ block content
      div
        if message
          div(class="alert alert-danger")!= message
-       form(action="/login" method="post")
+       form(action="/add" method="post")
          div(class="textentry")
            input(name="home_team" type="text" id="home_team" class="form-control" placeholder="Home Team")
          div(class="textentry")
@@ -30,7 +30,7 @@ block content
            input(type="text" id="datepicker")
          div(class="buttons" style="")
            //input(type="submit" class="button" value="Get in")
-           button.btn.btn-success.btn-lg.btn-block(type='submit') Create
+           button.btn.btn-success.btn-lg.btn-block(type='submit') Add
 
   #calendarGroupStage.container
     if groupPhase && groupPhase!=null && groupPhase.length > 0
