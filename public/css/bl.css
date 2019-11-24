@@ -123,12 +123,12 @@ body {
 }
 
 	.btn-success:hover {
-		background-color: #ca0b14c7;
+		background-color: #cabb0bc7;
 	}
 
-	.navbar-item:hover {
-		background-color: #ca0b14c7 !important;
-	}
+.navbar-item:hover {
+	background-color: #cabb0bc7 !important;
+}
 
 .btn-primary:disabled{
     background-color: #DCDDD9;
