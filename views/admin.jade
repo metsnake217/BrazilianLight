@@ -44,13 +44,13 @@ block content
               - background = 'border-style:solid;border-color:rgba(173, 20, 245, 0.64);'
            div(style=background+"width:40%;margin-bottom: 20px;float:"+float)
              p(style="padding-top:10px;")
-               span!= 'In Group '+ winner.group + ' '
+               span!= 'In Group '+ winner.groupo + ' '
           
                form(method="post" action="/admin" id="advancing" style="float:left;")
                  input(name="user" type="hidden" value=''+user)
                  input(name="phase" class="phase" id="phase" type="hidden" value=winner.phase)
-                 input(name="typorhemma" class="typorhemma" id="typorhemma" type="hidden" value=winner.position)
-                 input(name="bet" class="bet" id="bet" type="hidden" value=winner.match)
+                 input(name="typorhemma" class="typorhemma" id="typorhemma" type="hidden" value=winner.positiono)
+                 input(name="bet" class="bet" id="bet" type="hidden" value=winner.matcho)
                  div(class="form-group")
                     select(class="form-control" name="advanced")
                        option(value="")!='Select A Team'
@@ -63,9 +63,9 @@ block content
                                 option(value=team.typ)!=team.typ
                  - game = ''
                  - if(winner.phase == 2)
-                    - game = winner.position + '' + winner.group
+                    - game = winner.positiono + '' + winner.groupo
                  - if(winner.phase == 3 || winner.phase == 4)
-                    - game = winner.group + ' from Match ' + winner.team 
+                    - game = winner.groupo + ' from Match ' + winner.team 
                  - if(winner.phase == 5)
                     - game = 'Loser from Match ' + winner.team 
                  - if(winner.phase == 6)

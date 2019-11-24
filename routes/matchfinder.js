@@ -398,7 +398,7 @@ MatchAdvancing.prototype.updateWinner = function(callback) {
 	var advanced = this.advanced;
 	var match = this.match;
 	var queryString = "UPDATE vm2014_teamadvancing SET advancing = '"
-			+ advanced + "' where position = " + typorhemma + " and match = "
+			+ advanced + "' where positiono = " + typorhemma + " and matcho = "
 			+ match;
 
 	var query = client.query(new Query(queryString));
