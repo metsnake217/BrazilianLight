@@ -2,9 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\db_backup",
+    "\\public",
+    "\\public\\css",
+    "\\public\\javascripts",
     "\\routes",
     "\\views"
   ],
-  "SelectedNode": "\\routes\\matchfinder.js",
+  "SelectedNode": "\\public\\javascripts\\image_preload.js",
   "PreviewInSolutionExplorer": false
 }

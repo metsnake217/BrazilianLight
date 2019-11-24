@@ -149,7 +149,7 @@ MatchPredictorSingleTeam.prototype.setPrediction = function(callback) {
 	netlighterMakesBet
 			.checkIfBetMade(function(error, betMade) {
 
-				var now = moment(new Date).tz("Europe/Berlin").format(
+				var now = moment(new Date).tz("America/New_York").format(
 						'YYYY-MM-DD HH:mm:ss');
 				var timeOfMatch;
 				var canPredict = true;
