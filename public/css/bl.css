@@ -381,12 +381,26 @@ input::-webkit-inner-spin-button {
 	white-space: normal !important;
 }
 
- @media (max-width: 440px) {
-#rankTbl td
-{
-    text-align: center;
-    font-size:13px;
+.addMatch {
+	width: 45%;
+	float: left
 }
+.allMatch {
+	width: 50%;
+	float: left;
+	padding-left: 20px;
+}
+ @media (max-width: 440px) {
+	.allmatch{
+		width: 100%;
+	}
+	.addMatch{
+		width: 100%;
+	}
+	#rankTbl td {
+		text-align: center;
+		font-size: 13px;
+	}
   
 }
 
