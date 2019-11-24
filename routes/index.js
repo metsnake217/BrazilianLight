@@ -25,7 +25,7 @@ module.exports = function(router) {
 		var dateStripped = moment(new Date).tz("Europe/Berlin").format(
 				'YYYY-MM-DD'); // '2014-06-09'
 
-		if (moment(competitionEnds).diff(moment(dateStripped)) < 0) {
+		/*if (moment(competitionEnds).diff(moment(dateStripped)) < 0) {
 			netlighterMakesBets.getranking(function(error, ranking) {
 				res.render('index', {
 					title : 'The World Cup has ended!',
@@ -43,9 +43,9 @@ module.exports = function(router) {
 				// '2014-06-09 HH:mm:ss'
 				});
 			});
-		} else {
+		} else {*/
 
-			if (moment(competitionStarts).diff(moment(dateStripped)) <= 0) {
+			//if (moment(competitionStarts).diff(moment(dateStripped)) <= 0) {
 				netlighterMakesBets.checkIfBetsMade(function(error,
 						singleBetsMade) {
 
@@ -89,7 +89,8 @@ module.exports = function(router) {
 						}
 					});
 				});
-			} else {
+		//}
+		/*else {
 				res.render('index', {
 					title : 'Countdown to the World Cup!!!',
 					matches : null,
@@ -105,8 +106,8 @@ module.exports = function(router) {
 							'YYYY-MM-DD HH:mm:ss')
 				// '2014-06-09 HH:mm:ss'
 				});
-			}
-		}
+			}*/
+		//}
 	});
 
 	router
