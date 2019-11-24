@@ -35,11 +35,11 @@ html(lang='en')
 
                     a.navbar-brand(style="padding:0px;" href="/")
                       img(src="/images/bostonia.png" style="width:50px")
-                    a.navbar-brand(style='margin-left: 0px;', href='/', class=activate) Today
+                    a.navbar-brand.navbar-item(style='margin-left: 0px;', href='/', class=activate) Today
                     - activate = ""
                         - if (menu == 'calendar')
                             - activate = "activeNav"
-                    a.navbar-brand(style='margin-left: 0px;', href='/calendar', class=activate) Calendar
+                    a.navbar-brand.navbar-item(style='margin-left: 0px;', href='/calendar', class=activate) Calendar
                     - activate = ""
                         - if (menu == 'ranking')
                             - activate = "activeNav"
@@ -47,15 +47,15 @@ html(lang='en')
                 .collapse.navbar-collapse
                     ul.nav.navbar-nav
 
-                        li(class=activate)
+                        li.navbar-item(class=activate)
                             a(href="/ranking") Ranking
 
                     ul.nav.navbar-nav.navbar-right
                         - activate = ""
                         - if (menu == 'help')
                             - activate = "activeNav"
-                        li(class=activate)
+                        li.navbar-item(class=activate)
                             a(href='/help') Help
-                        li
+                        li.navbar-item
                             a(href='/logout') Logout
      block content
