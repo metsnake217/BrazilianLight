@@ -10,7 +10,7 @@ var client = new pg.Client(conString);
 client.connect();
 
 MatchFinder = function(today) {
-	this.now = today
+	this.date = today
 };
 
 MatchEvent = function(date) {

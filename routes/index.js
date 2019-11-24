@@ -50,6 +50,7 @@ module.exports = function(router) {
 						singleBetsMade) {
 
 					var matchFinder = new MatchFinder(dateStripped);
+					console.log("dateStripped: " + dateStripped);
 					matchFinder.getMatchOfTheDay(function(error, match) {
 						if (match != null && match.length > 0) {
 							req.session.matches = match;
