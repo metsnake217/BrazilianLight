@@ -113,6 +113,9 @@ body {
     width:278px;
 }
 
+.textentry {
+	margin-bottom: 10px;
+}
 .btn-success {
 	background-color: #00813c;
 	/* width:278px;*/
