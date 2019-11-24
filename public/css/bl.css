@@ -111,6 +111,7 @@ body {
 .btn-primary, .btn-primary:active {
 	background-color: #077762;
 	width: 278px;
+	border: none !important;
 }
 
 	.btn-primary:hover {
