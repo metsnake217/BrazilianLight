@@ -51,7 +51,7 @@ block content
                         fieldset
                         p
                            if(match.grupp != 'X')
-                              div.group!= '<b>Group:</b> ' + match.grupp
+                              div.group!= '<b>League:</b> ' + match.league
                            div.date!= '<b>Date:</b> ' + moment(match.datum).format('LLL')
                            if(match.resultat != null && match.resultat != '')
                               div.results!= 'This game has ended and the result is <b>' + match.resultat + '</b>.'

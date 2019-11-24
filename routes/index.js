@@ -423,13 +423,14 @@ module.exports = function(router) {
 					});
 
 	router.get('/calendar', isLoggedIn, function(req, res) {
-
+		var matchPhaseStageAll = new MatchPhase(0);
 		var matchPhaseStageGroup = new MatchPhase(1);
 		var matchPhaseSecondPhase = new MatchPhase(2);
 		var matchPhaseQuarters = new MatchPhase(3);
 		var matchPhaseSemis = new MatchPhase(4);
 		var matchPhaseThird = new MatchPhase(5);
 		var matchPhaseFinal = new MatchPhase(6);
+		matchPhaseStageAll.getCalendar(function (error, calendarAll) {
 		matchPhaseStageGroup.getCalendar(function(error, calendarGroupStage) {
 			matchPhaseSecondPhase.getCalendar(function(error,
 					calendarSecondPhase) {
@@ -448,7 +449,8 @@ module.exports = function(router) {
 											quarters : calendarQuarters,
 											semis : calendarSemis,
 											third : calendarThird,
-											finals : calendarFinal,
+											finals: calendarFinal,
+											all: calendarAll,
 											loggedIn : true,
 											netlighter : req.session.user,
 											menu : 'calendar',
@@ -462,6 +464,7 @@ module.exports = function(router) {
 							});
 						});
 			});
+		});
 		});
 	});
 

@@ -34,11 +34,11 @@ block content
            button.btn.btn-success.btn-lg.btn-block(type='submit') Add
 
   #calendarGroupStage.container
-    if groupPhase && groupPhase!=null && groupPhase.length > 0
+    if all && all!=null && all.length > 0
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'First Round'
           - nodups = []
-          - each phaseone in groupPhase 
+          - each phaseone in all 
                - if(nodups.indexOf(phaseone.shortdate) == -1)
                    - link = "/event/"+phaseone.shortdate
                    - pastdate = ""
@@ -49,7 +49,7 @@ block content
                           span(class="icon-check")
                        a(href=link class=pastdate)= phaseone.shortdate
                        - nodups.push(phaseone.shortdate)
-  #secondPhase.container
+  //#secondPhase.container
     if secondPhase && secondPhase!=null && secondPhase.length > 0
         div(id="ctl00_Div2" class="row roundHdr")
           h1= 'Round of 16'
@@ -66,7 +66,7 @@ block content
                          a(href=link class=pastdate)= phase.shortdate
                          - nodups.push(phase.shortdate)
  
-  #quarters.container
+  //#quarters.container
     if quarters && quarters!=null && quarters.length > 0
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'Quarter-Finals'
@@ -83,7 +83,7 @@ block content
                          a(href=link class=pastdate)= phase.shortdate
                          - nodups.push(phase.shortdate)
 
-  #semis.container
+  //#semis.container
     if semis && semis!=null && semis.length > 0
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'Semi-Finals'
@@ -100,7 +100,7 @@ block content
                          a(href=link class=pastdate)= phase.shortdate
                          - nodups.push(phase.shortdate)
 
-  #third.container
+  //#third.container
     if third && third!=null && third.length > 0
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'Third Place'
@@ -117,7 +117,7 @@ block content
                          a(href=link class=pastdate)= phase.shortdate
                          - nodups.push(phase.shortdate)
                    
-  #finals.container
+ // #finals.container
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'FINAL'
           - nodups = []
