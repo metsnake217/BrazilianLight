@@ -1,8 +1,36 @@
 extends layout
 
 block content
-                           
-
+	link(rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+	script(src="https://code.jquery.com/jquery-1.12.4.js")
+	script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+	.script
+		  $( function() {
+			$( "#datepicker" ).datepicker();
+		  } );
+	h1= 'Add Matches'
+	p You can start adding matches for the league
+	div(id="ctl00_Div2" style="" class="row")
+	div
+	if message
+		div(class="alert alert-danger")!= message
+	form(action="/login" method="post")
+		div(class="textentry")
+			input(name="home_team" type="text" id="home_team" class="form-control" placeholder="Home Team")
+		div(class="textentry")
+			input(name="visitor_team" type="text" id="visitor_team" class="form-control" placeholder="Visitor Team")
+		div(class="textentry")
+			select
+				option(value="France")!= "France"
+				option(value="Italy")!= "Italy"
+				option(value="USA")!= "USA"
+				option(value="Brazil")!= "Brazil"
+				option(value="Argentina")!= "Argentina"
+		div(class="textentry")
+			input(type="text" id="datepicker")
+		div(class="buttons" style="")
+			//input(type="submit" class="button" value="Get in")
+			button.btn.btn-success.btn-lg.btn-block(type='submit') Create
 
   #calendarGroupStage.container
     if groupPhase && groupPhase!=null && groupPhase.length > 0
