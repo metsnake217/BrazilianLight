@@ -22,7 +22,7 @@ block content
                - scoretyp = ''
                - scorehemma = ''
                - background = 'background:rgba(0, 0, 0, 0);'
-               - flagtyp = "/images/" + match.typ + "_flag.png"
+               - flagtyp = "/images/" + match.league + "_flag.png"
                - flaghemma = "/images/" + match.hemma + "_flag.png"
                - betpoints = 0
                - count++
@@ -47,7 +47,7 @@ block content
                         span.versuspatch!= 'v'
                         input(id="hemma" + match.bet name="hemma" + match.bet value=scorehemma type="number" placeholder="_" class="input-lg form-control  score patchyinput" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scorehemma').val($(this).val())")
                         span.patchyteam!= '  ' + match.hemma
-                        img(src=flaghemma alt=""  class="hidden-xs")
+                        img(src=flagtyp alt=""  class="hidden-xs")
                         fieldset
                         p
                            if(match.grupp != 'X')
