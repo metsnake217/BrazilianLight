@@ -61,10 +61,9 @@ body {
     margin-top:20px;
 }
 /*navbar*/
-.navbar-fixed-top{
-
-    background-color: #460077;
-    border:0;
+.navbar-fixed-top {
+	background-color: #00813c;
+	border: 0;
 }
 
 .activeNav
@@ -114,17 +113,15 @@ body {
     width:278px;
 }
 
-.btn-success{
-    background-color: #460077;
-   /* width:278px;*/
-    border: 0;
-
+.btn-success {
+	background-color: #00813c;
+	/* width:278px;*/
+	border: 0;
 }
 
-.btn-success:hover{
-
-    background-color: #6B238E;
-}
+	.btn-success:hover {
+		background-color: #ca0b14c7;
+	}
 
 .btn-primary:disabled{
     background-color: #DCDDD9;
