@@ -22,7 +22,7 @@ module.exports = function(router) {
 
 		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
 		var betsMade;
-		var dateStripped = moment(new Date).tz("Europe/Berlin").format(
+		var dateStripped = moment(new Date).tz("America/New_York").format(
 				'YYYY-MM-DD'); // '2014-06-09'
 
 		if (moment(competitionEnds).diff(moment(dateStripped)) < 0) {
@@ -38,7 +38,7 @@ module.exports = function(router) {
 					moment : moment,
 					ranking : ranking,
 					userid : req.session.userid,
-					now : moment(new Date).tz("Europe/Berlin").format(
+					now: moment(new Date).tz("America/New_York").format(
 							'YYYY-MM-DD HH:mm:ss')
 				// '2014-06-09 HH:mm:ss'
 				});
@@ -65,7 +65,7 @@ module.exports = function(router) {
 								user : req.session.userid,
 								menu : 'today',
 								moment : moment,
-								now : moment(new Date).tz("Europe/Berlin")
+								now: moment(new Date).tz("America/New_York")
 										.format('YYYY-MM-DD HH:mm:ss')
 							// '2014-06-09 HH:mm:ss'
 							});
@@ -82,7 +82,7 @@ module.exports = function(router) {
 									state : 'rest',
 									moment : moment,
 									ranking : ranking,
-									now : moment(new Date).tz("Europe/Berlin")
+									now: moment(new Date).tz("America/New_York")
 											.format('YYYY-MM-DD HH:mm:ss')
 								// '2014-06-09 HH:mm:ss'
 								});
@@ -102,7 +102,7 @@ module.exports = function(router) {
 					startdate : competitionStarts,
 					moment : moment,
 					userid : req.session.userid,
-					now : moment(new Date).tz("Europe/Berlin").format(
+					now: moment(new Date).tz("America/New_York").format(
 							'YYYY-MM-DD HH:mm:ss')
 				// '2014-06-09 HH:mm:ss'
 				});
@@ -190,7 +190,7 @@ module.exports = function(router) {
 																		now : moment(
 																				new Date)
 																				.tz(
-																						"Europe/Berlin")
+																						"America/New_York")
 																				.format(
 																						'YYYY-MM-DD HH:mm:ss')
 																	// '2014-06-09
@@ -217,7 +217,7 @@ module.exports = function(router) {
 																		now : moment(
 																				new Date)
 																				.tz(
-																						"Europe/Berlin")
+																						"America/New_York")
 																				.format(
 																						'YYYY-MM-DD HH:mm:ss')
 																	});
@@ -230,7 +230,7 @@ module.exports = function(router) {
 	router.get('/event/:date', isLoggedIn, function(req, res) {
 		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
 		var betsMade;
-		var dateStripped = moment(new Date).tz("Europe/Berlin").format(
+		var dateStripped = moment(new Date).tz("America/New_York").format(
 				'YYYY-MM-DD'); // '2014-06-09'
 
 		if (moment(competitionStarts).diff(moment(dateStripped)) <= 0) {
@@ -255,7 +255,7 @@ module.exports = function(router) {
 								user : req.session.userid,
 								menu : 'calendar',
 								moment : moment,
-								now : moment(new Date).tz("Europe/Berlin")
+								now: moment(new Date).tz("America/New_York")
 										.format('YYYY-MM-DD HH:mm:ss')
 							// '2014-06-09 HH:mm:ss'
 							});
@@ -272,7 +272,7 @@ module.exports = function(router) {
 				state : 'notstarted',
 				startdate : competitionStarts,
 				moment : moment,
-				now : moment(new Date).tz("Europe/Berlin").format(
+				now: moment(new Date).tz("America/New_York").format(
 						'YYYY-MM-DD HH:mm:ss')
 			// '2014-06-09 HH:mm:ss'
 			});
@@ -371,7 +371,7 @@ module.exports = function(router) {
 																		now : moment(
 																				new Date)
 																				.tz(
-																						"Europe/Berlin")
+																						"America/New_York")
 																				.format(
 																						'YYYY-MM-DD HH:mm:ss')
 																	// '2014-06-09
@@ -411,7 +411,7 @@ module.exports = function(router) {
 																			now : moment(
 																					new Date)
 																					.tz(
-																							"Europe/Berlin")
+																							"America/New_York")
 																					.format(
 																							'YYYY-MM-DD HH:mm:ss')
 																		});
@@ -456,7 +456,7 @@ module.exports = function(router) {
 											menu : 'calendar',
 											moment : moment,
 											now : moment(new Date).tz(
-													"Europe/Berlin").format(
+													"America/New_York").format(
 													'YYYY-MM-DD HH:mm:ss')
 										});
 									});
@@ -598,7 +598,7 @@ module.exports = function(router) {
 	});
 
 	router.get('/admin', isAdmin, function(req, res) {
-		var dateStripped = moment(new Date).tz("Europe/Berlin").format(
+		var dateStripped = moment(new Date).tz("America/New_York").format(
 				'YYYY-MM-DD'); // '2014-06-09'
 		var matchFinder = new MatchFinder(dateStripped);
 		matchFinder.getAllTeams(function(error, allteams) {
@@ -612,7 +612,7 @@ module.exports = function(router) {
 						matches : allmatches,
 						winners : winners,
 						moment : moment,
-						now : moment(new Date).tz("Europe/Berlin").format(
+						now: moment(new Date).tz("America/New_York").format(
 								'YYYY-MM-DD HH:mm:ss')
 					// '2014-06-09 HH:mm:ss'
 					});
@@ -649,7 +649,7 @@ module.exports = function(router) {
 
 													var dateStripped = moment(
 															new Date)
-															.tz("Europe/Berlin")
+														.tz("America/New_York")
 															.format(
 																	'YYYY-MM-DD'); // '2014-06-09'
 													var matchFinder = new MatchFinder(
@@ -680,7 +680,7 @@ module.exports = function(router) {
 																											now : moment(
 																													new Date)
 																													.tz(
-																															"Europe/Berlin")
+																															"America/New_York")
 																													.format(
 																															'YYYY-MM-DD HH:mm:ss'), // '2014-06-09
 																											// HH:mm:ss'
@@ -702,7 +702,7 @@ module.exports = function(router) {
 							matchAdvancing
 									.updateWinner(function(error, results) {
 										var dateStripped = moment(new Date).tz(
-												"Europe/Berlin").format(
+												"America/New_York").format(
 												'YYYY-MM-DD'); // '2014-06-09'
 										var matchFinder = new MatchFinder(
 												dateStripped);
@@ -732,7 +732,7 @@ module.exports = function(router) {
 																								now : moment(
 																										new Date)
 																										.tz(
-																												"Europe/Berlin")
+																												"America/New_York")
 																										.format(
 																												'YYYY-MM-DD HH:mm:ss'), // '2014-06-09
 																								// HH:mm:ss'
