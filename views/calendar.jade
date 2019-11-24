@@ -6,7 +6,7 @@ block content
   script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
   script.
     $( function() {$( "#datepicker" ).datepicker();} );
-  #calendarGroupStage.container
+  #calendarGroupStage.container.addMatch(style="width:45%;float:left")
    h1= 'Add Matches'
    p You can start adding matches for the league
    div(id="ctl00_Div2" style="" class="row")
@@ -19,7 +19,7 @@ block content
          div(class="textentry")
            input(name="visitor_team" type="text" id="visitor_team" class="form-control" placeholder="Visitor Team")
          div(class="textentry")
-           select
+           select(style="width:100%")
              option(value="select")!= "Select League"
              option(value="France")!= "France"
              option(value="Italy")!= "Italy"
@@ -28,15 +28,17 @@ block content
              option(value="Brazil")!= "Brazil"
              option(value="Argentina")!= "Argentina"
          div(class="textentry")
-           input(type="text" id="datepicker")
+           input(type="text" id="datepicker" style="width:100%")
          div(class="buttons" style="")
            //input(type="submit" class="button" value="Get in")
            button.btn.btn-success.btn-lg.btn-block(type='submit') Add
 
-  #calendarGroupStage.container
+  #calendarGroupStage.container.allmatch(style="width:50%;float:left;padding-left:20px;")
+    div(style="padding:5px;")
+        img(src="images/foot.png", alt="Netlight", style="border-width:0px; width: 50px")
     if all && all!=null && all.length > 0
         div(id="ctl00_Div2"  class="row roundHdr")
-          h1= 'First Round'
+          h1= 'Matches'
           - nodups = []
           - each phaseone in all 
                - if(nodups.indexOf(phaseone.shortdate) == -1)
