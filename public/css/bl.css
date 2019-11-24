@@ -123,6 +123,10 @@ body {
 		background-color: #ca0b14c7;
 	}
 
+	.navbar-brand:hover {
+		background-color: #ca0b14c7;
+	}
+
 .btn-primary:disabled{
     background-color: #DCDDD9;
     border-color: darkgrey;
