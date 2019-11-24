@@ -394,7 +394,7 @@ input::-webkit-inner-spin-button {
 
 
  @media (max-width: 440px) {
-	.allmatch{
+	.allMatch{
 		width: 100%;
 	}
 	.addMatch{
