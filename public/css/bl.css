@@ -298,13 +298,11 @@ body {
 
 /*calendar sida*/
 
-.roundHdr h1
-{
-
-    font-size:32px;
-    text-align: center;
-    color:#460077;
-    margin-top:25px;
+.roundHdr h1 {
+	/*font-size:32px;*/
+	text-align: center;
+	/*color:#460077;
+    margin-top:25px;*/
 
 }
 
@@ -339,8 +337,7 @@ body {
 }
 
 /*help */
-
-.help h4, .help h2
+	.help h4, .help h2
 {
     padding-top:15px;
     color: #460077;
