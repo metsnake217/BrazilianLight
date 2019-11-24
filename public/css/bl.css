@@ -124,7 +124,7 @@ body {
 	}
 
 	.navbar-brand:hover {
-		background-color: #ca0b14c7;
+		background-color: #ca0b14c7 !important;
 	}
 
 .btn-primary:disabled{
