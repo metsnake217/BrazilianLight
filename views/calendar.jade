@@ -37,6 +37,7 @@ block content
           - minsval = "value='" + mins_val + "'"
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'Matches'
+          h1 #{visitorval}
           - nodups = []
        form(action="/add" method="post")
          div(class="textentry " + hometeam_error)
@@ -100,7 +101,7 @@ block content
              option(value="55")!= "55"
 
          div(class="textentry")
-           input(type="text" id="datepicker" name="datepicker" placeholder="Date" style="width:100%" class="addInput "  + datepicked_error #{datepicked_val})
+           input(type="text" id="datepicker" name="datepicker" placeholder="Date" style="width:100%" class="addInput "  + datepicked_error #{dateval})
          div(class="buttons" style="")
            //input(type="submit" class="button" value="Get in")
            button.btn.btn-success.btn-lg.btn-block.addBtn(type='submit') Add
