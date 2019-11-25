@@ -442,7 +442,7 @@ module.exports = function(router) {
 		console.log("datepicked: " + datepicked);
 		console.log("time: " + time);
 		proceed = true;
-		errorText = "The following fields are invalid: ";
+		errorText = "<b>The following fields are invalid: </b>";
 
 		if (!(home_team != null && home_team.length > 0)) {
 			errorText += "<br/>Home Team";
