@@ -472,13 +472,13 @@ Match.prototype.add = function (callback) {
 		var queryString2 = "INSERT INTO vm2014_match VALUES (";
 		queryString2 += "'" + num + "', 'M', '" + visitor + "','" + home + "','','','" + d + "','A','',0,'', '" + league + "')";
 		console.log("queryString2: " + queryString2);
-		/*var query2 = client.query(new Query(queryString2));
+		var query2 = client.query(new Query(queryString2));
 		query2.on("row", function (row, result2) {
 			result2.addRow(row);
 		});
 		query2.on("end", function (result2) {
 			callback(null, "success");
-		});*/
+		});
 		callback(null, "success");
 
 	});

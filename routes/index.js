@@ -453,7 +453,7 @@ module.exports = function(router) {
 						loggedIn: true,
 						netlighter: req.session.user,
 						menu: 'macthes',
-						addedMatch: home_team + " v " + visitor_team + " on " + datepicked,
+						addedMatch: home_team + " v " + visitor_team + " on " + datepicked + " " + time,
 						moment: moment,
 						now: moment(new Date).tz(
 							"America/New_York").format(
