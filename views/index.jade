@@ -80,7 +80,7 @@ block content
                            input(name="scoretyp" class="scoretyp" id="scoretyp" type="hidden" value=scoretyp)
                            input(name="scorehemma" class="scorehemma" id="scorehemma" type="hidden" value=scorehemma)
                            input(name="bet" class="bet" id="bet" type="hidden" value=match.bet)
-                           if moment(matchdate).diff(moment(now)) >= 0
+                           if moment(matchdate).diff(moment(now)) >= 0 && !noshow
                               button.btn.btn-primary.btn-lg.btn-block.center-block.predictBtn.navbar-item(type='submit') Predict!
                            else
                               button.btn.btn-primary.btn-lg.btn-block.center-block.navbar-item(type='submit', disabled='disabled') Can't do!
