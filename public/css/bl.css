@@ -392,8 +392,17 @@ input::-webkit-inner-spin-button {
 	white-space: normal !important;
 }
 
+.matchadmin-container {
+	width: 50%;
+	float: left;
+	padding: 15px;
+}
 
  @media (max-width: 440px) {
+	.matchadmin-container {
+		width: 100%;
+		padding: 5px;
+	}
 	.allMatch{
 		width: 100%;
 	}
