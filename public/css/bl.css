@@ -17,7 +17,7 @@ input[type='number'] {
 
 .addError {
 	border-style: solid;
-	border-color: #f2dede;
+	border-color: #a94442;
 }
 .btn:active, .btn:focus, .btn:active:focus {
 	border: none !important;
