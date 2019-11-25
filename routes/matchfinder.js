@@ -135,7 +135,7 @@ MatchPhase.prototype.getCalendar = function(callback) {
 	var results
 	var query = client
 		.query(new Query("SELECT *, to_char(datum, 'YYYY-MM-DD') as shortdate FROM vm2014_match where phase="
-					+ this.phase + " order by shortdate"));
+					+ this.phase + " order by shortdate desc"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
