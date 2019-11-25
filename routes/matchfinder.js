@@ -470,7 +470,7 @@ Match.prototype.add = function (callback) {
 		console.log("num is: " + num);
 		console.log("d is: " + d);
 		var queryString2 = "INSERT INTO vm2014_match VALUES (";
-		queryString2 += "'" + num + "', 'M', '" + visitor + "','" + home + "','','','" + d + "','A','',0,'', '" + league + "')";
+		queryString2 += num + ", 'M', '" + visitor + "','" + home + "','','','" + d + "','A'," + num + ",0,'', '" + league + "')";
 		console.log("queryString2: " + queryString2);
 		var query2 = client.query(new Query(queryString2));
 		query2.on("row", function (row, result2) {
