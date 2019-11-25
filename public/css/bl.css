@@ -395,7 +395,8 @@ input::-webkit-inner-spin-button {
 .matchadmin-container {
 	width: 48%;
 	float: left;
-	margin: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
  @media (max-width: 440px) {
