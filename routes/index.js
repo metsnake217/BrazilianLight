@@ -441,10 +441,31 @@ module.exports = function(router) {
 		//datepicked = datepicked + " " + hour + ":" + mins + ":00";
 		console.log("datepicked: " + datepicked);
 		console.log("time: " + time);
+		proceed = true;
+		errorText = "The following fields are invalid: ";
 
+		if (!(home_team != null && home_team.length > 0)) {
+			errorText += "<br/>Home Team";
+		}
+		if (!(visitor_team != null && visitor_team.length > 0)) {
+			errorText += "<br/>Visitor Team";
+		}
+		if (!(league != null && league.length > 0 && league != 'select')) {
+			errorText += "<br/>League";
+		}
+		if (!(datepicked != null && datepicked.length > 0)) {
+			errorText += "<br/>Date";
+		}
+		if (!(hour != null && hour.length > 0 && hour != 'select')) {
+			errorText += "<br/>Hour";
+		}
+		if (!(mins != null && mins.length > 0 && mins != 'select')) {
+			errorText += "<br/>Minutes";
+		}
+		if (proceed) {
 		var match = new Match(home_team, visitor_team, league, datepicked, time);
 		var matchPhaseStageAll = new MatchPhase(0);
-		
+
 		match.add(function (error, done) {
 			matchPhaseStageAll.getCalendar(function (error, calendarAll) {
 				if (done != null && done == 'success') {
@@ -476,6 +497,20 @@ module.exports = function(router) {
 				}
 			});
 		});
+	} else {
+			res.render('calendar', {
+				title: 'Matches',
+				all: calendarAll,
+				loggedIn: true,
+				netlighter: req.session.user,
+				menu: 'macthes',
+				notaddedMatch: errorText,
+				moment: moment,
+				now: moment(new Date).tz(
+					"America/New_York").format(
+						'YYYY-MM-DD HH:mm:ss')
+			});
+	}
 	});
 
 	router.get('/calendar', isLoggedIn, function(req, res) {

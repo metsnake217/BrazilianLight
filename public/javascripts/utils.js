@@ -32,8 +32,7 @@ $(document).ready(function() {
     return false;
 	});
 
-	$('.addBtn').click(function () {
-		// flag counter for the two input fields
+	/*$('.addBtn').click(function () {
 		var x = 0;
 		var matchForm = $(this).parent();
 		matchForm.parent().find('.addInput').each(function () {
@@ -50,7 +49,7 @@ $(document).ready(function() {
 		});
 
 		return false;
-	});
+	});*/
 
 
 
