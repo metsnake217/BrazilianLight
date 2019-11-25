@@ -107,8 +107,8 @@ block content
          - if (moment(match.datum).diff(moment(now)) < 0 && scoretyp != '')
               - background = 'border-style:solid;border-color:rgba(173, 20, 245, 0.64); padding: 10px;'
            
-         div(style="width: 50%")  
-          div(style="padding:10px;" + background + ";float:left;position:relative")
+         div(style="width: 45%;float:left;padding:15px")  
+          div(style="padding:10px;" + background + ";float:left;position:relative;width:100%;text-align:center")
             img(src=flagtyp alt="" style="border-width:0px;")
             span!= match.typ+'  '
             input(id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scoretyp').val($(this).val())")
@@ -117,8 +117,8 @@ block content
             span!= '  '+match.hemma
             img(src=flaghemma alt="" style="border-width:0px;")
                   
-          div(style="float:left;position:relative")
-            form(method="post" action="/admin" id="predict" style="float:left;")
+          div(style="width:100%")
+            form(method="post" action="/admin" id="predict" style="text-align:center")
               input(name="user" type="hidden" value=''+user)
               input(name="position" class="position" id="position" type="hidden" value=count)
               input(name="typ" class="typ" id="typ" type="hidden" value=match.typ)
@@ -127,7 +127,7 @@ block content
               input(name="scorehemma" class="scorehemma" id="scorehemma" type="hidden" value=scorehemma)
               input(name="bet" class="bet" id="bet" type="hidden" value=match.bet)
 
-              div(class="buttons" style="float:left;")
+              div(class="buttons" style="")
                  input(type="submit" class="button" value="Build Points for Match "+match.bet)
                      
             div(style="background-color:#36185F; height:3px;margin-top:50px")!= ' '
