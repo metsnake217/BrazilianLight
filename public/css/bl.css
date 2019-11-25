@@ -424,6 +424,9 @@ input::-webkit-inner-spin-button {
 		border-radius: 50px 20px !important;
 		padding-bottom: 15px;
 	}
+.match-over {
+	background-color:rgba(191, 185, 193, 0.44);
+}
 
  @media (max-width: 440px) {
 	.foot {

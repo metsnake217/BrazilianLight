@@ -5,7 +5,7 @@ block content
   div(style="padding-left: 20px")
 
      h1= title
-     p Enter results daily and run the script!
+     p!= "Enter results daily and run the script! Every match past over starting time is highlighted <span class='fa fa-square match-over'></span>."
      
      //div
         a(href="#" onclick="javascript:$('.winners').removeClass('hide')")!='Administer Teams Advancing ('
@@ -105,9 +105,9 @@ block content
             - scorehemma = results[1]
          - if (moment(match.datum).diff(moment(now)) < 0 && scoretyp == '')
               - shadow = ''
-              - background = 'background-color:rgba(169, 155, 175, 0.64);'
+              - background = 'background-color:rgba(191, 185, 193, 0.44);'
          - if (moment(match.datum).diff(moment(now)) < 0 && scoretyp != '')
-              - background = 'background-color:rgba(169, 155, 175, 0.64);'
+              - background = 'background-color:rgba(191, 185, 193, 0.44);'
               - shadow = ''
            
          div(class="matchadmin-container "+ shadow style=background)  
