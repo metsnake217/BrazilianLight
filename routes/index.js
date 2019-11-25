@@ -431,16 +431,18 @@ module.exports = function(router) {
 		var hour = req.body.hr;
 		var mins = req.body.mins;
 		var datepicked = req.body.datepicker;
+		var time = hour + ":" + mins + ":00";
 
 		console.log("home_team: " + home_team);
 		console.log("visitor_team: " + visitor_team);
 		console.log("league: " + league);
 		console.log("hour: " + hour);
 		console.log("mins: " + mins);
-		datepicked = datepicked + " " + hour + ":" + mins + ":00";
+		//datepicked = datepicked + " " + hour + ":" + mins + ":00";
 		console.log("datepicked: " + datepicked);
+		console.log("time: " + time);
 
-		var match = new Match(home_team, visitor_team, league, datepicked);
+		var match = new Match(home_team, visitor_team, league, datepicked, time);
 		var matchPhaseStageAll = new MatchPhase(0);
 		matchPhaseStageAll.getCalendar(function (error, calendarAll) {
 			match.add(function (error, done) {

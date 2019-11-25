@@ -23,11 +23,12 @@ MatchAdvancing = function(advanced, typorhemma, match) {
 	this.match = match;
 };
 
-Match = function (home, visitor, league, date) {
+Match = function (home, visitor, league, date, time) {
 	this.home = home;
 	this.visitor = visitor;
 	this.league = league;
 	this.date = date;
+	this.time = time;
 };
 
 MatchResults = function(scoretyp, scorehemma, winner, bet, typ, hemma) {
@@ -448,6 +449,7 @@ Match.prototype.add = function (callback) {
 	var visitor = this.visitor;
 	var datepicked = this.date;
 	var league = this.league;
+	var time = this.time;
 
 	var queryString = "Select count(*) as a from vm2014_match";
 
@@ -463,17 +465,21 @@ Match.prototype.add = function (callback) {
 			console.log("count is: " + results[0].a);
 			num = parseInt(results[0].a) + 1;
 		}
+		var d = moment(datepicked).tz("America/New_York").format('YYYY-MM-DD');
+		d = d + " " + time;
 		console.log("num is: " + num);
+		console.log("d is: " + d);
 		var queryString2 = "INSERT INTO vm2014_match VALUES (";
-		queryString2 += "'" + num + "', 'M', '" + visitor + "','" + home + "','','','" + datepicked + "','A','',0,'', '" + league + "')";
+		queryString2 += "'" + num + "', 'M', '" + visitor + "','" + home + "','','','" + d + "','A','',0,'', '" + league + "')";
 		console.log("queryString2: " + queryString2);
-		var query2 = client.query(new Query(queryString2));
+		/*var query2 = client.query(new Query(queryString2));
 		query2.on("row", function (row, result2) {
 			result2.addRow(row);
 		});
 		query2.on("end", function (result2) {
 			callback(null, "success");
-		});
+		});*/
+		callback(null, "success");
 
 	});
 
