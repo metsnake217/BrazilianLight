@@ -109,13 +109,13 @@ block content
            
          div(class="matchadmin-container")  
           div(style="padding:10px;" + background + ";float:left;position:relative;width:100%;text-align:center")
-            img(src=flagtyp alt="" style="border-width:0px;")
+            img(src=flagtyp alt="" style="border-width:0px;" class="hidden-xs")
             span!= match.typ+'  '
             input(id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scoretyp').val($(this).val())")
             span!= ' v '
             input(id="hemma"+match.bet name="hemma"+match.bet value=scorehemma type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scorehemma').val($(this).val())")
             span!= '  '+match.hemma
-            img(src=flaghemma alt="" style="border-width:0px;")
+            img(src=flaghemma alt="" style="border-width:0px;" class="hidden-xs")
                   
           div(style="width:100%")
             form(method="post" action="/admin" id="predict" style="text-align:center")
