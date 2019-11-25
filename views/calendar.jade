@@ -23,7 +23,7 @@ block content
          div(class="textentry")
            input(name="visitor_team" type="text" id="visitor_team" class="form-control" placeholder="Visitor Team")
          div(class="textentry")
-           select(style="width:100%" id="league")
+           select(style="width:100%" name="league")
              option(value="select")!= "Select League"
              option(value="France")!= "France"
              option(value="Italy")!= "Calcio Italy"
@@ -36,7 +36,7 @@ block content
              option(value="Other")!= "Other"
 
          div(class="textentry")
-           select(style="width:45%" id="hr")
+           select(style="width:45%" name="hr")
              option(value="select")!= "Select Hour"
              option(value="00")!= "00"
              option(value="01")!= "01"
@@ -63,7 +63,7 @@ block content
              option(value="22")!= "22"
              option(value="23")!= "23"
 
-           select(style="width:45%;margin-left: 10px;" id="mins")
+           select(style="width:45%;margin-left: 10px;" name="mins")
              option(value="select")!= "Select Minutes"
              option(value="00")!= "00"
              option(value="05")!= "05"
