@@ -662,7 +662,7 @@ module.exports = function(router) {
 			matchFinder.getAllWinners(function(error, winners) {
 				matchFinder.getAllMatches(function(error, allmatches) {
 					res.render('admin', {
-						title : 'Administer Results, Teams & Points',
+						title : 'Results & Points',
 						loggedIn : true,
 						netlighter : req.session.user,
 						allteams : allteams,
