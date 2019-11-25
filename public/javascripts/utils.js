@@ -19,7 +19,7 @@ $(document).ready(function() {
         matchForm.parent().find('.input-lg').each(function(){
             var score = $(this).val();
             if (score == '' || score < 0 || score == null || isNaN(score)){
-                alert('Watch your input!');
+                alert('Please enter a valid score!');
                 return false;
             }
             else{         
