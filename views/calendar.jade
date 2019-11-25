@@ -35,9 +35,6 @@ block content
           - hourval = hour_val
        if mins_val != null && mins_val != ""
           - minsval = mins_val
-        div(id="ctl00_Div2"  class="row roundHdr")
-          h1= 'Matches'
-          - nodups = []
        form(action="/add" method="post")
          div(class="textentry")
            input(name="home_team" type="text" id="home_team" class="form-control addInput " + hometeam_error placeholder="Home Team" value=homeval)
