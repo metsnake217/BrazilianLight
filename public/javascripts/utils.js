@@ -30,7 +30,27 @@ $(document).ready(function() {
         });
 
     return false;
-    });
+	});
+
+	$('.addBtn').click(function () {
+		// flag counter for the two input fields
+		var x = 0;
+		var matchForm = $(this).parent();
+		matchForm.parent().find('.addInput').each(function () {
+			var score = $(this).val();
+			if (score == '' || score < 0 || score == null || isNaN(score)) {
+				alert('Please enter valid data for ' + $(this).attr("name"));
+				return false;
+			}
+			else {
+				x++;
+			}
+			if (x == 2)
+				matchForm.submit();
+		});
+
+		return false;
+	});
 
 
 

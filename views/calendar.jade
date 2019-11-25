@@ -19,11 +19,11 @@ block content
          div(class="alert alert-danger")!=  notaddedMatch
        form(action="/add" method="post")
          div(class="textentry")
-           input(name="home_team" type="text" id="home_team" class="form-control" placeholder="Home Team")
+           input(name="home_team" type="text" id="home_team" class="form-control addInput" placeholder="Home Team")
          div(class="textentry")
-           input(name="visitor_team" type="text" id="visitor_team" class="form-control" placeholder="Visitor Team")
+           input(name="visitor_team" type="text" id="visitor_team" class="form-control addInput" placeholder="Visitor Team")
          div(class="textentry")
-           select(style="width:100%" name="league")
+           select(style="width:100%" name="league" class="addInput")
              option(value="select")!= "Select League"
              option(value="France")!= "France"
              option(value="Italy")!= "Calcio Italy"
@@ -36,7 +36,7 @@ block content
              option(value="Other")!= "Other"
 
          div(class="textentry")
-           select(style="width:45%" name="hr")
+           select(style="width:45%" name="hr" class="addInput")
              option(value="select")!= "Select Hour"
              option(value="00")!= "00"
              option(value="01")!= "01"
@@ -63,7 +63,7 @@ block content
              option(value="22")!= "22"
              option(value="23")!= "23"
 
-           select(style="width:45%;margin-left: 10px;" name="mins")
+           select(style="width:45%;margin-left: 10px;" name="mins" class="addInput")
              option(value="select")!= "Select Minutes"
              option(value="00")!= "00"
              option(value="05")!= "05"
@@ -79,10 +79,10 @@ block content
              option(value="55")!= "55"
 
          div(class="textentry")
-           input(type="text" id="datepicker" name="datepicker" placeholder="Date" style="width:100%")
+           input(type="text" id="datepicker" name="datepicker" placeholder="Date" style="width:100%" class="addInput")
          div(class="buttons" style="")
            //input(type="submit" class="button" value="Get in")
-           button.btn.btn-success.btn-lg.btn-block(type='submit') Add
+           button.btn.btn-success.btn-lg.btn-block.addBtn(type='submit') Add
      div(class="foot")
        img(src="images/foot.png", alt="Netlight", style="border-width:0px; width: 50px")
 
