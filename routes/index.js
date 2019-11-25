@@ -514,7 +514,7 @@ module.exports = function(router) {
 
 	function isAdmin(req, res, next) {
 		if (req.session.userid == 'algo' || req.session.userid == 'amjw'
-				|| req.session.userid == 'mkon')
+			|| req.session.userid == 'mkon' || req.session.userid == 'gna')
 			return next();
 		res.redirect('/');
 	}
