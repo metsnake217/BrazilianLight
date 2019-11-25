@@ -82,11 +82,9 @@ body {
 	border: 0;
 }
 
-.activeNav
-{
-
-    font-weight:bold;
-
+.activeNav {
+	font-weight: bold;
+	background-color: #cabb0bc7 !important;
 }
 
 .navbar-inverse .navbar-brand,  .navbar-inverse .navbar-nav>li>a{

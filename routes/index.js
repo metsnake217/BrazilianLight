@@ -453,7 +453,7 @@ module.exports = function(router) {
 						all: calendarAll,
 						loggedIn: true,
 						netlighter: req.session.user,
-						menu: 'macthes',
+						menu: 'calendar',
 						addedMatch: home_team + " v " + visitor_team + " on " + datepicked + " " + time,
 						moment: moment,
 						now: moment(new Date).tz(
@@ -667,7 +667,8 @@ module.exports = function(router) {
 						netlighter : req.session.user,
 						allteams : allteams,
 						matches : allmatches,
-						winners : winners,
+						winners: winners,
+						menu: "admin",
 						moment : moment,
 						now: moment(new Date).tz("America/New_York").format(
 								'YYYY-MM-DD HH:mm:ss')

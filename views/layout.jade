@@ -33,7 +33,7 @@ html(lang='en')
                     - if (menu == 'today')
                         - activate = "activeNav"
 
-                    a.navbar-brand(style="padding:0px;" href="/")
+                    a.navbar-brand(style="padding:0px;margin-right: 5px;" href="/")
                       img(src="/images/bostonia.png" style="width:50px")
                     a.navbar-brand.navbar-item(style='margin-left: 0px;', href='/', class=activate) Today
                     - activate = ""
@@ -50,7 +50,7 @@ html(lang='en')
                         li.navbar-item(class=activate)
                             a(href="/ranking") Ranking
                         li.navbar-item(class=activate)
-                            a(href="/admin") Admin
+                            a(href="/admin") Results & Points
 
                     ul.nav.navbar-nav.navbar-right
                         - activate = ""

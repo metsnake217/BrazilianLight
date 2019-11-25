@@ -1,6 +1,7 @@
 {
   "ExpandedNodes": [
     "",
+    "\\config",
     "\\db_backup",
     "\\public",
     "\\public\\css",
@@ -8,6 +9,6 @@
     "\\routes",
     "\\views"
   ],
-  "SelectedNode": "\\public\\javascripts\\image_preload.js",
+  "SelectedNode": "\\routes\\index.js",
   "PreviewInSolutionExplorer": false
 }
