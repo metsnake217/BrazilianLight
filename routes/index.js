@@ -444,8 +444,8 @@ module.exports = function(router) {
 		proceed = true;
 		errorText = "<b>The following fields are invalid: </b>";
 
-		var hometeam_error = "";
-		var visitorteam_error = "";
+		var home_error = "";
+		var visitor_error = "";
 		var datepicked_error = "";
 		var hour_error = "";
 		var mins_error = "";
@@ -455,12 +455,12 @@ module.exports = function(router) {
 		if (!(home_team != null && home_team.length > 0)) {
 			errorText += "<br/>Home Team";
 			proceed = false;
-			hometeam_error = "addError";
+			home_error = "addError";
 		}
 		if (!(visitor_team != null && visitor_team.length > 0)) {
 			errorText += "<br/>Visitor Team";
 			proceed = false;
-			visitorteam_error = "addError";
+			visitor_error = "addError";
 		}
 		if (!(league != null && league.length > 0 && league != 'select')) {
 			errorText += "<br/>League";
@@ -527,9 +527,9 @@ module.exports = function(router) {
 					netlighter: req.session.user,
 					menu: 'macthes',
 					hometeam_val: home_team,
-					hometeam_error: hometeam_error,
+					hometeam_error: home_error,
 					visitorteam_val: visitor_team,
-					visitor_error: visitor_error,
+					visitorteam_error: visitor_error,
 					league_val: league,
 					league_error: league_error,
 					hour_val: hour,
