@@ -458,9 +458,10 @@ Match.prototype.add = function (callback) {
 	query.on("end", function (result) {
 		results = result.rows;
 		var num = 1;
+		console.log("results is: " + results);
 		if (results != null && results.length > 0) {
-			console.log("count is: " + results.a);
-			num = parseInt(results.a) + 1;
+			console.log("count is: " + results[0].a);
+			num = parseInt(results[0].a) + 1;
 		}
 		console.log("num is: " + num);
 		var queryString2 = "INSERT INTO vm2014_match VALUES (";
