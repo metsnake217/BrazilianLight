@@ -477,6 +477,9 @@ var analyze = function(matchresults, participantsResults) {
 		var participantmargin = participant.scoretyp - participant.scorehemma;
 		var predictedteam = participant.predictedteam;
 		var winner = matchresults.winner;
+		console.log("winner: " + winner);
+		console.log("matchmargin: " + matchmargin);
+		console.log("participantmargin: " + participantmargin);
 
 		if (predictedteam != winner) {
 			points = 0;
@@ -490,6 +493,7 @@ var analyze = function(matchresults, participantsResults) {
 				|| (participant.scoretyp == matchresults.scoretyp && participant.scorehemma == matchresults.scorehemma)) {
 			points = 1;
 		}
+		console.log("points: " + points);
 
 		var email = participant.email;
 
