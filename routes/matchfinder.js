@@ -579,7 +579,7 @@ var analyze = function(matchresults, participantsResults) {
 		body += "<br/><br/><b><i>The Bostonia League Team -</i></b></div>";
 
 		var mailOptions = new MailOptions(email, subject, body);
-		//mailOptions.sendAllEmails();
+		mailOptions.sendAllEmails();
 
 		var results;
 		var queryString = "UPDATE vm2014_predictsingleteam SET points = "

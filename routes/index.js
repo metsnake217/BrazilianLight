@@ -798,7 +798,7 @@ module.exports = function(router) {
 																								.render(
 																										'admin',
 																										{
-																											title : 'Administer Results, Teams & Points',
+																											title : 'Administer Results & Points',
 																											loggedIn : true,
 																											netlighter : req.session.user,
 																											allteams : allteams,
@@ -816,7 +816,7 @@ module.exports = function(router) {
 																													+ typ
 																													+ ' v '
 																													+ hemma
-																													+ '</b> and Points'
+																													+ '</b> and Points.'
 																										});
 																					});
 																		});
