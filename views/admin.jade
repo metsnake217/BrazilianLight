@@ -107,8 +107,8 @@ block content
          - if (moment(match.datum).diff(moment(now)) < 0 && scoretyp != '')
               - background = 'background-color:rgba(169, 155, 175, 0.64);'
            
-         div(class="matchadmin-container")  
-          div(style="padding:10px;" + background + ";float:left;position:relative;width:100%;text-align:center")
+         div(class="matchadmin-container" style=background)  
+          div(style="padding:10px;float:left;position:relative;width:100%;text-align:center")
             img(src=flagtyp alt="" style="border-width:0px;" class="hidden-xs")
             span!= match.typ+'  '
             input(id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scoretyp').val($(this).val())")
