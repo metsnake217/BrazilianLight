@@ -32,13 +32,14 @@ MatchResults = function(scoretyp, scorehemma, winner, bet, typ, hemma) {
 	this.hemma = hemma;
 };
 
-MatchPredictorSingleTeam = function(id, predictedTeam, bet, scoretyp,
+MatchPredictorSingleTeam = function(id, email, predictedTeam, bet, scoretyp,
 		scorehemma) {
 	this.id = id;
 	this.predictedTeam = predictedTeam;
 	this.bet = bet;
 	this.scoretyp = scoretyp;
 	this.scorehemma = scorehemma;
+	this.email = email;
 };
 
 MatchPhase = function(phase) {
@@ -145,6 +146,7 @@ MatchPredictorSingleTeam.prototype.setPrediction = function(callback) {
 	var bet = this.bet;
 	var scoretyp = this.scoretyp;
 	var scorehemma = this.scorehemma;
+	var email = this.email;
 	var netlighterMakesBet = new NetlighterMakesBet(id, bet);
 	netlighterMakesBet
 			.checkIfBetMade(function(error, betMade) {
@@ -197,11 +199,13 @@ MatchPredictorSingleTeam.prototype.setPrediction = function(callback) {
 								&& scorehemma != null) {
 							queryString += "'" + id + "', '" + predictedTeam
 									+ "', " + bet + ", 0," + scoretyp + ","
-									+ scorehemma + ")";
+								+ scorehemma + ","
+								+ email + ")";
 						} else if (predictedTeam == null && scoretyp != null
 								&& scorehemma != null) {
 							queryString += "'" + id + "', '', " + bet + ", 0,"
-									+ scoretyp + "," + scorehemma + ")";
+								+ scoretyp + "," + scorehemma + ","
+								+ email + ")";
 						}
 
 						query = client.query(new Query(queryString));
@@ -487,15 +491,15 @@ var analyze = function(matchresults, participantsResults) {
 			points = 3;
 		}
 
-		var email = participant.id;
+		var email = participant.email;
 
-		if (email.length == 4 || email.length == 2) {
+		/*if (email.length == 4 || email.length == 2) {
 			email += "@netlight.com";
-		}
+		}*/
 		var subject = "Your Prediction Results for - " + matchresults.typ
 				+ " v " + matchresults.hemma;
 		var body = "<div style=\"font-family:'calibri'; font-size:11pt\">Hello There,<br/><br/>";
-		body += "Thanks for participating in the BrazilianLight tournament! Here is the result of the game:<br/>";
+		body += "Thanks for participating in the Bostonia League! Here is the result of the game:<br/>";
 		body += "<p style=\"text-align:center\"><span style='font-size:20pt'><b>"
 				+ matchresults.typ
 				+ "</b></span> <span style='color:red; font-size:18pt'><b>"
@@ -508,8 +512,8 @@ var analyze = function(matchresults, participantsResults) {
 				+ ":" + participant.scorehemma + "</b>.";
 		body += "<br/>You have earned: <span style='color:red'><b>" + points
 				+ " points</b></span>.";
-		body += "<br/><br/>Have you played today? Come and play with us again <a href=\"http:\/\/brazilianlight.netlight.com\">@BrazilianLight</a>";
-		body += "<br/><br/><b><i>The BrazilianLight Team -</i></b></div>";
+		body += "<br/><br/>Have you played today? Come and play with us again <a href=\"http:\/\/bostonia.herokuapp.com\">@BostoniaLeague</a>";
+		body += "<br/><br/><b><i>The Bostonia League Team -</i></b></div>";
 
 		var mailOptions = new MailOptions(email, subject, body);
 		mailOptions.sendAllEmails();

@@ -116,6 +116,7 @@ module.exports = function(router) {
 					isLoggedIn,
 					function(req, res) {
 						var id = req.session.userid;
+						var email = req.session.email;
 						var predictedTeam = '';
 						var predictedPosition = req.body.position;
 						var bet = req.body.bet;
@@ -134,7 +135,7 @@ module.exports = function(router) {
 						}
 
 						var matchPredictorSingle = new MatchPredictorSingleTeam(
-								id, predictedTeam, bet, scoretyp, scorehemma);
+								id, email, predictedTeam, bet, scoretyp, scorehemma);
 						var netlighterMakesBets = new NetlighterMakesBets(id);
 						var betsMade;
 
@@ -545,6 +546,7 @@ module.exports = function(router) {
 										if (done != null && done.length > 0) {
 											req.session.user = done[0].name;
 											req.session.userid = done[0].id;
+											req.session.email = done[0].email;
 											req.session.active = done[0].active;
 
 											if (done[0].active == 0) {
