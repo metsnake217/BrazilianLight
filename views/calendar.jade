@@ -95,7 +95,7 @@ block content
                - if(nodups.indexOf(phaseone.shortdate) == -1)
                    - link = "/event/"+phaseone.shortdate
                    - pastdate = ""
-                   ul(style="float: left; width: 20%; margin-right: 2%;")
+                   ul(class="calendar-list")
                      li
                        - if(moment(phaseone.shortdate).diff(moment(now).subtract('days', 1)) < 0)
                           - pastdate = "pastdate"
