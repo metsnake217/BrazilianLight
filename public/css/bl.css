@@ -83,7 +83,7 @@ body {
 }
 
 .fonticon {
-	font-size: 20pt;
+	font-size: 20pt !important;
 	padding-right: 5px;
 	color: #e29811;
 }
@@ -408,7 +408,7 @@ input::-webkit-inner-spin-button {
 
  @media (max-width: 440px) {
 	.fonticon {
-		font-size: 15pt;
+		font-size: 15pt !important;
 	}
 
 	.fonticon-text {

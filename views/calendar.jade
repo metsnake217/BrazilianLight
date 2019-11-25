@@ -102,7 +102,7 @@ block content
                           span(class="fa fa-trophy fonticon")
                        - else
                           span(class="fa fa-futbol-o fonticon")                       
-                       a(href=link class="fonticon-text" + pastdate)= phaseone.shortdate
+                       a(href=link class="fonticon-text " + pastdate)= phaseone.shortdate
                        - nodups.push(phaseone.shortdate)
   //#secondPhase.container
     if secondPhase && secondPhase!=null && secondPhase.length > 0
