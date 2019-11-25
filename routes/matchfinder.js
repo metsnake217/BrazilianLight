@@ -457,9 +457,14 @@ Match.prototype.add = function (callback) {
 	});
 	query.on("end", function (result) {
 		results = result.rows;
-		console.log("count is: " + results.a);
+		var num = 1;
+		if (results != null && results.length > 0) {
+			console.log("count is: " + results.a);
+			num = parseInt(results.a) + 1;
+		}
+		console.log("num is: " + num);
 		var queryString2 = "INSERT INTO vm2014_match VALUES (";
-		queryString2 += "'" + results.a + "', 'M', '" + visitor + "','" + home + "','','','" + date + "','A','',0,'', '" + league + "')";
+		queryString2 += "'" + num + "', 'M', '" + visitor + "','" + home + "','','','" + date + "','A','',0,'', '" + league + "')";
 		console.log("queryString2: " + queryString2);
 		/*var query2 = client.query(new Query(queryString2));
 		query2.on("row", function (row, result2) {
