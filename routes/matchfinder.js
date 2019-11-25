@@ -372,7 +372,7 @@ Netlighter.prototype.changepassword = function(callback) {
 
 MatchFinder.prototype.getAllMatches = function(callback) {
 	var results
-	var query = client.query(new Query("SELECT * FROM vm2014_match order by datum asc"));
+	var query = client.query(new Query("SELECT * FROM vm2014_match order by datum desc"));
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
