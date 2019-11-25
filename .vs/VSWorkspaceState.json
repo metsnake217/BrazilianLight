@@ -9,6 +9,6 @@
     "\\routes",
     "\\views"
   ],
-  "SelectedNode": "\\views\\calendar.jade",
+  "SelectedNode": "\\routes\\matchfinder.js",
   "PreviewInSolutionExplorer": false
 }
