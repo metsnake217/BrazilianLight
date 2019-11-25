@@ -482,13 +482,13 @@ var analyze = function(matchresults, participantsResults) {
 			points = 0;
 		} else if (participant.scoretyp == matchresults.scoretyp
 				&& participant.scorehemma == matchresults.scorehemma) {
-			points = 6;
+			points = 3;
 		} else if (predictedteam == winner && matchmargin == participantmargin
 				&& matchresults.scorehemma != matchresults.scoretyp) {
-			points = 4;
+			points = 2;
 		} else if (predictedteam == winner
 				|| (participant.scoretyp == matchresults.scoretyp && participant.scorehemma == matchresults.scorehemma)) {
-			points = 3;
+			points = 1;
 		}
 
 		var email = participant.email;
