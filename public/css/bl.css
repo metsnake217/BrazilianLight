@@ -17,6 +17,7 @@ input[type='number'] {
 
 .btn:active, .btn:focus {
 	border: none !important;
+	outline: none;
 }
 
 input::-webkit-outer-spin-button,
