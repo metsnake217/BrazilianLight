@@ -16,7 +16,7 @@ block content
             - background = 'background:rgba(0, 0, 0, 0);'
             - flagtyp = ''
             - flaghemma = ''
-			- noshow = false
+            - noshow = false
             - each match in matches
                - matchdate = (new Date(match.datum))
                - predicted = false
@@ -27,6 +27,7 @@ block content
                - flaghemma = "/images/" + match.hemma + "_flag.png"
                - betpoints = 0
                - count++
+               - noshow = false
                - if(betsMade != null)
                   - each bet in betsMade
                      - if(bet.bet == match.bet)
@@ -36,7 +37,6 @@ block content
                         - scoretyp = bet.scoretyp
                         - scorehemma = bet.scorehemma
                         - betpoints = bet.points
-				     - noshow = false
 
                   div(id="ctl00_Div2" style=""+background class="container patchycontainer").match
                      div.row
@@ -56,7 +56,7 @@ block content
                               div.group!= '<b>League:</b> ' + match.league
                            div.date!= '<b>Date:</b> ' + moment(match.datum).format('LLL')
                            if(match.resultat != null && match.resultat != '')
-						      - noshow = true
+                              - noshow = true
                               div.results!= 'This game has ended and the result is <b>' + match.resultat + '</b>.'
                               if(predicted && betpoints != null)
                                  div.points!= 'You have earned <b>' + betpoints + '</b> points.'
