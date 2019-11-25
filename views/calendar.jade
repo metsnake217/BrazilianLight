@@ -95,12 +95,14 @@ block content
                - if(nodups.indexOf(phaseone.shortdate) == -1)
                    - link = "/event/"+phaseone.shortdate
                    - pastdate = ""
-                   ul
+                   ul(style="float: left; width: 20%; margin-right: 2%;")
                      li
                        - if(moment(phaseone.shortdate).diff(moment(now).subtract('days', 1)) < 0)
                           - pastdate = "pastdate"
-                          span(class="icon-check")
-                       a(href=link class=pastdate)= phaseone.shortdate
+                          span(class="fa fa-trophy fonticon")
+                       - else
+                          span(class="fa fa-futbol-o fonticon")                       
+                       a(href=link class="fonticon-text" + pastdate)= phaseone.shortdate
                        - nodups.push(phaseone.shortdate)
   //#secondPhase.container
     if secondPhase && secondPhase!=null && secondPhase.length > 0

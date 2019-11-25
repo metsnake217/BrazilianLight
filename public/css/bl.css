@@ -82,6 +82,14 @@ body {
 	border: 0;
 }
 
+.fonticon {
+	font-size: 20pt;
+	padding-right: 5px;
+	color: #e29811;
+}
+.fonticon-text {
+	font-size: 18px !important;
+}
 .activeNav {
 	font-weight: bold;
 	background-color: #cabb0bc7 !important;
@@ -399,6 +407,13 @@ input::-webkit-inner-spin-button {
 }
 
  @media (max-width: 440px) {
+	.fonticon {
+		font-size: 15pt;
+	}
+
+	.fonticon-text {
+		font-size: 15px !important;
+	}
 	.matchadmin-container {
 		width: 100%;
 		padding: 5px;
