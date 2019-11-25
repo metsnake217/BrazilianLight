@@ -437,8 +437,8 @@ module.exports = function(router) {
 		console.log("league: " + league);
 		console.log("hour: " + hour);
 		console.log("mins: " + mins);
-		console.log("datepicked: " + datepicked);
 		datepicked = datepicked + " " + hour + ":" + mins + ":00";
+		console.log("datepicked: " + datepicked);
 
 		var match = new Match(home_team, visitor_team, league, datepicked);
 		var matchPhaseStageAll = new MatchPhase(0);
