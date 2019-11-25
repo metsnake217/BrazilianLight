@@ -7,7 +7,7 @@ block content
      h1= title
      p Enter results daily and run the script!
      
-     div
+     //div
         a(href="#" onclick="javascript:$('.winners').removeClass('hide')")!='Administer Teams Advancing ('
         a(href="#" style="font-weight:bold" onclick="javascript:$('.winners').addClass('hide')")!='Close'
         span!=')'
@@ -29,7 +29,7 @@ block content
        - hide = 'hide'
      if advancedsuccess
          - hide = ''
-     div(id="ctl00_Div2" class="winners "+hide style="padding:20px;margin:20px; width:auto;"+background class="container").match
+     //div(id="ctl00_Div2" class="winners "+hide style="padding:20px;margin:20px; width:auto;"+background class="container").match
        if advancedsuccess
          div(class="alert alert-success")!= advancedsuccess
        if advancederror
@@ -94,8 +94,8 @@ block content
          - scoretyp = ''
          - scorehemma = ''
          - background = 'background:rgba(0, 0, 0, 0);'
-         - flagtyp = "/images/" + match.typ + "_flag.png"
-         - flaghemma = "/images/" + match.hemma + "_flag.png"
+         - flagtyp = "/images/" + match.league + "_flag.png"
+         - flaghemma = "/images/" + match.league + "_flag.png"
          - count++
          - result = match.resultat
          - if(result != null && result.length>2)
@@ -107,8 +107,8 @@ block content
          - if (moment(match.datum).diff(moment(now)) < 0 && scoretyp != '')
               - background = 'border-style:solid;border-color:rgba(173, 20, 245, 0.64); padding: 10px;'
            
-           
-         p(style="padding-top:10px;"+background)
+         div(style="width: 50%")  
+          div(style="padding:10px;" + background + ";float:left;position:relative")
             img(src=flagtyp alt="" style="border-width:0px;")
             span!= match.typ+'  '
             input(id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scoretyp').val($(this).val())")
@@ -117,7 +117,7 @@ block content
             span!= '  '+match.hemma
             img(src=flaghemma alt="" style="border-width:0px;")
                   
-
+          div(style="float:left;position:relative")
             form(method="post" action="/admin" id="predict" style="float:left;")
               input(name="user" type="hidden" value=''+user)
               input(name="position" class="position" id="position" type="hidden" value=count)
