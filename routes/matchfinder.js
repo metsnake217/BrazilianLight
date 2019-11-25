@@ -23,6 +23,13 @@ MatchAdvancing = function(advanced, typorhemma, match) {
 	this.match = match;
 };
 
+Match = function (home, visitor, league, date) {
+	this.home = home;
+	this.visitor = visitor;
+	this.league = league;
+	this.date = date;
+};
+
 MatchResults = function(scoretyp, scorehemma, winner, bet, typ, hemma) {
 	this.scoretyp = scoretyp;
 	this.scorehemma = scorehemma;
@@ -434,6 +441,40 @@ MatchAdvancing.prototype.updateWinner = function(callback) {
 	});
 };
 
+Match.prototype.add = function (callback) {
+	var results;
+	var results2;
+	var home = this.home;
+	var visitor = this.visitor;
+	var datepicked = this.date;
+	var league = this.league;
+
+	var queryString = "Select count(*) as a from vm2014_match";
+
+	var query = client.query(new Query(queryString));
+	query.on("row", function (row, result) {
+		result.addRow(row);
+	});
+	query.on("end", function (result) {
+		results = result.rows;
+		console.log("count is: " + results.a);
+		var queryString2 = "INSERT INTO vm2014_match VALUES (";
+		queryString2 += "'" + results.a + "', 'M', '" + visitor + "','" + home + "','','','" + date + "','A','',0,'', '" + league + "')";
+		console.log("queryString2: " + queryString2);
+		/*var query2 = client.query(new Query(queryString2));
+		query2.on("row", function (row, result2) {
+			result2.addRow(row);
+		});
+		query2.on("end", function (result2) {
+			callback(null, "success");
+		});*/
+		callback(null, "success");
+
+	});
+
+
+};
+
 MatchResults.prototype.putResults = function(callback) {
 	var results
 	var result = this.scoretyp + ':' + this.scorehemma;
@@ -546,3 +587,4 @@ exports.MatchPhase = MatchPhase;
 exports.MatchEvent = MatchEvent;
 exports.MatchResults = MatchResults;
 exports.MatchAdvancing = MatchAdvancing;
+exports.Match = Match;

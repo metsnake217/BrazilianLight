@@ -8,6 +8,7 @@ var MatchPhase = matchFinderClass.MatchPhase;
 var Netlighter = matchFinderClass.Netlighter;
 var MatchResults = matchFinderClass.MatchResults;
 var MatchAdvancing = matchFinderClass.MatchAdvancing;
+var Match = matchFinderClass.Match;
 var moment = require('moment-timezone');
 
 var express = require('express');
@@ -423,14 +424,65 @@ module.exports = function(router) {
 
 					});
 
-	router.get('/calendar', isLoggedIn, function(req, res) {
+	router.post('/add', isLoggedIn, function (req, res) {
+		var home_team = req.body.home_team;
+		var visitor_team = req.body.visitor_team;
+		var league = req.body.league;
+		var hour = req.body.hr;
+		var mins = req.body.mins;
+		var datepicked = req.body.datepicker;
+
+		console.log("home_team: " + home_team);
+		console.log("visitor_team: " + visitor_team);
+		console.log("league: " + league);
+		console.log("hour: " + hour);
+		console.log("mins: " + mins);
+		console.log("datepicked: " + datepicked);
+		datepicked = datepicked + " " + hr + ":" + mins + ":00";
+
+		var match = new Match(home_team, visitor_team, league, datepicked);
 		var matchPhaseStageAll = new MatchPhase(0);
+		matchPhaseStageAll.getCalendar(function (error, calendarAll) {
+			match.add(function (error, done) {
+				if (done != null && done == 'success') {
+					res.render('calendar', {
+						title: 'Matches',
+						all: calendarAll,
+						loggedIn: true,
+						netlighter: req.session.user,
+						menu: 'macthes',
+						addedMatch: home_team + " v " + visitor_team + " on " + datepicked,
+						moment: moment,
+						now: moment(new Date).tz(
+							"America/New_York").format(
+								'YYYY-MM-DD HH:mm:ss')
+					});
+				} else {
+					res.render('calendar', {
+						title: 'Matches',
+						all: calendarAll,
+						loggedIn: true,
+						netlighter: req.session.user,
+						menu: 'macthes',
+						notaddedMatch: "Something went wrong. Please try again.",
+						moment: moment,
+						now: moment(new Date).tz(
+							"America/New_York").format(
+								'YYYY-MM-DD HH:mm:ss')
+					});
+				}
+			});
+		});
+	});
+
+	router.get('/calendar', isLoggedIn, function(req, res) {
 		var matchPhaseStageGroup = new MatchPhase(1);
 		var matchPhaseSecondPhase = new MatchPhase(2);
 		var matchPhaseQuarters = new MatchPhase(3);
 		var matchPhaseSemis = new MatchPhase(4);
 		var matchPhaseThird = new MatchPhase(5);
 		var matchPhaseFinal = new MatchPhase(6);
+		var matchPhaseStageAll = new MatchPhase(0);
 		matchPhaseStageAll.getCalendar(function (error, calendarAll) {
 		matchPhaseStageGroup.getCalendar(function(error, calendarGroupStage) {
 			matchPhaseSecondPhase.getCalendar(function(error,
@@ -444,7 +496,7 @@ module.exports = function(router) {
 									matchPhaseFinal.getCalendar(function(error,
 											calendarFinal) {
 										res.render('calendar', {
-											title : 'Calendar',
+											title : 'Matches',
 											groupPhase : calendarGroupStage,
 											secondPhase : calendarSecondPhase,
 											quarters : calendarQuarters,

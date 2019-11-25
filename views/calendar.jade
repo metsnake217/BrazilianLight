@@ -13,13 +13,17 @@ block content
      div
        if message
          div(class="alert alert-danger")!= message
+       if addedMatch
+         div(class="alert alert-success")!= "Great. You have added <b>" + addedMatch + "</b>"
+       if notaddedMatch
+         div(class="alert alert-danger")!=  notaddedMatch
        form(action="/add" method="post")
          div(class="textentry")
            input(name="home_team" type="text" id="home_team" class="form-control" placeholder="Home Team")
          div(class="textentry")
            input(name="visitor_team" type="text" id="visitor_team" class="form-control" placeholder="Visitor Team")
          div(class="textentry")
-           select(style="width:100%")
+           select(style="width:100%" id="league")
              option(value="select")!= "Select League"
              option(value="France")!= "France"
              option(value="Italy")!= "Calcio Italy"
@@ -32,7 +36,7 @@ block content
              option(value="Other")!= "Other"
 
          div(class="textentry")
-           select(style="width:50%")
+           select(style="width:50%" id="hr")
              option(value="select")!= "Select Hour"
              option(value="00")!= "00"
              option(value="01")!= "01"
@@ -59,7 +63,7 @@ block content
              option(value="22")!= "22"
              option(value="23")!= "23"
 
-           select(style="width:50%")
+           select(style="width:50%" id="mins")
              option(value="select")!= "Select Minutes"
              option(value="00")!= "00"
              option(value="05")!= "05"
