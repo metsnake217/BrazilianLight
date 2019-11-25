@@ -12,9 +12,9 @@ block content
         a(href="#" style="font-weight:bold" onclick="javascript:$('.winners').addClass('hide')")!='Close'
         span!=')'
      div
-        a(href="#" onclick="javascript:$('.results').removeClass('hide')")!='Administer Results ('
-        a(href="#" style="font-weight:bold" onclick="javascript:$('.results').addClass('hide')")!='Close'
-        span!=')'
+        a(href="#" onclick="javascript:$('.results').removeClass('hide')")!='Administer Results'
+        //a(href="#" style="font-weight:bold" onclick="javascript:$('.results').addClass('hide')")!='Close'
+        //span!=')'
         
   #matches
        - now = (new Date(now)).getTime()
@@ -80,10 +80,10 @@ block content
               - float = "right"
      
      
-     - hide = 'hide'
+     - hide = 'show'
      if successmessage
          - hide = ''
-     div(id="ctl00_Div2" class="results "+hide style="padding:20px;margin:20px; width:auto;"+background class="container").match
+     div(id="ctl00_Div2" class="results "+hide style="width:auto;"+background class="container").match
        if successmessage
          div(class="alert alert-success")!= successmessage
        if errormessage
