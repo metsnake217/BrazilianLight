@@ -4,8 +4,8 @@ var nodemailer = require("nodemailer");
 var smtpTransport = nodemailer.createTransport("SMTP", {
 	service : "Gmail",
 	auth : {
-		user : "eshaysh@gmail.com",
-		pass : "ameralexgna"
+		user : "bostonialeague@gmail.com",
+		pass : "gnaera19!"
 	}
 });
 
@@ -14,14 +14,14 @@ var transport = nodemailer.createTransport("SMTP", {
     secureConnection: true, // use SSL
     port: 465, // port for secure SMTP
     auth: {
-		user: "eshaysh@gmail.com",
-        pass: "ameralexgna"
+		user: "bostonialeague@gmail.com",
+        pass: "gnaera19!"
     }
 });
 
 // setup e-mail data with unicode symbols
 var MailOptions = function(to, subject, body) {
-	this.from = "Bostonia League <eshaysh@gmail.com>";
+	this.from = "Bostonia League <bostonialeague@gmail.com>";
 	this.to = to;
 	this.subject = subject;
 	this.body = body;

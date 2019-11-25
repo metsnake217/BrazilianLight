@@ -471,7 +471,7 @@ module.exports = function(router) {
 
 	router.get('/help', isLoggedIn, function(req, res) {
 		res.render('help', {
-			title : 'You & BrazilianLight',
+			title : 'You & Bostonia League',
 			loggedIn : true,
 			netlighter : req.session.user,
 			menu : 'help'
@@ -582,7 +582,7 @@ module.exports = function(router) {
 
 	router.get('/changepassword', isLoggedInAndNotActive, function(req, res) {
 		res.render('changepassword', {
-			title : 'You & BrazilianLight',
+			title : 'You & Bostonia League',
 			loggedIn : true,
 			netlighter : req.session.user,
 			scripts : [ '/javascripts/utils.js' ]
