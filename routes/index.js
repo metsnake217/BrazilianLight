@@ -444,8 +444,9 @@ module.exports = function(router) {
 
 		var match = new Match(home_team, visitor_team, league, datepicked, time);
 		var matchPhaseStageAll = new MatchPhase(0);
-		matchPhaseStageAll.getCalendar(function (error, calendarAll) {
-			match.add(function (error, done) {
+		
+		match.add(function (error, done) {
+			matchPhaseStageAll.getCalendar(function (error, calendarAll) {
 				if (done != null && done == 'success') {
 					res.render('calendar', {
 						title: 'Matches',
