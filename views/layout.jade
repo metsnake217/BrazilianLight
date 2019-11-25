@@ -50,6 +50,8 @@ html(lang='en')
 
                         li.navbar-item(class=activate)
                             a(href="/ranking") Ranking
+                        - if (menu == 'admin')
+                            - activate = "activeNav"
                         li.navbar-item(class=activate)
                             a(href="/admin") Results & Points
 
