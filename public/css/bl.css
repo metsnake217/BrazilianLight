@@ -15,6 +15,10 @@ input[type='number'] {
     -moz-appearance:textfield;
 }
 
+.addError {
+	border-style: solid;
+	border-color: #f2dede;
+}
 .btn:active, .btn:focus, .btn:active:focus {
 	border: none !important;
 	outline: none;

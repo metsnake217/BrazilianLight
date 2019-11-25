@@ -17,26 +17,47 @@ block content
          div(class="alert alert-success")!= "Great. You have added <b>" + addedMatch + "</b>"
        if notaddedMatch
          div(class="alert alert-danger")!=  notaddedMatch
+       - var homeval = ''
+       - var visitorval = ''
+       - var dateval = ''
+       - var leagueval = ''
+       - var hourval = ''
+       - var minsval = ''
+       if hometeam_error != null && hometeam_error != ""
+          - homeval = "value='" + hometeam_val + "'"
+       if visitorteam_error != null && visitorteam_error != ""
+          - visitorval = "value='" + visitorteam_val + "'"
+       if datepicked_error != null && datepicked_error != ""
+          - dateval = "value='" + datepicked_val + "'"
+       if league_error != null && league_error != ""
+          - leagueval = "value='" + league_val + "'"
+       if hour_error != null && hour_error != ""
+          - hourval = "value='" + hour_val + "'"
+       if mins_error != null && mins_error != ""
+          - minsval = "value='" + mins_val + "'"
+        div(id="ctl00_Div2"  class="row roundHdr")
+          h1= 'Matches'
+          - nodups = []
        form(action="/add" method="post")
-         div(class="textentry")
-           input(name="home_team" type="text" id="home_team" class="form-control addInput" placeholder="Home Team")
-         div(class="textentry")
-           input(name="visitor_team" type="text" id="visitor_team" class="form-control addInput" placeholder="Visitor Team")
-         div(class="textentry")
+         div(class="textentry " + hometeam_error)
+           input(name="home_team" type="text" id="home_team" class="form-control addInput" placeholder="Home Team" homeval)
+         div(class="textentry " + visitorteam_error)
+           input(name="visitor_team" type="text" id="visitor_team" class="form-control addInput" placeholder="Visitor Team" visitorval)
+         div(class="textentry " + league_error)
            select(style="width:100%" name="league" class="addInput")
-             option(value="select")!= "Select League"
-             option(value="France")!= "France"
-             option(value="Italy")!= "Calcio Italy"
-             option(value="United States")!= "MLS"
-             option(value="uk")!= "UK Premiership"
-             option(value="Brazil")!= "Brazil"
-             option(value="Argentina")!= "Argentina"
-             option(value="ChampionsLeague")!= "Champions League"
-             option(value="EuropaLeague")!= "Europa League"
-             option(value="Other")!= "Other"
+             option(value="select" selected=(leagueval=="select" ? "selected" : undefined))!= "Select League"
+             option(value="France" selected=(leagueval=="France" ? "selected" : undefined))!= "France"
+             option(value="Italy" selected=(leagueval=="Italy" ? "selected" : undefined))!= "Calcio Italy"
+             option(value="United States" selected=(leagueval=="United States" ? "selected" : undefined))!= "MLS"
+             option(value="uk" selected=(leagueval=="uk" ? "selected" : undefined))!= "UK Premiership"
+             option(value="Brazil" selected=(leagueval=="Brazil" ? "selected" : undefined))!= "Brazil"
+             option(value="Argentina" selected=(leagueval=="Argentina" ? "selected" : undefined))!= "Argentina"
+             option(value="ChampionsLeague" selected=(leagueval=="ChampionsLeague" ? "selected" : undefined))!= "Champions League"
+             option(value="EuropaLeague" selected=(leagueval=="EuropaLeague" ? "selected" : undefined))!= "Europa League"
+             option(value="Other" selected=(leagueval=="Other" ? "selected" : undefined))!= "Other"
 
          div(class="textentry")
-           select(style="width:45%" name="hr" class="addInput")
+           select(style="width:45%" name="hr" class="addInput " + hour_error)
              option(value="select")!= "Select Hour"
              option(value="00")!= "00"
              option(value="01")!= "01"
@@ -63,7 +84,7 @@ block content
              option(value="22")!= "22"
              option(value="23")!= "23"
 
-           select(style="width:45%;margin-left: 10px;" name="mins" class="addInput")
+           select(style="width:45%;margin-left: 10px;" name="mins" class="addInput " + mins_error)
              option(value="select")!= "Select Minutes"
              option(value="00")!= "00"
              option(value="05")!= "05"
@@ -79,7 +100,7 @@ block content
              option(value="55")!= "55"
 
          div(class="textentry")
-           input(type="text" id="datepicker" name="datepicker" placeholder="Date" style="width:100%" class="addInput")
+           input(type="text" id="datepicker" name="datepicker" placeholder="Date" style="width:100%" class="addInput "  + datepicked_error datepicked_val)
          div(class="buttons" style="")
            //input(type="submit" class="button" value="Get in")
            button.btn.btn-success.btn-lg.btn-block.addBtn(type='submit') Add

@@ -444,29 +444,43 @@ module.exports = function(router) {
 		proceed = true;
 		errorText = "<b>The following fields are invalid: </b>";
 
+		var hometeam_error = "";
+		var visitorteam_error = "";
+		var datepicked_error = "";
+		var hour_error = "";
+		var mins_error = "";
+		var league_error = "";
+
+
 		if (!(home_team != null && home_team.length > 0)) {
 			errorText += "<br/>Home Team";
 			proceed = false;
+			hometeam_error = "addError";
 		}
 		if (!(visitor_team != null && visitor_team.length > 0)) {
 			errorText += "<br/>Visitor Team";
 			proceed = false;
+			visitorteam_error = "addError";
 		}
 		if (!(league != null && league.length > 0 && league != 'select')) {
 			errorText += "<br/>League";
 			proceed = false;
+			league_error = "addError";
 		}
 		if (!(datepicked != null && datepicked.length > 0)) {
 			errorText += "<br/>Date";
 			proceed = false;
+			datepicked_error = "addError";
 		}
 		if (!(hour != null && hour.length > 0 && hour != 'select')) {
 			errorText += "<br/>Hour";
 			proceed = false;
+			hour_error = "addError";
 		}
 		if (!(mins != null && mins.length > 0 && mins != 'select')) {
 			errorText += "<br/>Minutes";
 			proceed = false;
+			mins_error = "addError";
 		}
 		var matchPhaseStageAll = new MatchPhase(0);
 		if (proceed) {
@@ -512,6 +526,18 @@ module.exports = function(router) {
 					loggedIn: true,
 					netlighter: req.session.user,
 					menu: 'macthes',
+					hometeam_val: home_team,
+					hometeam_error: hometeam_error,
+					visitorteam_val: visitor_team,
+					visitor_error: visitor_error,
+					league_val: league,
+					league_error: league_error,
+					hour_val: hour,
+					hour_error: hour_error,
+					mins_val: mins,
+					mins_error: mins_error,
+					datepicked_val: datepicked,
+					datepicked_error: datepicked_error,
 					notaddedMatch: errorText,
 					moment: moment,
 					now: moment(new Date).tz(
