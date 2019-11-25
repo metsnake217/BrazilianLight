@@ -384,8 +384,8 @@ input::-webkit-inner-spin-button {
 }
 
 .you {
-	color: #460077;
-	background-color: rgba(70, 0, 119, 0.4);
+	color: white;
+	background-color: rgba(39, 144, 219, 0.95);
 }
 
 .wrapped {
