@@ -468,9 +468,10 @@ module.exports = function(router) {
 			errorText += "<br/>Minutes";
 			proceed = false;
 		}
+		var matchPhaseStageAll = new MatchPhase(0);
 		if (proceed) {
 		var match = new Match(home_team, visitor_team, league, datepicked, time);
-		var matchPhaseStageAll = new MatchPhase(0);
+		
 
 		match.add(function (error, done) {
 			matchPhaseStageAll.getCalendar(function (error, calendarAll) {
@@ -503,18 +504,20 @@ module.exports = function(router) {
 				}
 			});
 		});
-	} else {
-			res.render('calendar', {
-				title: 'Matches',
-				all: calendarAll,
-				loggedIn: true,
-				netlighter: req.session.user,
-				menu: 'macthes',
-				notaddedMatch: errorText,
-				moment: moment,
-				now: moment(new Date).tz(
-					"America/New_York").format(
-						'YYYY-MM-DD HH:mm:ss')
+		} else {
+			matchPhaseStageAll.getCalendar(function (error, calendarAll) {
+				res.render('calendar', {
+					title: 'Matches',
+					all: calendarAll,
+					loggedIn: true,
+					netlighter: req.session.user,
+					menu: 'macthes',
+					notaddedMatch: errorText,
+					moment: moment,
+					now: moment(new Date).tz(
+						"America/New_York").format(
+							'YYYY-MM-DD HH:mm:ss')
+				});
 			});
 	}
 	});
