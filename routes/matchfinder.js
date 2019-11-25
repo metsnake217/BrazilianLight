@@ -534,6 +534,10 @@ var analyze = function(matchresults, participantsResults) {
 		console.log("winner: " + winner);
 		console.log("matchmargin: " + matchmargin);
 		console.log("participantmargin: " + participantmargin);
+		console.log("participantscore: " + participantscore);
+		console.log("matchscore: " + matchscore);
+		console.log("predictedteam: " + predictedteam);
+		console.log("winner: " + winner);
 
 		if (predictedteam != winner) {
 			points = 0;
