@@ -37,13 +37,13 @@ block content
           - minsval = "value='" + mins_val + "'"
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'Matches'
-          h1 #{visitorval}
+          h1(visitorval) #{visitorval}
           - nodups = []
        form(action="/add" method="post")
          div(class="textentry " + hometeam_error)
            input(name="home_team" type="text" id="home_team" class="form-control addInput" placeholder="Home Team" #{homeval})
          div(class="textentry " + visitorteam_error)
-           input(name="visitor_team" type="text" id="visitor_team" class="form-control addInput" placeholder="Visitor Team" #{visitorval})
+           input(name="visitor_team" type="text" id="visitor_team" class="form-control addInput" placeholder="Visitor Team" visitorval)
          div(class="textentry " + league_error)
            select(style="width:100%" name="league" class="addInput")
              option(value="select" selected=(leagueval=="select" ? "selected" : undefined))!= "Select League"
