@@ -85,7 +85,7 @@ body {
 .calendar-list {
 	float: left;
 	width: 20%;
-	margin-right: 2%;
+	margin-right: 1% !important;
 }
 .fonticon {
 	font-size: 20pt !important;
@@ -413,12 +413,10 @@ input::-webkit-inner-spin-button {
 
  @media (max-width: 440px) {
 	.calendar-list {
-		float: left;
-		width: 25%;
-		margin-right: 2%;
+		width: 22%;
 	}
 	.fonticon {
-		font-size: 15pt !important;
+		font-size: 14pt !important;
 	}
 
 	.fonticon-text {
