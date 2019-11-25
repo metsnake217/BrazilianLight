@@ -408,12 +408,18 @@ input::-webkit-inner-spin-button {
 .wrapped {
 	white-space: normal !important;
 }
-
+.matchadmin-shadow {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-sizing: content-box;
+	padding-bottom: 15px !important;
+}
 .matchadmin-container {
 	width: 49.5%;
 	float: left;
 	margin-right: 0.5%;
 	margin-bottom: 10px;
+	border-radius: 50px 20px !important;
+	padding-bottom: 15px;
 }
 
  @media (max-width: 440px) {

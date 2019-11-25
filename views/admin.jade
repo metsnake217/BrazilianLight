@@ -98,16 +98,19 @@ block content
          - flaghemma = "/images/" + match.league + "_flag.png"
          - count++
          - result = match.resultat
+         - shadow = "matchadmin-shadow"
          - if(result != null && result.length>2)
             - results = result.split(':')
             - scoretyp = results[0]
             - scorehemma = results[1]
          - if (moment(match.datum).diff(moment(now)) < 0 && scoretyp == '')
+              - shadow = ''
               - background = 'background-color:rgba(169, 155, 175, 0.64);'
          - if (moment(match.datum).diff(moment(now)) < 0 && scoretyp != '')
               - background = 'background-color:rgba(169, 155, 175, 0.64);'
+              - shadow = ''
            
-         div(class="matchadmin-container" style=background)  
+         div(class="matchadmin-container "+ shadow style=background)  
           div(style="padding:10px;float:left;position:relative;width:100%;text-align:center")
             img(src=flagtyp alt="" style="border-width:0px;" class="hidden-xs")
             span(style="width: 87px; display: inline-block;")!= match.typ
