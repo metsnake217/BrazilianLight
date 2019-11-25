@@ -527,6 +527,8 @@ var analyze = function(matchresults, participantsResults) {
 		var points = 0;
 		var matchmargin = matchresults.scoretyp - matchresults.scorehemma;
 		var participantmargin = participant.scoretyp - participant.scorehemma;
+		var participantscore = participant.scorehemma + ":" + participant.scoretyp;
+		var matchscore = matchresults.scorehemma + ":" + matchresults.scoretyp;
 		var predictedteam = participant.predictedteam;
 		var winner = matchresults.winner;
 		console.log("winner: " + winner);
@@ -536,10 +538,11 @@ var analyze = function(matchresults, participantsResults) {
 		if (predictedteam != winner) {
 			points = 0;
 		} else if (participant.scoretyp == matchresults.scoretyp
-				&& participant.scorehemma == matchresults.scorehemma) {
+			&& participant.scorehemma == matchresults.scorehemma) {
 			points = 3;
 		} else if (predictedteam == winner && matchmargin == participantmargin
-				&& matchresults.scorehemma != matchresults.scoretyp) {
+			&& participantscore == matchscore) {
+			//&& matchresults.scorehemma != matchresults.scoretyp) {
 			points = 2;
 		} else if (predictedteam == winner
 				|| (participant.scoretyp == matchresults.scoretyp && participant.scorehemma == matchresults.scorehemma)) {
