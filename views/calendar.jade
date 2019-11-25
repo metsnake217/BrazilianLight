@@ -40,12 +40,12 @@ block content
           h1(visitorval) #{visitorval}
           - nodups = []
        form(action="/add" method="post")
-         div(class="textentry " + hometeam_error)
-           input(name="home_team" type="text" id="home_team" class="form-control addInput" placeholder="Home Team" value=homeval)
-         div(class="textentry " + visitorteam_error)
-           input(name="visitor_team" type="text" id="visitor_team" class="form-control addInput" placeholder="Visitor Team" value=visitorval)
-         div(class="textentry " + league_error)
-           select(style="width:100%" name="league" class="addInput")
+         div(class="textentry")
+           input(name="home_team" type="text" id="home_team" class="form-control addInput " + hometeam_error placeholder="Home Team" value=homeval)
+         div(class="textentry")
+           input(name="visitor_team" type="text" id="visitor_team" class="form-control addInput " + visitorteam_error placeholder="Visitor Team" value=visitorval)
+         div(class="textentry")
+           select(style="width:100%" name="league" class="addInput " + league_error)
              option(value="select" selected=(leagueval=="select" ? "selected" : undefined))!= "Select League"
              option(value="France" selected=(leagueval=="France" ? "selected" : undefined))!= "France"
              option(value="Italy" selected=(leagueval=="Italy" ? "selected" : undefined))!= "Calcio Italy"
