@@ -23,17 +23,17 @@ block content
        - var leagueval = ''
        - var hourval = ''
        - var minsval = ''
-       if hometeam_error != null && hometeam_error != ""
+       if hometeam_val != null && hometeam_val != ""
           - homeval = "value='" + hometeam_val + "'"
-       if visitorteam_error != null && visitorteam_error != ""
+       if visitorteam_val != null && visitorteam_val != ""
           - visitorval = "value='" + visitorteam_val + "'"
-       if datepicked_error != null && datepicked_error != ""
+       if datepicked_val != null && datepicked_val != ""
           - dateval = "value='" + datepicked_val + "'"
-       if league_error != null && league_error != ""
+       if league_val != null && league_val != ""
           - leagueval = "value='" + league_val + "'"
-       if hour_error != null && hour_error != ""
+       if hour_val != null && hour_val != ""
           - hourval = "value='" + hour_val + "'"
-       if mins_error != null && mins_error != ""
+       if mins_val != null && mins_val != ""
           - minsval = "value='" + mins_val + "'"
         div(id="ctl00_Div2"  class="row roundHdr")
           h1= 'Matches'
