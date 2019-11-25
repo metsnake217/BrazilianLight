@@ -446,21 +446,27 @@ module.exports = function(router) {
 
 		if (!(home_team != null && home_team.length > 0)) {
 			errorText += "<br/>Home Team";
+			proceed = false;
 		}
 		if (!(visitor_team != null && visitor_team.length > 0)) {
 			errorText += "<br/>Visitor Team";
+			proceed = false;
 		}
 		if (!(league != null && league.length > 0 && league != 'select')) {
 			errorText += "<br/>League";
+			proceed = false;
 		}
 		if (!(datepicked != null && datepicked.length > 0)) {
 			errorText += "<br/>Date";
+			proceed = false;
 		}
 		if (!(hour != null && hour.length > 0 && hour != 'select')) {
 			errorText += "<br/>Hour";
+			proceed = false;
 		}
 		if (!(mins != null && mins.length > 0 && mins != 'select')) {
 			errorText += "<br/>Minutes";
+			proceed = false;
 		}
 		if (proceed) {
 		var match = new Match(home_team, visitor_team, league, datepicked, time);
