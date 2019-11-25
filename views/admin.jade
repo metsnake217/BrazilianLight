@@ -103,9 +103,9 @@ block content
             - scoretyp = results[0]
             - scorehemma = results[1]
          - if (moment(match.datum).diff(moment(now)) < 0 && scoretyp == '')
-              - background = 'background-color:rgba(173, 20, 245, 0.64);padding: 10px;'
+              - background = 'background-color:rgba(169, 155, 175, 0.64);'
          - if (moment(match.datum).diff(moment(now)) < 0 && scoretyp != '')
-              - background = 'border-style:solid;border-color:rgba(173, 20, 245, 0.64); padding: 10px;'
+              - background = 'background-color:rgba(169, 155, 175, 0.64);'
            
          div(class="matchadmin-container")  
           div(style="padding:10px;" + background + ";float:left;position:relative;width:100%;text-align:center")
