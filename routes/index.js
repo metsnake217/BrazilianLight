@@ -19,6 +19,10 @@ module.exports = function(router) {
 	var competitionStarts = dates.competitionStarts;
 	var competitionEnds = dates.competitionEnds;
 
+	router.get('/google0f0f0ec0ee807658.html', function (req, res) {
+		res.sendfile('./google0f0f0ec0ee807658.html');
+	});
+
 	router.get('/', isLoggedIn, function(req, res) {
 
 		var netlighterMakesBets = new NetlighterMakesBets(req.session.userid);
