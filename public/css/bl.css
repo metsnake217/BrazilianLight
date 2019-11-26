@@ -431,6 +431,10 @@ input::-webkit-inner-spin-button {
 .match-over {
 	background-color:rgba(191, 185, 193, 0.44);
 }
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+	background-color: #cabb0bc7 !important;
+}
+
 
  @media (max-width: 440px) {
 	.roundHdr h1 {

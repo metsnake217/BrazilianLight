@@ -32,13 +32,15 @@ $(document).ready(function() {
     return false;
 	});
 
-	/*$('.addBtn').click(function () {
+	$('.buildPoint').click(function () {
 		var x = 0;
-		var matchForm = $(this).parent();
-		matchForm.parent().find('.addInput').each(function () {
+		var matchForm = $(this).parent().parent();
+		console.dir(matchForm);
+		matchForm.parent().parent().find('.search-query').each(function () {
 			var score = $(this).val();
+			console.log("score: "+ score);
 			if (score == '' || score < 0 || score == null || isNaN(score)) {
-				alert('Please enter valid data for ' + $(this).attr("name"));
+				alert('Please enter valid data for ' + $(this).attr("data"));
 				return false;
 			}
 			else {
@@ -49,7 +51,7 @@ $(document).ready(function() {
 		});
 
 		return false;
-	});*/
+	});
 
 
 

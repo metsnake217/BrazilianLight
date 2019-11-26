@@ -5,7 +5,7 @@ block content
   div(style="padding-left: 20px")
 
      h1= title
-     p!= "Enter results daily and run the script! Every match past over starting time is highlighted <span class='fa fa-square match-over'></span>."
+     p!= "Enter results daily and run the script! Every match past over starting time is highlighted <span style='color: #e3e0e4;' class='fa fa-square match-over'></span>."
      
      //div
         a(href="#" onclick="javascript:$('.winners').removeClass('hide')")!='Administer Teams Advancing ('
@@ -114,9 +114,9 @@ block content
           div(style="padding:10px;float:left;position:relative;width:100%;text-align:center")
             img(src=flagtyp alt="" style="border-width:0px;" class="hidden-xs")
             span(style="width: 87px; display: inline-block;")!= match.typ
-            input(id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scoretyp').val($(this).val())")
+            input(data="Home Team Score" id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scoretyp').val($(this).val())")
             span!= ' v '
-            input(id="hemma"+match.bet name="hemma"+match.bet value=scorehemma type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scorehemma').val($(this).val())")
+            input(data="Visitor Team Score" id="hemma"+match.bet name="hemma"+match.bet value=scorehemma type="text" placeholder="_" class="input-xlarge search-query score" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scorehemma').val($(this).val())")
             span(style="width: 87px; display: inline-block;")!= match.hemma
             img(src=flaghemma alt="" style="border-width:0px;" class="hidden-xs")
                   
@@ -131,7 +131,7 @@ block content
               input(name="bet" class="bet" id="bet" type="hidden" value=match.bet)
 
               div(class="buttons" style="")
-                 input(type="submit" class="button" value="Build Points for Match "+match.bet)
+                 input(type="submit" class="button buildPoint" value="Build Points for Match "+match.bet)
                      
             //div(style="background-color:#36185F; height:3px;margin-top:25px")!= ' '
 

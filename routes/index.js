@@ -742,6 +742,7 @@ module.exports = function(router) {
 						allteams : allteams,
 						matches : allmatches,
 						winners: winners,
+						scripts: ['/javascripts/utils.js'],
 						menu: "admin",
 						moment : moment,
 						now: moment(new Date).tz("America/New_York").format(
@@ -806,7 +807,8 @@ module.exports = function(router) {
 																											loggedIn : true,
 																											netlighter : req.session.user,
 																											allteams : allteams,
-																											matches : allmatches,
+																											matches: allmatches,
+																											scripts: ['/javascripts/utils.js'],
 																											winners : winners,
 																											moment : moment,
 																											now : moment(
@@ -858,7 +860,8 @@ module.exports = function(router) {
 																								loggedIn : true,
 																								netlighter : req.session.user,
 																								allteams : allteams,
-																								matches : allmatches,
+																								matches: allmatches,
+																								scripts: ['/javascripts/utils.js'],
 																								winners : winners,
 																								moment : moment,
 																								now : moment(
